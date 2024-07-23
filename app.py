@@ -47,5 +47,23 @@ def upload_file(username):
         file.save(os.path.join(user_dir, file.filename))
         return redirect(url_for('user_files', username=username))
 
+
+@app.route('/<username>/restore/<filename>', methods=['POST'])
+def restore_file(username, filename):
+    logger.debug(f'Restore request received for {username}/{filename}')
+    user_dir = os.path.join(EFS_PATH, username)
+    if not os.path.exists(user_dir):
+        os.makedirs(user_dir)
+    file_path = os.path.join(user_dir, filename)
+    s3_path = f'{username}/{filename}'
+
+    try:
+        s3.download_file(bucket_name, s3_path, file_path)
+        flash(f'File {filename} restored from S3 to EFS', 'success')
+    except ClientError as e:
+        flash(f'Error downloading file from S3: {e}', 'danger')
+
+    return redirect(url_for('user_files', username=username))
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
