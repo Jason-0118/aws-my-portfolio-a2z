@@ -1,48 +1,51 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 import os
-import json
-import logging
 
 app = Flask(__name__)
-UPLOAD_FOLDER = '/mnt/efs/fs1'  # Path to your mounted EFS
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Set up logging
-logging.basicConfig(filename='/var/log/flask_app/flask_app.log', level=logging.DEBUG)
+EFS_PATH = "/mnt/efs/fs1"  # Adjust this path based on your EFS mount point
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        user_dir = os.path.join(EFS_PATH, username)
+
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+
+        return redirect(url_for('user_files', username=username))
+
+    return '''
+        <form method="post">
+            <input type="text" name="username" required>
+            <button type="submit">Login</button>
+        </form>
+    '''
+
+@app.route('/<username>')
+def user_files(username):
+    user_dir = os.path.join(EFS_PATH, username)
+    if not os.path.exists(user_dir):
+        return "User directory not found", 404
+
+    files = os.listdir(user_dir)
+    files.sort()
+    return render_template('files.html', username=username, files=files)
+
+@app.route('/<username>/upload', methods=['POST'])
+def upload_file(username):
+    user_dir = os.path.join(EFS_PATH, username)
     if 'file' not in request.files:
-        app.logger.error('No file part')
-        return jsonify(error='No file part'), 400
+        return "No file part", 400
+
     file = request.files['file']
     if file.filename == '':
-        app.logger.error('No selected file')
-        return jsonify(error='No selected file'), 400
+        return "No selected file", 400
+
     if file:
-        try:
-            filename = file.filename
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
-            app.logger.info(f'File saved to {file_path}')
-
-            # Append to notes.json
-            notes_file = os.path.join(app.config['UPLOAD_FOLDER'], 'notes.json')
-            if not os.path.exists(notes_file):
-                with open(notes_file, 'w') as f:
-                    json.dump([], f)
-
-            with open(notes_file, 'r+') as f:
-                notes = json.load(f)
-                notes.append({"file": filename})
-                f.seek(0)
-                json.dump(notes, f, indent=4)
-                f.truncate()
-
-            return jsonify(message='File successfully uploaded and noted'), 200
-        except Exception as e:
-            app.logger.error(f'Error: {e}')
-            return jsonify(error='Internal Server Error'), 500
+        file.save(os.path.join(user_dir, file.filename))
+        return redirect(url_for('user_files', username=username))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
