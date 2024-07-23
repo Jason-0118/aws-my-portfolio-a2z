@@ -1,16 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload File to EFS</title>
+    <title>Amazon EFS File Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .upload-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            flex-grow: 1;
+        }
+        .upload-area:hover {
+            background-color: #f0f0f0;
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .note-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding-top: 100%; /* Maintain square aspect ratio */
+            position: relative;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .note-card:hover {
+            background-color: #f0f0f0;
+        }
+        .note-card a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+        .note-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body>
-    <h1>Upload File to EFS</h1>
-    <!--   http://<public ip address/upload>   -->
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" required>
-        <button type="submit">Upload</button>
-    </form>
+<body class="bg-gray-100">
+    <img src="https://via.placeholder.com/1920x300.png?text=Amazon+Header" alt="Amazon Header" class="w-full">
+
+    <div class="container mx-auto p-6 rounded-md mt-10">
+        <form id="loginForm" action="http://my-portfolio-alb-180099420.us-east-1.elb.amazonaws.com/login" method="post" class="flex flex-col items-center">
+            <input type="text" name="username" placeholder="Enter your username" class="border p-2 mb-4" required>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</button>
+        </form>
+    </div>
 </body>
 </html>
