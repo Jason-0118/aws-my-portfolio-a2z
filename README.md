@@ -1,4 +1,4 @@
-# aws-my-portfolio-a2x
+# aws-my-portfolio-a2z
 
 ## VPC setting
 - Use CloudFormation (cf.yaml) to create VPC with two public subnets and two private subnet.
