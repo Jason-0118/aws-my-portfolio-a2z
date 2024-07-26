@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }}'s Portfolio</title>
+    <style>
+        .upload-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            flex-grow: 1;
+        }
+        .upload-area:hover {
+            background-color: #f0f0f0;
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        .note-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 200px; /* Set a fixed height for the note-card */
+            position: relative;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+        .note-card:hover {
+            background-color: #f0f0f0;
+        }
+        .note-card a {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+        .note-card a:hover {
+            text-decoration: underline;
+        }
+        .note-card .delete-btn {
+            width: 100%;
+            background-color: white;
+            color: rgb(222, 63, 63);
+            border: 1px, solid, rgb(219, 107, 107);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .note-card .delete-btn:hover {
+            background-color: rgb(219, 107, 107);
+	    color: white;
+        }
+
+
+	/* New CSS for Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: -300px;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            color: black;
+	    z-index: 1000;
+        }
+        .sidebar a {
+            text-decoration: none;
+            font-size: 25px;
+            color: black;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .openbtn {
+            cursor: pointer;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+        }
+        .file-list {
+            padding-left: 8px;
+        }
+        .file-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .file-list a {
+            #flex-grow: 1;
+            color: gray;
+	    font-size: small;
+	    margin-right: 8px
+        }
+        .file-list form {
+            display: inline;
+        }
+        .restore-btn {
+            color: green;
+            border-color: green;
+        }
+
+	.flex-container {
+ 	    display: flex;
+  	    flex-direction: row;
+  	    align-items: center;
+	}
+	.flex-container img {
+ 	    height: 80px; /* Set the same height for the image */
+  	    object-fit: cover; /* Maintain aspect ratio and fill the container */
+	}
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="file-list">
+            <ul id="notes-list" class="list-none">
+                {% for s3_file in s3_files %}
+                <li>
+                    <a>{{ s3_file }}</a>
+                    <form action="/{{ username }}/restore/{{ s3_file }}" method="post" style="display: inline;">
+                        <button type="submit" class="restore-btn">Restore</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="flex justify-between items-center p-4">
+  	<button class="openbtn" onclick="openNav()">☰ Delete History</button>
+	<a href="https://www.myportfolio-a2z.com/"> <img class="h-10" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="amazon logo"> </a>
+    </div>
+
+    <div class="container mx-auto p-6 rounded-md mt-10">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mb-6">{{ username }}'s Portfolio</h1>
+        <form id="uploadForm" action="/{{ username }}/upload" method="post" enctype="multipart/form-data" class="flex items-center">
+            <div class="upload-area" id="uploadArea">
+                <p class="text-gray-600">Click or drag file to this area to upload</p>
+                <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 ml-4">Upload</button>
+        </form>
+        <ul id="notes-list" class="list-none mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for file in files %}
+            <li class="note-card">
+                <a href="/efs/{{ username }}/{{ file }}">{{ file }}</a>
+                <form action="/{{ username }}/delete/{{ file }}" method="post" style="width: 100%; position: absolute; bottom: 0;">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+
+            </ul>
+        </ul>
+    </div>
+
+    <script>
+
+	function openNav() {
+            document.getElementById("mySidebar").style.left = "0";
+            document.getElementById("main").style.marginLeft = "300px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.left = "-300px";
+            document.getElementById("main").style.marginLeft= "0";
+        }
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('file');
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            const fileName = fileInput.files[0].name;
+            uploadArea.querySelector('p').textContent = `File selected: ${fileName}`;
+        });
+
+        uploadArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            uploadArea.style.backgroundColor = '#f0f0f0';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.backgroundColor = '#fafafa';
+        });
+
+        uploadArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            fileInput.files = event.dataTransfer.files;
+            const fileName = fileInput.files[0].name;
+            uploadArea.querySelector('p').textContent = `File selected: ${fileName}`;
+            uploadArea.style.backgroundColor = '#fafafa';
+        });
+    </script>
+</body>
+</html>
+

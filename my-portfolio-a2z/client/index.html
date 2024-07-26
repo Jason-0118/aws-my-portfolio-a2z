@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon EFS File Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* background-color: rgba(255, 255, 255, 0.7);  */
+            padding: 50px;
+            border-radius: 8px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+	}
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg') no-repeat center center;
+            opacity: 0.5;
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        .zoom-image {
+            width: 150px;
+            height: 150px;
+            background-image: url('https://quip-amazon.com/blob/OUQ9AAgEUNR/bvhrRsKWV8T63inG_p4MiQ');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .zoom-image:hover {
+            transform: scale(1.2);
+        }
+
+        #fullImageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #fullImageModal img {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #fullImageModal .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #fullImageModal .close:hover,
+        #fullImageModal .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            background-color: rgba(205, 175, 175, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto p-6 rounded-md my-10">
+        <form id="loginForm" action="https://www.myportfolio-a2z.com/login" method="post"
+            class="flex flex-col items-center mt-4">
+            <input type="text" name="username" placeholder="Enter your alias" class="border p-2 mb-4" required>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</button>
+        </form>
+    </div>
+
+    <div class="instructions">
+        <div class="zoom-image" id="loginImage"></div>
+        <h1 class="text-3xl font-bold text-gray-800 my-3">My-Portfolio Project</h1>
+        <i> Example alias: zhanxink </i>
+        <p class="text-left my-2  text-gray-700 leading-relaxed">
+            This is a My-Portfolio aimed to develop an internal platform where interns can demonstrate their work during
+            their internship. This platform will allow interns to upload their files, making it easy for supervisors and
+            peers to view and access their contributions.
+        </p>
+        <ul class="text-left text-gray-700 leading-relaxed mb-6">
+            <li class="mb-2">
+                <strong>/Login</strong> - User first login will create a folder in EFS with the name of the alias. Every
+                user will upload files to their alias folder.
+            </li>
+            <li class="mb-2">
+                <strong>/Upload</strong> - User can upload their files (less than 16MB for now) to their EFS alias
+                folder.
+            </li>
+            <li class="mb-2">
+                <strong>/Delete</strong> - User can delete their files from EFS. After deleting, files will be stored in
+                an S3 bucket. After 30 days, the files will be deleted permanently.
+            </li>
+            <li class="mb-2">
+                <strong>/Restore</strong> - User can restore their deleted files. After restoring, files will be copied
+                from S3 to EFS. The latest version of files in S3 (versioning enabled) will be restored.
+            </li>
+        </ul>
+
+        <div id="fullImageModal">
+            <span class="close" id="closeModal">&times;</span>
+            <img src="https://quip-amazon.com/blob/OUQ9AAgEUNR/db0Dd2sWg_JruFR_aH2QXA" alt="solution diagram">
+        </div>
+
+        <script>
+            const zoomImage = document.getElementById('loginImage');
+            const fullImageModal = document.getElementById('fullImageModal');
+            const closeModal = document.getElementById('closeModal');
+
+            zoomImage.addEventListener('click', () => {
+                fullImageModal.style.display = 'block';
+            });
+
+            closeModal.addEventListener('click', () => {
+                fullImageModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === fullImageModal) {
+                    fullImageModal.style.display = 'none';
+                }
+            });
+        </script>
+</body>
+
+</html>
