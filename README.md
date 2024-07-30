@@ -52,4 +52,14 @@
 - install node for linux2: https://repost.aws/questions/QUvkkhY--uTiSDkS6R1jFnZQ/node-js-18-on-amazon-linux-2
 
 ## demo
+- ### Home
+ ![home](https://github.com/user-attachments/assets/44465ea9-b6dd-4a12-9b17-ef8a7329409b)
+- ### Login
+ ![login](https://github.com/user-attachments/assets/58618a20-a0b9-42ac-bf7c-fdefa7f16398)
+- ### upload
+ ![upload](https://github.com/user-attachments/assets/95485016-13b3-47cf-bc1d-6dafe1a5a785)
+- ### delete
+ ![delete](https://github.com/user-attachments/assets/13d7a525-93d6-43ea-86a1-a1d82a3a0f58)
+- ### restore
+ ![restore](https://github.com/user-attachments/assets/53a8d9ce-e94d-45f3-a520-b400ccb1447f)
 
