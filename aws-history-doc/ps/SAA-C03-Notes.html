@@ -1,0 +1,2682 @@
+<!doctype html>
+<html><head><title>Udemy SAA-C03 Notes (Stephane Maarek Version)</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 22px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 16px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 15px;
+    line-height: 14px;
+}
+h5 {
+    font-style: italic;
+}
+
+h6 {
+    font-weight: unset;
+    text-decoration: underline;
+}
+
+.capitalize-h3 h3 {
+    text-transform: uppercase;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Text Alignment */
+.line {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: end;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+div[data-section-style="11"].show-border {
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+/*
+ * Copyright 2019 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+
+/* Numbered list */
+div[data-section-style="6"] {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+div[data-section-style="6"].list-numbering-continue {
+    counter-reset: none;
+}
+div[data-section-style="6"].list-numbering-restart-at {
+    counter-reset: indent0 var(--indent0) indent1 indent2 indent3 indent4
+        indent5 indent6 indent7 indent8;
+}
+div[data-section-style="6"] ul {
+    /* indent0 is not reset since it is shared across the div elements */
+    list-style-type: none !important;
+}
+div[data-section-style="6"] ul ul {
+    counter-reset: indent1;
+}
+div[data-section-style="6"] ul ul ul {
+    counter-reset: indent2;
+}
+div[data-section-style="6"] ul ul ul ul {
+    counter-reset: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    counter-reset: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    counter-reset: indent5;
+}
+div[data-section-style="6"] ul li {
+    counter-increment: indent0;
+}
+div[data-section-style="6"] ul ul li {
+    counter-increment: indent1;
+}
+div[data-section-style="6"] ul ul ul li {
+    counter-increment: indent2;
+}
+div[data-section-style="6"] ul ul ul ul li {
+    counter-increment: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul li {
+    counter-increment: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul li {
+    counter-increment: indent5;
+}
+div[data-section-style="6"] ul li:before {
+    content: counter(indent0, decimal) ". ";
+}
+div[data-section-style="6"] ul ul li:before {
+    content: counter(indent1, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul li:before {
+    content: counter(indent2, lower-roman) ". ";
+}
+div[data-section-style="6"] ul ul ul ul li:before {
+    content: counter(indent3, decimal) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul li:before {
+    content: counter(indent4, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul ul li:before {
+    content: counter(indent5, lower-roman) ". ";
+}
+</style></head><body><h1 id='temp:C:VeSe56c90df7e5c4137b3d2e5f20'>Udemy <span style="color:#2d2f31" textcolor="#2d2f31">SAA-C03</span> Notes (<a href="https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/learn/lecture/39035302?start=240#overview">Stephane Maarek Version</a>)</h1>
+
+<div style="" class="" data-section-style='5'><ul id='temp:C:VeS20917a97c491402f80f4b4d86'><li id='temp:C:VeSba2b7b6268544aa382f1c7cfc' class='parent' value='1'><b>AWS IAM</b>
+
+<br/></li><ul><li id='temp:C:VeS2cebdc2114bd42b88642bf123' class='parent'><u>Audit</u>
+
+<br/></li><ul><li id='temp:C:VeS6467b6750afb4649bf9fda087' class=''><span style="color:#444949" textcolor="#444949">IAM Credentials Report (account-level)</span>
+
+<br/></li><li id='temp:C:VeSbe44233323164067a667bfbae' class=''><span style="color:#444949" textcolor="#444949">IAM Access Advisor (user-level)</span>
+
+<br/></li></ul><li id='temp:C:VeS3a18cfd2d02a49cc96175e83b' class='parent'>Permission boundary
+
+<br/></li><ul><li id='temp:C:VeSc754383463884bc48f8ae47d6' class=''>control the maximum permissions employees can grant to the IAM principals that they create and manage
+
+<br/></li></ul></ul><li id='temp:C:VeS39bacc9c81a44e188fe8380fb' class='parent'><b>Advanced Identity in AWS</b>
+
+<br/></li><ul><li id='temp:C:VeScad778193cde4c0d89d6eb808' class='parent'><u><b>Org</b></u>
+
+<br/></li><ul><li id='temp:C:VeS600c6e6747ae49b28ba694db0' class=''>SCP - service control policies
+
+<br/></li><li id='temp:C:VeSd3289ed34b574c7997621edb1' class=''>do not apply management account
+
+<br/></li></ul><li id='temp:C:VeSfce2916d88c34969aff34f471' class='parent'><u><b>IAM role</b></u>
+
+<br/></li><ul><li id='temp:C:VeSda000d4de19b48cc97124b466' class=''>assume a role, give up original permission and take the permission assigned to the role
+
+<br/></li></ul><li id='temp:C:VeS721e38dbcf4d4b9c8a147de23' class='parent'><u><b>Resource-based policies</b></u>
+
+<br/></li><ul><li id='temp:C:VeS098fed2f187c428fba3e9aa1b' class=''>principal does not have to give up permission
+
+<br/></li></ul><li id='temp:C:VeS7196cb52b9434ce2906f3f0d8' class='parent'><u><b>AWS IAM identity center</b></u>
+
+<br/></li><ul><li id='temp:C:VeS705d52482b0b48999159ca068' class=''>one login for all AWS accounts in AWS Org
+
+<br/></li></ul><li id='temp:C:VeS2f67c4033e4146c4a4b92b7d0' class='parent'><u><b>AD - Microsoft active directory</b></u>
+
+<br/></li><ul><li id='temp:C:VeS76fc7cfbc6474434bb01a8594' class=''><span style="color:#333333" textcolor="#333333">helps administrators manage network resources and permissions</span>
+
+<br/></li><li id='temp:C:VeScd540c99096843a593c259a24' class=''>objects are organized in trees, a group of trees is a forest
+
+<br/></li><li id='temp:C:VeSa6398970ade54f06b316362ec' class='parent'>Directory services
+
+<br/></li><ul><li id='temp:C:VeS71ae9591426c479c816a98736' class='parent'>AWS managed Microsoft AD
+
+<br/></li><ul><li id='temp:C:VeSef6068873b2d4bc9bc390aacf' class=''>establish 2 way “truth” connections
+
+<br/></li></ul><li id='temp:C:VeS67784587b2c2465ab69ac01cb' class='parent'>AD Connector
+
+<br/></li><ul><li id='temp:C:VeS1dba936694d94bbcbcf30e88e' class=''>directory gateway(proxy) to redirect(support MFA)
+
+<br/></li></ul><li id='temp:C:VeS0f6c0936b8d847fc8d9bd28c1' class='parent'>Simple AD
+
+<br/></li><ul><li id='temp:C:VeS0f3ccf9619434537954749fb9' class=''>cannot be joined with on-premises AD
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS4878341c306a4860832166208' class='parent'><u><b>AWS control tower</b></u>
+
+<br/></li><ul><li id='temp:C:VeS920ae345f3404e90b4174a89b' class=''>setup and govern a <b>secure</b> and <b>compliant</b> multi-account AWS environment based on best practices
+
+<br/></li><li id='temp:C:VeS4f1ee7c6dc1e4462b0a6e2934' class='parent'>Guardrails
+
+<br/></li><ul><li id='temp:C:VeS3af1fc53c77c41649598ad389' class=''>Preventive guardrail - using SCP
+
+<br/></li><li id='temp:C:VeS7673566fe56e4a7d987c01084' class=''>Detective guardrail - using AWS Config
+
+<br/></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSb6c130523c074d37a4b362a99'><li id='temp:C:VeS9d18426d7fc94ca5a2ebc5c63' class='parent' value='1'><b>AWS EC2</b>
+
+<br/></li><ul><li id='temp:C:VeS7f8a85add72c4fc7968b1f75d' class=''>QUOTAS - request a limit increase
+
+<br/></li><li id='temp:C:VeS2755096edbb14d63801da4b64' class='parent'>Default termination policy: 
+
+<br/></li><ul><li id='temp:C:VeS6c9947a79a714def8a9459d75' class=''>starting point: helps ensure that instances are <b>distributed evenly</b> across AZ for HA
+
+<br/></li><li id='temp:C:VeS049f42348e994dbc8a36e0c77' class=''>if AZ has equal num of instance, then checks for the <b>oldest</b> launch configuration
+
+<br/></li></ul><li id='temp:C:VeS47bc5df258e64f989b9b358cd' class='parent'><b><u>Capabilities</u></b>
+
+<br/></li><ul><li id='temp:C:VeSa5b8f28cd53748e5a7a0bf286' class=''>Renting VM (EC2)
+
+<br/></li><li id='temp:C:VeS51038c8ad3294a52a3894665f' class=''>Storing data on virtual drives (EBS)
+
+<br/></li><li id='temp:C:VeS992341fe7a92490c96bc342ea' class=''>Distributing load across machines (ELB)
+
+<br/></li><li id='temp:C:VeS39122e6535914d4f80219c7e8' class=''>Scaling the services using ASG
+
+<br/></li></ul><li id='temp:C:VeSd7f107bdb7da42c991a29d139' class='parent'><b><u>Instance types</u></b>
+
+<br/></li><ul><li id='temp:C:VeS4498a98af2af4c1aa6e824420' class='parent'><u>General purpose</u>
+
+<br/></li><ul><li id='temp:C:VeS79ab49f0506443edbe3c33875' class=''>Great for diversity of workload
+
+<br/></li><li id='temp:C:VeSe2f29d1701b548b19db1b94d4' class=''>Balance between Compute, memory, and networking
+
+<br/></li></ul><li id='temp:C:VeSe8e66740c5da4b13bdd3a3b9d' class='parent'><u>Compute Optimized</u>
+
+<br/></li><ul><li id='temp:C:VeS7da81c23a2394e0e93af2cd46' class='parent'>For <b>high performance</b> processors
+
+<br/></li><ul><li id='temp:C:VeS1ed8502f84a44031bcac375eb' class=''>Batch, Media transcoding, dedicated gaming servers, ML
+
+<br/></li></ul></ul><li id='temp:C:VeS93355f92786549d0a5c3c095a' class='parent'><u>Memory Optimized</u>
+
+<br/></li><ul><li id='temp:C:VeSb365e41d54494cb489a49320c' class='parent'>Fast  performance for <b>workloads</b> that process large data sets in memory
+
+<br/></li><ul><li id='temp:C:VeS0cd7696259fd4d529b8c203d4' class=''>High performance, SQL/NoSQL DB
+
+<br/></li></ul></ul><li id='temp:C:VeSa804dc444de441efb5ebcae46' class='parent'><u>Storage optimized</u>
+
+<br/></li><ul><li id='temp:C:VeS91454bd083c846a1b933956ca' class='parent'>For high, sequential read and write access to <b>large data sets</b> on local storage
+
+<br/></li><ul><li id='temp:C:VeS245b9489746a47679768d3595' class=''>High frequency online transaction processing systems
+
+<br/></li><li id='temp:C:VeSd5ff7607e350480cbd0bcc362' class=''>Data warehousing app
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS77eade72c2f74f41a347f8005' class='parent'><b><u>Security group</u></b>
+
+<br/></li><ul><li id='temp:C:VeSc88b233bc35f4611a1b995ba4' class=''><b>Default</b> blocked all inbound traffic and authorize all outbound traffic
+
+<br/></li><li id='temp:C:VeSf940b261857146058676dc44d' class=''><b>Stateful</b>, only contain allow rules, can reference by IP or by SG
+
+<br/></li><li id='temp:C:VeSc67c10a6d4b54051aed9c156a' class=''>Act as a “firewall” on EC2 instances
+
+<br/></li><li id='temp:C:VeSc8740b26bd0941d39ab8959e3' class=''>Lock down to a region/VPC combination
+
+<br/></li></ul><li id='temp:C:VeS3a3f70a0fd4840ccaefa425f3' class=''><span data-section-style='11' style='max-width:56%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/WpzEueLP1NPU2iL88JmPGg' id='temp:C:VeS3a3f70a0fd4840ccaefa425f3' width='448' height='131'></img></span></li><li id='temp:C:VeS87b2e186481f4908a24d0c526' class='parent'><u><b>Instances purchasing options</b></u>
+
+<br/></li><ul><li id='temp:C:VeS255ba8f64803482aba418a49d' class=''>On-demand - <span style="color:#444949" textcolor="#444949">short workload, predictable pricing, pay by second</span>
+
+<br/></li><li id='temp:C:VeS30eed4582c874676abf1c7181' class='parent'>Reserved <span style="color:#444949" textcolor="#444949">(1 &amp; 3 years)</span>
+
+<br/></li><ul><li id='temp:C:VeSebf2f4d6e688424280f29f741' class=''>reserved instances - long workloads
+
+<br/></li><li id='temp:C:VeS15cf08ae984047509212ca891' class=''>convertible reserved instances - <span style="color:#444949" textcolor="#444949">long workloads with flexible instances</span>
+
+<br/></li></ul><li id='temp:C:VeS3c97aed5caf64de49cd655c63' class=''>Saving plans - <span style="color:#444949" textcolor="#444949">(1 &amp; 3 years) –commitment to an amount of usage, long workload</span>
+
+<br/></li><li id='temp:C:VeS117f9bc8965144509b125fd85' class=''>Spot instances - <span style="color:#444949" textcolor="#444949">short workloads, cheap, can lose instances (less reliable)</span>
+
+<br/></li><li id='temp:C:VeScd88a31b64364bb68939ee942' class=''>dedicated hosts - <span style="color:#444949" textcolor="#444949">book an entire physical server, control instance placement, support business </span><b><span style="color:#444949" textcolor="#444949">license</span></b>
+
+<br/></li><li id='temp:C:VeSff46c08de54f4631ba327ef27' class=''>dedicated instances - <span style="color:#444949" textcolor="#444949">no other customers will share your hardware</span>
+
+<br/></li><li id='temp:C:VeS5656e160a4634f3eb2239ab01' class=''>capacity reservations - <span style="color:#444949" textcolor="#444949">reserve capacity in a specific AZ for any duration, </span><b><span style="color:#444949" textcolor="#444949">No time commitment, no billing discounts</span></b>
+
+<br/></li></ul><li id='temp:C:VeS84850a59d21944f38504cfe4a' class=''>Launch configuration = EC2
+
+<br/></li><li id='temp:C:VeSeacfedbd31d2493fa5fd1134e' class='parent'>Launch template = AMI
+
+<br/></li><ul><li id='temp:C:VeS4a88f93b5b554aeb89a750712' class=''><span style="color:#2d2f31" textcolor="#2d2f31">defining a<b> launch template</b> instead of a <b>launch configuration</b> allows you to have <b>multiple versions of a template. </b>(i.e: use different instance type)</span>
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS9c950650aff34d30b6bfbf4e6'><li id='temp:C:VeS1baa6fa30ede4025a8346f836' class='parent' value='1'><b>AWS EC2 - Associate</b>
+
+<br/></li><ul><li id='temp:C:VeSa7555eafc074495e842dea842' class='parent'><u><b>Public Ip</b></u>
+
+<br/></li><ul><li id='temp:C:VeS384ef9506a2d490ba5309cb74' class=''>Unique across whole web
+
+<br/></li></ul><li id='temp:C:VeS130bfd51b9b8462485cf37bf4' class='parent'><u><b>Private IP</b></u>
+
+<br/></li><ul><li id='temp:C:VeS6ad052a77edc46e88acaa9eae' class=''>Unique across the private network
+
+<br/></li></ul><li id='temp:C:VeSae07a7912f2b45e49d4a47624' class='parent'><u><b>Elastic IP</b></u>
+
+<br/></li><ul><li id='temp:C:VeSe471cb86096f449ea2baefbae' class=''>Remap the address to another instance 
+
+<br/></li></ul><li id='temp:C:VeS0aa50692134840d3a63c57676' class='parent'><u><b>Placement groups</b></u>
+
+<br/></li><ul><li id='temp:C:VeS3e2ac437db3e40a194e98c7ca' class='parent'>Cluster
+
+<br/></li><ul><li id='temp:C:VeS84e30c4208884174ad57f23ea' class=''><span data-section-style='11' style='max-width:40%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/nD4ku2e4agXEmhy-k3nE5Q' id='temp:C:VeS84e30c4208884174ad57f23ea' width='325' height='156'></img></span></li><li id='temp:C:VeS3784a13ef5ed433ba2784207c' class=''>Great network, but all instances fails if the AZ fails.
+
+<br/></li></ul><li id='temp:C:VeS77f3d74aef524398906af2df1' class='parent'>Spread
+
+<br/></li><ul><li id='temp:C:VeS49334e8f662144b2903f56acd' class=''><span data-section-style='11' style='max-width:38%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/VFY31psCPVeR7b-8_D3euQ' id='temp:C:VeS49334e8f662144b2903f56acd' width='309' height='235'></img></span></li><li id='temp:C:VeS0c82ebf936dc45119ef5d349b' class=''>Span across AZ and EC2 instances are on different physical hardware
+
+<br/></li><li id='temp:C:VeSaef821a0bc35489292c890376' class=''><b>Limited to 7 instances/AZ</b>
+
+<br/></li></ul><li id='temp:C:VeSb1b310b838944de4a4595d022' class='parent'>Partition
+
+<br/></li><ul><li id='temp:C:VeS2f1c7a4bd57e4f3191312ca4f' class=''><span data-section-style='11' style='max-width:50%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/pOnDPjyhhceYQcLmUgmXNw' id='temp:C:VeS2f1c7a4bd57e4f3191312ca4f' width='376' height='326'></img></span></li><li id='temp:C:VeS2d06f79cc48b4ebbb8b690e13' class=''>Up to <b>7 partitions/AZ</b>
+
+<br/></li><li id='temp:C:VeS1d0fa2e05e8b41aab80bce15b' class=''>Up to 100s of EC2 instances
+
+<br/></li></ul></ul><li id='temp:C:VeSecbdb78c00534f649396ecac4' class='parent'><u><b>Elastic Network Interfaces - ENI</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2c1cfb9e13d44faebf7bdc202' class=''>Logical component in a VPC represents a virtual network card
+
+<br/></li></ul><li id='temp:C:VeSd6acf40b83484afea1555ae78' class='parent'><u><b>EC2 hibernate</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2442e156b46a4d6392ff06f63' class=''>RAM state is preserved, boot is faster
+
+<br/></li><li id='temp:C:VeSf09e5107fe4c4af08b2780f7b' class=''>RAM state is written into <b>root EBS volume</b>, which <b>must be encrypted</b>
+
+<br/></li><li id='temp:C:VeS9271a57b28004bb2976f2c746' class=''>not able to hibernate more than <b>60 days</b>
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSa400d72a7e3f452d828c88c42'><li id='temp:C:VeS491a624a7677470ca154748ee' class='parent' value='1'><b>AWS EC2 - instance storage</b>
+
+<br/></li><ul><li id='temp:C:VeS77e42334993643bcb1ef44d79' class='parent'><u><b>EBS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2a9e93da13724975b22ae2442' class=''>a network drive can be attached to instances
+
+<br/></li><li id='temp:C:VeS08aa3e1776ab4055b8c713d67' class=''>Only be mounted to one instance at at time (CCP level)
+
+<br/></li><li id='temp:C:VeSdbaedff06b6c4475bda192ac8' class=''>Lock to an AZ
+
+<br/></li><li id='temp:C:VeS2ce5571e70e44da59859ae21b' class=''><span style="color:#2d2f31" textcolor="#2d2f31">By default, the root volume for an AMI backed by Amazon EBS is <b>deleted when the instance terminates.</b></span>
+
+<br/></li></ul><li id='temp:C:VeS3b3bd8f94b7d4e0a8e8d5ee47' class='parent'><u><b>EBS snapshot</b></u>
+
+<br/></li><ul><li id='temp:C:VeS4415b6f7e2a54b349e99585f5' class=''>Can copy snapshot across AZ or region
+
+<br/></li><li id='temp:C:VeSfa7d160399214e13932ddc3c2' class='parent'>Features:
+
+<br/></li><ul><li id='temp:C:VeS1632ba00f637473cabca233b5' class=''>EBS snapshot archive, 75% cheaper, 24-72 hrs for restoring the archive
+
+<br/></li><li id='temp:C:VeS39302ad8bd3d419c91025d62b' class=''>Recycle Bin for EBS snapshots
+
+<br/></li><li id='temp:C:VeSc60b7756e8e94572be54d2255' class=''>Fast snapshot restore.
+
+<br/></li></ul><li id='temp:C:VeS62edcd7341034fadb0171fbfe' class=''><span style="color:#333333" textcolor="#333333"><b>Fast snapshot restore</b> (FSR) enables you to create a volume from a snapshot that is fully initialized at creation.</span>
+
+<br/></li></ul><li id='temp:C:VeSda68645ab8a040daa17c0fd74' class='parent'><u><b>EBS Volume types:</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5fdfb59d2af0432a89c9936a0' class=''><b>gp2/gp3(SSD)</b>: <span style="color:#444949" textcolor="#444949">General purpose SSD volume that balances price and performance for a wide variety of workloads, <b>can be used as boot volumes. 3000IOPS</b></span>
+
+<br/></li><li id='temp:C:VeS388f36bdfae343368477a475e' class='parent'><b>io1/io2 Block Express(SSD)</b>: <span style="color:#444949" textcolor="#444949">Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads, <b>can be used as boot volumes</b></span>
+
+<br/></li><ul><li id='temp:C:VeS9a62ebfebb4746518efc531da' class=''><span style="color:#444949" textcolor="#444949">Great for databases workloads</span>
+
+<br/></li><li id='temp:C:VeS847015a544974c3ebb13ed223' class=''>up to <b>16,000 IOPS</b>
+
+<br/></li><li id='temp:C:VeS19a058b0428c431982f605c41' class='parent'>support EBS <b>multi-attach, </b>up to <b>16 instances</b>
+
+<br/></li><ul><li id='temp:C:VeS1c461bd3ec234ee2a96f5ce03' class=''><span data-section-style='11' style='max-width:31%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/_NWpYdVFc3DZSrf6ejZ1eQ' id='temp:C:VeS1c461bd3ec234ee2a96f5ce03' width='252' height='265'></img></span></li></ul></ul><li id='temp:C:VeS93f97473b875419da3889fbaf' class='parent'>st1 (HDD): <span style="color:#444949" textcolor="#444949">Low cost HDD volume designed for frequently accessed, throughput- intensive workloads</span>
+
+<br/></li><ul><li id='temp:C:VeS52b4c527ef4f4daca73b85bd0' class=''>max IOPS 500
+
+<br/></li></ul><li id='temp:C:VeSf2a9cab5870f435589a263ac3' class=''>sc1(HDD<b>)</b>: <span style="color:#444949" textcolor="#444949">Lowest cost HDD volume designed for less frequently accessed workloads</span>
+
+<br/></li></ul><li id='temp:C:VeSb86fc477984644f3bd9f23e73' class=''>EBS encryption
+
+<br/></li><li id='temp:C:VeS4bfef76518654b8097387b4f5' class='parent'><u><b>EFS - Elastic File System</b></u>
+
+<br/></li><ul><li id='temp:C:VeS3cf35b6ab56d4dd7addf1f506' class=''>Managed NFS(network file system) that can be mounted on many EC2
+
+<br/></li><li id='temp:C:VeS043e83bbd1fa443398f974c32' class=''>EFS works with instances in multi-AZ
+
+<br/></li><li id='temp:C:VeSd98a35b0648f4189b77445570' class=''><b>HIghly available, scalable</b>
+
+<br/></li><li id='temp:C:VeS43d972c34be148478e9f959aa' class=''>Compatible with <b>Linux based AMI (not windows)</b>
+
+<br/></li><li id='temp:C:VeS0f9c352249d84dd69f8278d1e' class=''>SG to control access to EFS
+
+<br/></li></ul><li id='temp:C:VeS499cb76001da4ee593093c87d' class='parent'><u><b>EFS mode</b></u>
+
+<br/></li><ul><li id='temp:C:VeSd3254052a7604612bc8c2deb9' class=''>Performance mode - general purpose, higher latency and parallel
+
+<br/></li><li id='temp:C:VeS947674c01e684c68a843a4b7b' class=''>Throughput mode - can instantly provision the throughput of your file system (in MiB/s), independent of the amount of data stored.
+
+<br/></li><li id='temp:C:VeS1550f6c784284851844d3f8b9' class=''>Bursting Throughput mode - throughput on Amazon EFS <b>scales as the size of your file system grows.</b>
+
+<br/></li></ul><li id='temp:C:VeS98bf05c67acc479896a817f55' class='parent'><u><b>EFS storage classes</b></u>
+
+<br/></li><ul><li id='temp:C:VeS3e0b76e9db6e49fa9c69a6251' class=''>standard: frequently accessed files
+
+<br/></li><li id='temp:C:VeS2b10e98b455345209fdca8798' class=''>EFS-IA:
+
+<br/></li><li id='temp:C:VeS137ecd0e7b7b4fdd9e3bb07fb' class=''>Archive: rarely accessed data, 50% cheaper
+
+<br/></li></ul><li id='temp:C:VeS57eab1383d7c47db8aa995699' class='parent'><u><b>EC2 instance store</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa72129c628de43f39c1388ab3' class=''>High performance hardware disk
+
+<br/></li></ul><li id='temp:C:VeSa803244b0a1d4fce90f98125e' class='parent'><u><b>AMI</b></u>
+
+<br/></li><ul><li id='temp:C:VeS30bc2f22928c48558a57f81c9' class=''>customization of EC2 instance, faster boots/configuration time bc pre-packaged
+
+<br/></li><li id='temp:C:VeS12b3402ca3db48559e06fcb48' class=''>Built for specific region
+
+<br/></li><li id='temp:C:VeSbe251c21b9ee425792c74e115' class=''>Process: Launch EC2 instance, <b>stop</b> it, build an AMI, launch instance from AMI
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeScf3a34b8a24347dcaefdb7274'><li id='temp:C:VeS12286fdfbf0a4547af8d51815' class='parent' value='1'><b>High Availability &amp; Scalability</b>
+
+<br/></li><ul><li id='temp:C:VeScb22b087079d468995a4d2ab4' class='parent'><u><b>benefits of LB</b></u>
+
+<br/></li><ul><li id='temp:C:VeS6e3d8432702a4795af00ecf55' class=''><b>expose single point of DNS to app</b>
+
+<br/></li><li id='temp:C:VeSf9f621c1305d4c54bbe1bb3fa' class='parent'>Health check
+
+<br/></li><ul><li id='temp:C:VeS383f175c0c8d41c391dfa4bf2' class=''>done on a port and a route
+
+<br/></li><li id='temp:C:VeS9185505e781d4621b0c03548a' class=''>200 = healthy, !200 = unhealthy
+
+<br/></li></ul><li id='temp:C:VeS74308e2264ba413a999f31c75' class=''>Provide SSL termination (HTTPS) for web
+
+<br/></li><li id='temp:C:VeS3cfdf63633cd4d6990066e7e9' class=''>Separate public traffic from private traffic
+
+<br/></li><li id='temp:C:VeS3c1667f5345b4980a5b713539' class=''>Enforce <b>stickiness</b> with cookies
+
+<br/></li></ul><li id='temp:C:VeSc81ccca1b17c44d397d036a2e' class='parent'><u><b>Types of LB</b></u>
+
+<br/></li><ul><li id='temp:C:VeSd2928bb3707249dd8b757def5' class=''><span data-section-style='11' style='max-width:64%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/M7H8i6To4OCvl0fV-3TirA' id='temp:C:VeSd2928bb3707249dd8b757def5' width='515' height='205'></img></span></li><li id='temp:C:VeS1d033d69575e4f738f57719e0' class=''>Classic load balancer -  HTTP, HTTPS(layer 7), TCP(layer 4), SSL
+
+<br/></li><li id='temp:C:VeSf5404a477872449cb26707116' class='parent'><b>Application load balancer(layer 7)</b> - <b>HTTP, HTTPS, WebSocket</b>
+
+<br/></li><ul><li id='temp:C:VeSbdf54b91f89a45e8b7e0ef7ea' class=''>By default, ALB waits <b>300 seconds</b> before the completion of the deregistration process
+
+<br/></li><li id='temp:C:VeS9f6b1b0115984e96ac73658ed' class=''>can provide URL to endpoint
+
+<br/></li><li id='temp:C:VeS174866b439a0435184829563f' class=''>great fit for micro services &amp; container-based app
+
+<br/></li><li id='temp:C:VeSbe31a006949744e7bcdade9db' class=''>Has port mapping to redirect to a dynamic port in ECS
+
+<br/></li><li id='temp:C:VeS7b5e210ea4bd4754b86013280' class=''><b>support redirects(http → https)</b>
+
+<br/></li><li id='temp:C:VeS12326f7d1587404982a6f6e77' class=''>to multi-HTTP app across machines (target groups)
+
+<br/></li><li id='temp:C:VeS729ec3f865c045c8a4766f230' class='parent'>Target groups
+
+<br/></li><ul><li id='temp:C:VeSb12b6f44e67748b483b901b57' class=''>EC2, ECS
+
+<br/></li><li id='temp:C:VeS19974e9834514d1cb0e02b999' class=''>Lambda functions - HTTP request is translated into a JSON event
+
+<br/></li><li id='temp:C:VeS9433db3e611d43a4910205520' class=''>Must be private IP address
+
+<br/></li></ul><li id='temp:C:VeSb0f80b229b764e98a7048817a' class=''>to multi app on the same machine (containers)
+
+<br/></li></ul><li id='temp:C:VeS506cd4f08cfc4cf0a4309358e' class='parent'><b>Network load balancer</b> - TCP(layer 4), <b>TLS, UDP, TCP</b>
+
+<br/></li><ul><li id='temp:C:VeS4d8db3a9ce874805962219663' class=''>can’t provide URL to endpoint, <b>instance/IP only</b>
+
+<br/></li><li id='temp:C:VeSf6813b8761254a18a3056a5ea' class=''>Forward TCP &amp; UDP traffic to instances
+
+<br/></li><li id='temp:C:VeSb7fad9fcb85b4f17b7e5c4167' class=''><b>One static IP</b>/AZ, support elastic IP
+
+<br/></li><li id='temp:C:VeS56059aa535bd477e93ac70e6b' class=''>! free tier
+
+<br/></li><li id='temp:C:VeS48ca7caa71d546f19f062e37c' class=''>For <b>extreme performance</b>
+
+<br/></li><li id='temp:C:VeS044038d030464fdbb205341eb' class='parent'>Target group
+
+<br/></li><ul><li id='temp:C:VeSadf2b256ee2a4029b9374d9af' class=''>EC2, ALB
+
+<br/></li><li id='temp:C:VeSb9182bf86b91428bb06e8f60e' class=''>must be private IP
+
+<br/></li><li id='temp:C:VeS21fc1c846e2543e7bffa014e1' class=''>Health check support TCP, HTTP, HTTPS
+
+<br/></li><li id='temp:C:VeSfe8f0211e85747cd92074ce12' class=''><span data-section-style='11' style='max-width:83%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/PE0XKTi6CAdBfcE0dUjEUQ' id='temp:C:VeSfe8f0211e85747cd92074ce12' width='667' height='200'></img></span></li></ul></ul><li id='temp:C:VeS10c63c5fdf514704999eabb4c' class='parent'><b>Gateway load balancer</b> - Operates - layer 3(network layer) - IP protocol
+
+<br/></li><ul><li id='temp:C:VeSa23a5cf47e94495b91c836912' class=''>Deploy, scale, and manage a fleet <b>3rd party</b> network virtual app in AWS
+
+<br/></li><li id='temp:C:VeSb2e953134a7a48d288b4a1f0a' class=''>transparent network gateway - single entry/exit for all traffic
+
+<br/></li><li id='temp:C:VeS8344f15a543c4b0c84eeb7b22' class=''>LB - distributes traffic to virtual apps
+
+<br/></li><li id='temp:C:VeS4fa2bf419b274851b3b402577' class=''><span style="color:#444949" textcolor="#444949">Uses the </span><a href="https://en.wikipedia.org/wiki/Generic_Network_Virtualization_Encapsulation">GENEVE</a><span style="color:#444949" textcolor="#444949"> protocol on port 6081</span>
+
+<br/></li><li id='temp:C:VeS46dfef6ec3884690a405419ca' class='parent'>Target groups
+
+<br/></li><ul><li id='temp:C:VeSe563e7d08922438b9169ddf88' class=''>EC2
+
+<br/></li><li id='temp:C:VeSa6c0127a4e974a3ea798241ed' class=''>must be private IP
+
+<br/></li></ul></ul></ul><li id='temp:C:VeSf2a33519e5ea41409697deded' class='parent'><u><b>Sticky sessions</b></u>
+
+<br/></li><ul><li id='temp:C:VeSb21e32609eb34bd5ae84a21eb' class=''>implement stickiness so same client always redirect to same instance behind a LB
+
+<br/></li><li id='temp:C:VeS2c32860544f94bcaaaa75249b' class=''>Can control expiration date for CLB &amp; ALB
+
+<br/></li><li id='temp:C:VeSb9a1913950c44223b7bd1825d' class=''><u><b>apply to CLB, ALB, NLB</b></u>
+
+<br/></li><li id='temp:C:VeS3152bd7c96d94f23b85ad9dcf' class='parent'>Cookies name
+
+<br/></li><ul><li id='temp:C:VeS2db3667141d744d4992f57bac' class='parent'>Application-based cookies
+
+<br/></li><ul><li id='temp:C:VeSc5373d55c36a4d23b7e6f3f9d' class=''>do not use <b>AWSALB</b>, <b>AWSALBAPP</b>, <b>AWSALBTG</b>
+
+<br/></li></ul><li id='temp:C:VeS7797c23bd04f429084d590ba8' class='parent'>Duration-based cookies
+
+<br/></li><ul><li id='temp:C:VeS0171f99d055d433fa578f556e' class=''>AWSALB for ALB
+
+<br/></li><li id='temp:C:VeS84003730a8a748b39acb5664c' class=''>AWSELB for CLB
+
+<br/></li></ul></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS539f9848dcdd4ad69f170e3fe'><li id='temp:C:VeS0586c1fe0dba49db9b2313d05' class='parent' value='1'><b>RDS, Aurora &amp; ElasticCache</b>
+
+<br/></li><ul><li id='temp:C:VeSfe2590697d2b4365a9bb83859' class='parent'><u><b>RDS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS4f43370f99fb46c481908a978' class=''>auto provisioning, OS patching
+
+<br/></li><li id='temp:C:VeSd708d25944f546ff8220f3767' class=''><b>time restore</b>
+
+<br/></li><li id='temp:C:VeSb60212396d4644d9abb79d7e6' class=''>can’t ssh in bc RDS is a managed service
+
+<br/></li><li id='temp:C:VeS270582f12a704abaa0dd701c0' class=''>Storage auto scaling by setting Max storage threshold for unpredictable workloads
+
+<br/></li><li id='temp:C:VeSeaaa3cfb990e43f08bb6d65e7' class=''><b>up to 15 read replicas</b>
+
+<br/></li><li id='temp:C:VeSe72e07113e504794871b7e343' class=''>need to update connection string to leverage read replicas
+
+<br/></li><li id='temp:C:VeS9722c8657988416a9f5f7c3ae' class='parent'><b>read replicas </b>
+
+<br/></li><ul><li id='temp:C:VeS3498fe2f86a14688be67dd1d1' class=''><b>is free in same region</b>
+
+<br/></li><li id='temp:C:VeSe11950d584ed4ad7867eaef0f' class=''><b>ASYNC replication</b>
+
+<br/></li></ul></ul><li id='temp:C:VeS3b9f3762c5ed4b68b5e6d2226' class='parent'><u><b>RDS multi AZ - DR</b></u>
+
+<br/></li><ul><li id='temp:C:VeSaee13afb0f7844c5ab19e5433' class=''><b>SYNC</b> <b>replication</b>
+
+<br/></li><li id='temp:C:VeSa5ed11990bd54113b933c388f' class=''><b>One DNS name - auto app failover to standby</b>
+
+<br/></li><li id='temp:C:VeS0a5803d63cfe40a4bb0bb15d8' class=''>not used for scaling
+
+<br/></li><li id='temp:C:VeS40017be0f78a4b95a5d56d414' class=''><b>Zero downtime operation</b>
+
+<br/></li></ul><li id='temp:C:VeSa5700dee634f4cfdba35052b5' class='parent'><u><b>RDS custom</b></u>
+
+<br/></li><ul><li id='temp:C:VeS357f4bbdb1cb43928f564ceea' class=''>Managed <b>Oracle</b> and <b>Microsoft SQL</b> DB with OS and database customization
+
+<br/></li><li id='temp:C:VeSb11c56bee32b42d1bc672c4d8' class=''>full admin access to the underlying OS and the DB
+
+<br/></li></ul><li id='temp:C:VeSf2cd8455acf84e78aeee1832b' class='parent'><u><b>RDS Proxy</b></u>
+
+<br/></li><ul><li id='temp:C:VeS8eca0b055300451ab35d484d6' class=''><span data-section-style='11' style='max-width:24%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/Witvti6pWYM7M4s8gJisDA' id='temp:C:VeS8eca0b055300451ab35d484d6' width='199' height='248'></img></span></li><li id='temp:C:VeS037f3a6d070d44668a19f25a6' class=''>Improving DB efficiency by reducing the stress on DB resources and min open connections
+
+<br/></li><li id='temp:C:VeSa8d79124c3934d06a2d118c44' class=''>Reduced RDS &amp; Aurora <b>failover</b> time by up 66%
+
+<br/></li><li id='temp:C:VeS6f372300972a40278a6ea3675' class=''><b>Enforce IAM authentication</b> for DB, and securely <b>store credentials in Secrets Manager</b>
+
+<br/></li><li id='temp:C:VeSbbfa8a4b5f4b4da9ad41cf4cd' class=''><b>Must access from VPC</b> (never publicly accessible)
+
+<br/></li></ul><li id='temp:C:VeS8db5ec8ab3e74faab03a7fd58' class='parent'><u><b>Amazon Aurora</b></u>
+
+<br/></li><ul><li id='temp:C:VeS7fb670c4a68a4ee098628d182' class=''><b>Aurora Replicas have their own endpoints</b>
+
+<br/></li><li id='temp:C:VeS63c9f3bb6d9d47888f72d72c2' class=''>Aurora Serverless <b>automatically starts up, shuts down</b>, and <b>scales capacity</b> based on an application's needs
+
+<br/></li><li id='temp:C:VeS21899ad50588495ea5c0870e2' class=''>pay for only the database resources that you consume on a per-second basis.
+
+<br/></li><li id='temp:C:VeSa341899c3c584acd896a519b0' class=''>5x performance improvement over RDS MySQL, 3x RDS Postgres
+
+<br/></li><li id='temp:C:VeS9232e964894b49a3a730af584' class=''>up to <b>15 read replicas</b> <span style="color:#2d2f31" textcolor="#2d2f31"> <sub>If the writer instance in a cluster becomes unavailable, Aurora automatically promotes one of the reader instances to take its place as the <b>new writer.</b></sub></span>
+
+<br/></li><li id='temp:C:VeSf7942211bbe9419db1e585a48' class=''><b>failover is <span style="color:#444949" textcolor="#444949">instantaneous, less than 30 sec for master</span></b>
+
+<br/></li><li id='temp:C:VeS82d2af36bcab467eadc72c2e0' class=''>Support cross region replication
+
+<br/></li><li id='temp:C:VeS42821412b544495aa3e8073e6' class='parent'>Reader endpoint connect all the read replicas
+
+<br/></li><ul><li id='temp:C:VeSe74c658ffcd046fea2e1b2a08' class=''><span data-section-style='11' style='max-width:54%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/cQShtjz18r_6V4bZZonNFA' id='temp:C:VeSe74c658ffcd046fea2e1b2a08' width='435' height='213'></img></span></li><li id='temp:C:VeS65dcfa61ef1240fbb98abeb5f' class=''><span data-section-style='11' style='max-width:54%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/zwN_5wD0bLTGEFR4KNkBLQ' id='temp:C:VeS65dcfa61ef1240fbb98abeb5f' width='433' height='226'></img></span></li></ul><li id='temp:C:VeS1e70c6f8e5e74346b9916aa62' class='parent'>Custom Endpoints
+
+<br/></li><ul><li id='temp:C:VeSeab611f09b3f4eb283b097102' class=''><b>Run analytical queries on specific replicas</b>
+
+<br/></li><li id='temp:C:VeSa45d1806fdc34207bc2024c68' class=''>The reader endpoint is not used after defining Custom Endpoints
+
+<br/></li></ul><li id='temp:C:VeSf2cdefe42afb4541836528ece' class='parent'>Global Aurora
+
+<br/></li><ul><li id='temp:C:VeSc21ef5bbbbc94e5cbe4563c26' class=''><b>Cross region read replicas - </b>DR
+
+<br/></li><li id='temp:C:VeSd265f87fe68a4fe68720cd484' class='parent'>Aurora global database
+
+<br/></li><ul><li id='temp:C:VeS4d24d3787e6c4906b4900de20' class=''><b>1 second RPO, RTO of less than 1 minute.</b>
+
+<br/></li><li id='temp:C:VeS52c2b4ed7dc142b8aeebe7458' class=''>one primary region (R/W)
+
+<br/></li><li id='temp:C:VeSdb491270360141d2a6f4025b9' class=''>up to <b>5 secondary regions</b>
+
+<br/></li><li id='temp:C:VeS1aca5af774fe4d169b0d5e3bd' class=''>up to <b>16 read replicas/region</b>
+
+<br/></li><li id='temp:C:VeS11b2d6024079496ca019cbc33' class=''>cross-region replication less than 1 sec
+
+<br/></li></ul></ul><li id='temp:C:VeSf947740e04f14276af1f994b5' class='parent'><b>Aurora Cloning</b>
+
+<br/></li><ul><li id='temp:C:VeS32deb7fab1434fe4a0526ec25' class=''>Faster than snapshot &amp; restore
+
+<br/></li><li id='temp:C:VeS9f7bddf315b04383a61b241d1' class=''>Uses <b>copy-on-write protocol</b>
+
+<br/></li><li id='temp:C:VeS90f6cb5ad98d463b8276215c4' class=''>Useful to create a ‘<b>staging</b>’ DB from a “production” DB <b>without impacting</b> the production DB
+
+<br/></li></ul><li id='temp:C:VeSd20416f221fc44c8afe96e79c' class='parent'>Aurora ML
+
+<br/></li><ul><li id='temp:C:VeSd8dfd96ae32448aab8d419f9c' class=''>support Amazon SageMaker, Comprehend
+
+<br/></li></ul><li id='temp:C:VeSf85232b6892e42e191d06d727' class='parent'><b>backup comparison</b>
+
+<br/></li><ul><li id='temp:C:VeS0d7b403a89534038b74787d85' class='parent'>RDS backup
+
+<br/></li><ul><li id='temp:C:VeSa81317c49eac4512a30604223' class=''><b>daily full backup</b> of the DB
+
+<br/></li><li id='temp:C:VeS5785ef792b334ba9b99362e99' class=''>Transaction logs are backed-up <b>every 5 mins</b>
+
+<br/></li></ul><li id='temp:C:VeSe29f535b44fd4ceca4801800e' class='parent'>Aurora backup
+
+<br/></li><ul><li id='temp:C:VeSe05591999bc4498fbe046b972' class=''>Automated backup<b> 1 to 35</b> days(cannot be disabled)
+
+<br/></li><li id='temp:C:VeS462d02aad5a243c4aee924ab8' class=''><b>point-in-time recovery</b>
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS077372e7f562442d90a60f15d' class='parent'><u><b>RDS &amp; Aurora Restore options</b></u>
+
+<br/></li><ul><li id='temp:C:VeS86ebe7ec12d24f9ab800ac8a8' class='parent'>restoring MySQL RDS from S3
+
+<br/></li><ul><li id='temp:C:VeSd093afbef82043328faccf1a6' class=''>create backup on-premises DB
+
+<br/></li><li id='temp:C:VeSd62ed06e76384711b68691c19' class=''>store backup file on S3 
+
+<br/></li><li id='temp:C:VeS4406b26a987f46eb9d9c622fd' class=''>Restore the backup file onto a new RDS instance running MySQL
+
+<br/></li></ul><li id='temp:C:VeS777390e6633f418a9a10779c5' class='parent'>Restoring MySQL Aurora cluster from S3
+
+<br/></li><ul><li id='temp:C:VeS9e7dcdf1845e47bb9a05b6d08' class=''>create backup on-premises DB using <b>Percona Xtrabackup</b>
+
+<br/></li><li id='temp:C:VeS1dc1e575434f4de1a3ca64101' class=''>store backup file on S3 
+
+<br/></li><li id='temp:C:VeS56a9fe1804b045d1a44c12eb0' class=''>Restore the backup file onto a new Aurora cluster running MySQL
+
+<br/></li></ul></ul><li id='temp:C:VeSff389a8cdab04a92ad8c0c010' class='parent'><u><b>RDS &amp; Aurora Security</b></u>
+
+<br/></li><ul><li id='temp:C:VeS23c68e3684a34be0b66f66584' class=''>At-rest encryption using <b>KMS</b>
+
+<br/></li><li id='temp:C:VeS3c7fda9d4fd346879472d49e2' class=''>in-flight encryption: <b>TLS</b>-ready by default
+
+<br/></li><li id='temp:C:VeS4f4da5c962d44bab8a34468d0' class=''>IAM authentication
+
+<br/></li><li id='temp:C:VeS06913804718b47ed9bb83f0e8' class=''>SG
+
+<br/></li><li id='temp:C:VeSc6409b5dbb95428e91df550bb' class=''>No SSH
+
+<br/></li><li id='temp:C:VeS8f8ae188121b474ba87f852ca' class=''>Audit logs can be enabled
+
+<br/></li></ul><li id='temp:C:VeS6271d3a8649c43a0a5596367b' class='parent'><u><b>Amazon ElastiCache</b></u>
+
+<br/></li><ul><li id='temp:C:VeSb46d27b867d44d18b58781cc8' class=''>Involve heavy code changes
+
+<br/></li><li id='temp:C:VeS06796e300f3e4a3ab22f87341' class=''>in-memory DB with really <b>high performance</b>, low latency
+
+<br/></li><li id='temp:C:VeS31f3d9c8a85544aeb851efb3f' class=''><span data-section-style='11' style='max-width:46%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/c9InxoAjYYsIQM-hF2pB2Q' id='temp:C:VeS31f3d9c8a85544aeb851efb3f' width='371' height='252'></img></span></li><li id='temp:C:VeS94e48348d0284b2b840ac7525' class=''><span data-section-style='11' style='max-width:46%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/HVMlAemd5bQ8gynEbEi9LQ' id='temp:C:VeS94e48348d0284b2b840ac7525' width='373' height='297'></img></span></li></ul><li id='temp:C:VeSe744ad1a67144dbe88e7d73b2' class='parent'><u><b>*  ElastiCache - Redis vs Memcached</b></u>
+
+<br/></li><ul><li id='temp:C:VeSe88905434cf7448693cb3298c' class='parent'>ElastiCache - Redis
+
+<br/></li><ul><li id='temp:C:VeS4e396b5ffc3d46738b9ad906f' class=''><span style="color:#2d2f31" textcolor="#2d2f31">ideal front-end for data stores, providing a high-performance middle tier for applications with <b>extremely high request rates &amp; low latency requirements.</b></span>
+
+<br/></li><li id='temp:C:VeSf137169cf51147098405fc522' class=''><b>Multi AZ with auto failover</b>
+
+<br/></li><li id='temp:C:VeS7b822fbd3a7e46dc99cc77afe' class='parent'>Pattern
+
+<br/></li><ul><li id='temp:C:VeSf58563c8b2f14b06afe5dace1' class=''><b>Lazy loading</b>: all read data is cached
+
+<br/></li><li id='temp:C:VeSd6e0d6aaf4fa437492c189874' class=''><b>Write Through</b>: adds or update data in cache when written to a DB
+
+<br/></li><li id='temp:C:VeSf871c460408b4466ac6d3401c' class=''><b>Session store</b> (stateless): store temporary session data in cache using TTL
+
+<br/></li></ul><li id='temp:C:VeS4b0cc93a9b1e4a92a3239a186' class='parent'>security
+
+<br/></li><ul><li id='temp:C:VeSd9cfeb3787d0450ba13746209' class=''>support<b> IAM authentication</b> for AWS API-level security
+
+<br/></li><li id='temp:C:VeSbaa64060ef894225a007fd9f7' class=''>support <b>SSL</b> in flight encryption
+
+<br/></li><li id='temp:C:VeSbae6cd02687a48c0afbb8085a' class=''>set password/token
+
+<br/></li><li id='temp:C:VeSdbaef21cdc9e48ad89c22dbc3' class=''>read replicas to scale read and HA
+
+<br/></li></ul><li id='temp:C:VeS8a27c95d28f24fbaa1a373c12' class=''>backup and restore feature
+
+<br/></li><li id='temp:C:VeS3ddbcbff3d474989ad7d0d2ad' class=''><b>support Sets and Sorted Set </b>(real time rank)
+
+<br/></li></ul><li id='temp:C:VeSf64f639f87934174b07afdf89' class='parent'>Memcached
+
+<br/></li><ul><li id='temp:C:VeS58f8a473ebcc4f468faa9a5cd' class='parent'>security
+
+<br/></li><ul><li id='temp:C:VeS42f88332565146f98fc272e90' class=''>support <b>SASL</b>-based authentication
+
+<br/></li></ul><li id='temp:C:VeSd6c47782935b4e7882ced99c5' class=''>No HA
+
+<br/></li><li id='temp:C:VeS7ccb3490c63242ea94ca4da21' class=''>No persistent
+
+<br/></li><li id='temp:C:VeS0a0aba00704a4235a13781522' class=''>No backup and resotre
+
+<br/></li><li id='temp:C:VeS695ed095b2e74b4a9145c48ee' class=''>Multi-threaded architeture
+
+<br/></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS85186e265cbf48fcbec8ff314'><li id='temp:C:VeSdc4e7d178cb843318b6415a90' class='parent' value='1'><b>Amazon route 53 - DNS</b>
+
+<br/></li><ul><li id='temp:C:VeS128abb838564428b844c26b43' class=''>Domain Registrar != DNS service
+
+<br/></li><li id='temp:C:VeS38e8b4331b1f4ab6936b3043b' class='parent'><u><b>DNS terminology</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa417d1f032064ebe88b1ede8c' class=''>DNS records: A, AAAA, CNAME, NS...
+
+<br/></li><li id='temp:C:VeSb3bb476a0a1547719e78c4e2b' class=''>TLD - Top level domain: com, us, in, gov, org
+
+<br/></li><li id='temp:C:VeSf88f195073f74bb38793d7d05' class=''>SLD - Second level domain: amazon.com, <a href="http://google.com">google.com</a>
+
+<br/></li><li id='temp:C:VeSca8ca474867d4876b180fa5fe' class=''><span data-section-style='11' style='max-width:53%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/eyn_vF2R_JWyoJbKxQ2ERg' id='temp:C:VeSca8ca474867d4876b180fa5fe' width='431' height='159'></img></span></li></ul><li id='temp:C:VeSb510976e466742689aede1fa7' class='parent'><b><u>Records</u></b>
+
+<br/></li><ul><li id='temp:C:VeSf3e4482b3904410daee2111c8' class=''>Domain/subdomain name
+
+<br/></li><li id='temp:C:VeSf4cdeeb72654466f925b247f3' class='parent'>Record type: A / AAAA / CNAME / NS(name servers for the hosted zone)
+
+<br/></li><ul><li id='temp:C:VeSf3b06415f2f049b08cd00933c' class=''>CNAME: only for not root romain (aka.sth.<a href="http://mydomain.com">mydomain.com</a>)
+
+<br/></li><li id='temp:C:VeSb661cf2d95d8489db8b9a7025' class=''>Alias: Works for both root/non-root domain
+
+<br/></li><li id='temp:C:VeS983e079ad40c42edb491e82fb' class=''>native health check
+
+<br/></li></ul><li id='temp:C:VeS5ded235e6e944aab8c4f8383c' class=''>Value: 1.2.34.567
+
+<br/></li><li id='temp:C:VeScccd9045f8de4c9faeffa2c9b' class='parent'>Routing policy
+
+<br/></li><ul><li id='temp:C:VeS0ec9ade6a8794a8c86ed4d96d' class=''>Simple: <b>no health check</b>, select random one if return multi values
+
+<br/></li><li id='temp:C:VeS54253c00345b44ac96233127b' class=''>Weighted: A weight of 0 means stop, all weight of 0 means equal
+
+<br/></li><li id='temp:C:VeSd3f128c6be1345cf90f812f88' class=''>Latency: traffic between users and AWS regions
+
+<br/></li><li id='temp:C:VeS51dc9e2f0e474969925146aec' class=''>Failover: <b>Health Check mandatory</b>
+
+<br/></li><li id='temp:C:VeS60a9aaa83d5b49b3863856914' class=''>Geolocation: based on user location, should create <b>default</b> record
+
+<br/></li><li id='temp:C:VeS2178d65427854e3e9612ea815' class=''>Geoproximity: ability to shift more traffic to resources based on bias, must use Traffic Flow
+
+<br/></li><li id='temp:C:VeSe94668cf984242eeb950ffd7e' class=''>IP based:
+
+<br/></li><li id='temp:C:VeS00626f69225b42f5908b76c8b' class=''>Multi-value: not a substitute for having a ELB
+
+<br/></li></ul><li id='temp:C:VeS533538e9976546f3a4574a52f' class=''>TTL (except for Alia records, TTL is mandatory for each DNS record)
+
+<br/></li></ul><li id='temp:C:VeS44018c285fb24244a18824d07' class='parent'><u>Calculated health checks</u>
+
+<br/></li><ul><li id='temp:C:VeS776c96e86dae4bcaaa7e14bce' class=''>OR, AND, NOT
+
+<br/></li><li id='temp:C:VeS9b3ee9311c4d4058900512e89' class=''>health check are outside the VPC, can’t access private endpoints, we can create CloudWatch and create Health Check checks the alarm itself
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS7d23361421f04aa282d08be27'><li id='temp:C:VeSede2f330c0cc4e79a86071009' class='parent' value='1'><b>Amazon S3</b>
+
+<br/></li><ul><li id='temp:C:VeS5860e5f02e664e9dba6bff1ac' class='parent'><u><b>Globally unique name across all region all accounts</b></u>
+
+<br/></li><ul><li id='temp:C:VeSff9de731a2f144049e01ef63a' class=''>not start with prefix “xn—”
+
+<br/></li><li id='temp:C:VeS8eb80530c39c4d82aafbdb4a3' class=''>not end with suffix “-s3alias”
+
+<br/></li></ul><li id='temp:C:VeS713874311935453ca24b27104' class='parent'><b><u><span style="color:#444949" textcolor="#444949">The key is composed of </span><span style="color:#f69802" textcolor="#f69802">prefix </span><span style="color:#444949" textcolor="#444949">+ </span><span style="color:#70ad47" textcolor="#70ad47">object name</span></u></b>
+
+<br/></li><ul><li id='temp:C:VeS543eac1d28e54134b8da0a1cc' class=''><span style="color:#444949" textcolor="#444949">s3://my-bucket/</span><span style="color:#f69802" textcolor="#f69802">my_folder1/another_folder/</span><span style="color:#70ad47" textcolor="#70ad47">my_file.txt</span>
+
+<br/></li></ul><li id='temp:C:VeS5790cadcfc58486e99e533d87' class=''><u><b>Max object size = 5 TB, use multi-part upload if more than 5 GB</b></u>
+
+<br/></li><li id='temp:C:VeSd19e3a33c76343549a8e2aeeb' class='parent'><u><b>Security</b></u>
+
+<br/></li><ul><li id='temp:C:VeS96f516f1b04b40b19a03f96be' class='parent'>users-based
+
+<br/></li><ul><li id='temp:C:VeS9061664ab3d141a89661efa90' class=''>IAM policy
+
+<br/></li></ul><li id='temp:C:VeSde00979882b6449899bf8f5a1' class='parent'>Resource-based
+
+<br/></li><ul><li id='temp:C:VeS4cda00b4764641eebd2bd0959' class=''>Bucket Policy
+
+<br/></li><li id='temp:C:VeSebd150f7d9da4d0f9f41f6ec0' class=''>Object ACL 0 finer grain
+
+<br/></li><li id='temp:C:VeS82b6096ef16f45bf93106c279' class=''>Bucket ACL - less common
+
+<br/></li></ul><li id='temp:C:VeSc350062bd7c448f3b06f7b003' class='parent'>Storage class - S3 <sub>need at least 30 then</sub>→ other S3 class
+
+<br/></li><ul><li id='temp:C:VeS8f7130aeb13d4664b0f96f1c4' class=''><b>S3 standard</b>: 11-9’s%, frequently accessed data, store data in a min of three AZ
+
+<br/></li><li id='temp:C:VeS0027709e18134536bce629d19' class=''><b>S3 standard-IA</b>: 
+
+<br/></li><li id='temp:C:VeSc912345f0a65425c940468cd9' class=''><b>S3 Intelligent tiering</b>: Ideal for data with unknown or changing access patterns
+
+<br/></li><li id='temp:C:VeS38d4f20e97d34be197753dee2' class=''><b>S3 One Zone-IA</b>: in single availability zone
+
+<br/></li><li id='temp:C:VeS7297d16d31f948f2bab5af5b6' class=''><b>S3 Glacier instant retrieval</b>: data requires immediate access, retrieve objects within a few milliseconds
+
+<br/></li><li id='temp:C:VeSfb19079b55d04629bd0ad48d2' class=''><b>S3 Glacier Flexible Retrieval</b>: low-cost, within few mins to hours
+
+<br/></li><li id='temp:C:VeSa499234883714dea9b663c4d9' class=''><b>S3 Glacier deep archive</b>: lowest-cost, retrieve within 12 hours
+
+<br/></li></ul><li id='temp:C:VeSc9bed8eb880544f992315fb76' class=''>S3 outposts: Creates S3 buckets on Amazon S3 Outposts, Makes it easier to retrieve, store, and access data on AWS Outposts
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSebb7bdf45c254f999d60871b8'><li id='temp:C:VeS6597b5aaa6714ca28fc3f490f' class='parent' value='1'><b>Amazon S3 - advanced</b>
+
+<br/></li><ul><li id='temp:C:VeS02726f8a6dbd4ca58e55a81d2' class=''>Bucket policy - <b>for account &amp; user level control</b>
+
+<br/></li><li id='temp:C:VeS7d29a423cff24188884368e46' class='parent'><u><b>Lifecycle rules </b></u>
+
+<br/></li><ul><li id='temp:C:VeS98a3bd07a0094aa8a99b8daca' class=''>can be created by certain <b>prefix</b><span style="color:#444949" textcolor="#444949">(example: </span><i><span style="color:#444949" textcolor="#444949">s3://mybucket/mp3/*)</span></i> OR certain <b>object tags</b><span style="color:#444949" textcolor="#444949">(example:</span><i><span style="color:#444949" textcolor="#444949">Department:Finance</span></i><span style="color:#444949" textcolor="#444949">)</span>
+
+<br/></li><li id='temp:C:VeS891f4e507f8e4ddfb1b15eda0' class=''>Transition actions
+
+<br/></li><li id='temp:C:VeS66d63f98df7f4c8ebc8d02a2d' class='parent'>Expiration actions
+
+<br/></li><ul><li id='temp:C:VeS761ee76791ab405e83e751ac3' class=''>can be used to delete old versions of files
+
+<br/></li><li id='temp:C:VeSed800c3ddc8b4d7d910be9136' class=''>can be used to delete incomplete Multi-Part uploads
+
+<br/></li></ul></ul><li id='temp:C:VeSa2cb4f2f7c1542108b2c477d9' class='parent'><u><b>Storage class analysis</b></u>
+
+<br/></li><ul><li id='temp:C:VeSecd745773d704051ad3048757' class=''>recommendations for <b>Standard</b> and <b>Standard IA</b>
+
+<br/></li><li id='temp:C:VeSdbbbae9ebdde4dd89ce5c79b6' class=''>not work for One-Zone IA or Glacier
+
+<br/></li><li id='temp:C:VeS733c813ca7c44619b277c9775' class=''>report is updated daily, which takes <b>24-48</b> hrs to start seeing data analysis
+
+<br/></li></ul><li id='temp:C:VeSe149f0293ce94d3ab4fbef2b6' class='parent'><u><b>Requester pays</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5a2467a365624d298b86afa28' class=''>requester must be <b>authenticated</b> in AWS
+
+<br/></li></ul><li id='temp:C:VeSd32493deed734ca78e2b6fc57' class='parent'><u><b>S3 event notifications</b></u>
+
+<br/></li><ul><li id='temp:C:VeSaa913ba32efe4ca2aa850b842' class=''>→ SNS / SQS / Lambda
+
+<br/></li><li id='temp:C:VeS09048a30396d46348ed6c4c3a' class=''>→ EventBridge - multiple destinations
+
+<br/></li></ul><li id='temp:C:VeS24e1cf5a52a241e399f0ddf32' class='parent'><u><b>Baseline performance</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2a33c0e547dc463d99ce7ce91' class=''>auto scale, latency 100-200ms
+
+<br/></li><li id='temp:C:VeS165314b4807e4907acb8d2c1a' class='parent'>at least -  [below]<b>/sec/prefix</b>  in a bucket
+
+<br/></li><ul><li id='temp:C:VeS814d4af577ec4e9a943d95867' class=''><b>3500</b> PUT/COPY/POST/DELETE 
+
+<br/></li><li id='temp:C:VeS09d41192e446468291aef9fc0' class=''><b>5500</b> GET/HEAD requests
+
+<br/></li><li id='temp:C:VeSffcd639234ae43c0b731f29f3' class=''>i<i>.e: <span style="color:#444949" textcolor="#444949">If you spread reads across all four prefixes evenly, you can achieve 22,000 requests per second for GET and HEAD</span></i>
+
+<br/></li></ul></ul><li id='temp:C:VeS67ce4ca15b084d8ab8d6219b8' class='parent'><u><b>Performance</b></u>
+
+<br/></li><ul><li id='temp:C:VeS890113ccae18478eb549a94c6' class='parent'>Multi-part upload
+
+<br/></li><ul><li id='temp:C:VeSa30c958f79f3419f9e5493526' class=''><b>increase resiliency and avoid upload restarts.</b>
+
+<br/></li><li id='temp:C:VeS1561cb79aa3948a8882d6d32c' class=''><span data-section-style='11' style='max-width:42%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/SDskqJzHW5QHIZwm-EVJqg' id='temp:C:VeS1561cb79aa3948a8882d6d32c' width='343' height='188'></img></span></li><li id='temp:C:VeS88b80cb733694026b2cdb5820' class=''>files &gt; 100MB, must use for files &gt; 5GB
+
+<br/></li><li id='temp:C:VeSad8fa72041dc4f318ef838521' class=''><b>parallelize uploads</b>
+
+<br/></li></ul><li id='temp:C:VeSa70f43aee8ab4ddcb97602e97' class='parent'>S3 transfer acceleration
+
+<br/></li><ul><li id='temp:C:VeS39cc0c8368e143bb92d4f0276' class=''>transfer file to <b>edge location </b>→ s3 bucket in the target region
+
+<br/></li><li id='temp:C:VeSdc923edf3a3b42f9ab15b1e16' class=''><b>compatible with Multi-part upload</b>
+
+<br/></li><li id='temp:C:VeS5bf1155b6f7b46dda9138e495' class=''><span data-section-style='11' style='max-width:45%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/ld33UNoDrVpgmh2xXyku8w' id='temp:C:VeS5bf1155b6f7b46dda9138e495' width='367' height='143'></img></span></li></ul><li id='temp:C:VeS9a8ff0dcdb8d4ec69493dedac' class='parent'>S3 Byte-range fetches - speed up download
+
+<br/></li><ul><li id='temp:C:VeS1e7d9578c79b4803b12acd0f5' class=''>parallelize GETs by requesting specific byte range
+
+<br/></li><li id='temp:C:VeS3b126b3760ce4e0093ab598d6' class=''><span data-section-style='11' style='max-width:62%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/QlZ5Z9ageG4YsQej8t02Zw' id='temp:C:VeS3b126b3760ce4e0093ab598d6' width='497' height='116'></img></span></li></ul><li id='temp:C:VeS4389c30cf3494fe39eabd58e0' class='parent'>S3 select &amp; glacier select
+
+<br/></li><ul><li id='temp:C:VeS9dc4957bb3fe48a8801121d7e' class='parent'>server-side filtering by rows &amp; cols
+
+<br/></li><ul><li id='temp:C:VeS9216297741524cab859f9f1df' class=''>retrieve less data using SQL
+
+<br/></li></ul><li id='temp:C:VeS8bf7713c30e94c1380c41c636' class='parent'>Less network transfer and CPU cost client-side
+
+<br/></li><ul><li id='temp:C:VeSb0b03aa6ffc94e798ca872c30' class=''><span data-section-style='11' style='max-width:59%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/pWRpcAgeko8u7n5a1Zu7sw' id='temp:C:VeSb0b03aa6ffc94e798ca872c30' width='473' height='116'></img></span></li></ul></ul><li id='temp:C:VeS654364e63cd14e5c87e7eb558' class='parent'>S3 batch operations
+
+<br/></li><ul><li id='temp:C:VeS1210461669c14b42aa7119242' class=''><span style="color:#444949" textcolor="#444949">can use S3 Inventory to get object list and use S3 Select to filter your objects</span>
+
+<br/></li></ul><li id='temp:C:VeS53a4cceeb3da4b2bbe3827dcd' class='parent'>Storage lens
+
+<br/></li><ul><li id='temp:C:VeSa1b7531c70534081b71b3c72b' class=''>analyze, optimize storage across entire <b>AWS Org</b>
+
+<br/></li><li id='temp:C:VeS585a3ac89eac48dd8ff667ad9' class=''>discover <b>anomalies</b>, identify cost efficiencies, apply data protection
+
+<br/></li><li id='temp:C:VeS34a8abc9c1444f06b48de9289' class=''>aggregate data for Org, accounts, regions, buckets, prefixes
+
+<br/></li><li id='temp:C:VeSad9224f3692d481eaa2894a55' class=''>dashboard/customize dashboard
+
+<br/></li><li id='temp:C:VeS3e617827caf74531ae23b0ef6' class='parent'>can be configured to export metrics daily to S3 bucket
+
+<br/></li><ul><li id='temp:C:VeS514f62feb29b453fbaed71cb5' class='parent'>Metrics 
+
+<br/></li><ul><li id='temp:C:VeS0a37fc7be93e4f7fb4f79abba' class=''>summary metrics
+
+<br/></li><li id='temp:C:VeS7e02c37c71b348aab14280c02' class=''>cost-optimization metrics
+
+<br/></li><li id='temp:C:VeS46e161ad74d2445987794b8c2' class=''>data-protection metrics
+
+<br/></li><li id='temp:C:VeS686a48ab07ef4ecb84347e78c' class=''>access-management metrics
+
+<br/></li><li id='temp:C:VeS7f10b509e4784553af557af31' class=''>event metrics
+
+<br/></li><li id='temp:C:VeSd8eed9954c624d158fdacd85d' class=''>performance metrics
+
+<br/></li><li id='temp:C:VeSc82dcad736ab4e93a8ebdfcbd' class=''>activity metrics
+
+<br/></li><li id='temp:C:VeS142eba6163804acb806d12bcf' class=''>detailed status code metrics
+
+<br/></li></ul></ul><li id='temp:C:VeS982e247c7f0f4a9da6719fa0a' class='parent'>Free
+
+<br/></li><ul><li id='temp:C:VeSa54673a6d2b34c3e82b9cff90' class=''>28 usage metrics
+
+<br/></li><li id='temp:C:VeSa6e51dd03a1a46b3ade0aba60' class=''>data is available for queries for <b>14 days</b>
+
+<br/></li></ul><li id='temp:C:VeSf256263698204b2c8840d0052' class='parent'>Paid
+
+<br/></li><ul><li id='temp:C:VeS5d95f56087da4d6abb0b951db' class=''>advance metrics
+
+<br/></li><li id='temp:C:VeS196bf6ce67994c3cbc6521623' class=''>cloudwatch publishing
+
+<br/></li><li id='temp:C:VeSab5fabbe303f4d4daa3e55820' class=''>prefix aggregation
+
+<br/></li><li id='temp:C:VeS10e3dbb7c4f84d829cf7b875c' class=''>data is available for queries for<b> 15 months</b>
+
+<br/></li></ul></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSf5432552e18349609f38548cf'><li id='temp:C:VeS5fdf7a102ec94933b6e168ebc' class='parent' value='1'><b>Amazon S3 - security</b>
+
+<br/></li><ul><li id='temp:C:VeS23814ce5358240b99a6c71120' class='parent'>Object encryption
+
+<br/></li><ul><li id='temp:C:VeSac490d69cd6740cebc7d1e7f4' class='parent'>SSE - Server-side encryption
+
+<br/></li><ul><li id='temp:C:VeS85c2257c64aa46dfa7f9cb308' class=''><span data-section-style='11' style='max-width:64%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/20CuQ7hDuaHAtUyrFPV0PQ' id='temp:C:VeS85c2257c64aa46dfa7f9cb308' width='514' height='165'></img></span></li><li id='temp:C:VeS055bc032c08740389a0c83334' class='parent'>SSE-S3 - enabled by default for new buckets &amp; objects
+
+<br/></li><ul><li id='temp:C:VeS47625aa2bc454916957ee8368' class=''>Encryption type is AES-256
+
+<br/></li><li id='temp:C:VeS467b430573654d85959a7832a' class=''>header → <span style="color:#444949" textcolor="#444949">"x-amz-server-side-encryption": "AES256"</span>
+
+<br/></li></ul><li id='temp:C:VeS4de54756261b403f895e5fc36' class='parent'>SSE-KMS, KMS to manage encryption keys
+
+<br/></li><ul><li id='temp:C:VeS5038cf03352047a79b2743901' class=''><span data-section-style='11' style='max-width:62%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/V4lCON3x8Y5MPc2c3iuNew' id='temp:C:VeS5038cf03352047a79b2743901' width='499' height='154'></img></span></li><li id='temp:C:VeS60419a8b2bd94f7e88c151a26' class=''>header → <span style="color:#444949" textcolor="#444949">"x-amz-server-side-encryption": "aws:kms"</span>
+
+<br/></li><li id='temp:C:VeS4643dfd01cdc4b3a935553754' class='parent'>limitation
+
+<br/></li><ul><li id='temp:C:VeS529d5c938715428997b5ba52d' class=''>upload → generateDateKey KMS API
+
+<br/></li><li id='temp:C:VeS17b014faa0fb4efeb8f86882b' class=''>download → decrypt KMS API
+
+<br/></li></ul></ul><li id='temp:C:VeS2b07e0eb799f48a480bee89fd' class='parent'>SSE-C, customer provided keys
+
+<br/></li><ul><li id='temp:C:VeS2253c94869614e6c856e02cb8' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/rqVvVKc2YyLk8EX8fzxSIA' id='temp:C:VeS2253c94869614e6c856e02cb8' width='800' height='247'></img></span></li><li id='temp:C:VeS60c1b6af6b3e47aa8390d7d5d' class=''>customer send key to S3 and then encrypt data in server side
+
+<br/></li><li id='temp:C:VeSab237df7948744fcb2f083da4' class=''><b>must use HTTPS </b>
+
+<br/></li></ul></ul><li id='temp:C:VeS2a784d5cb2be417bb6486b046' class=''>Client side encryption
+
+<br/></li></ul><li id='temp:C:VeS8b2844bb2bc2473fbc044c15e' class='parent'>Encryption in transit (SSL/TLS)
+
+<br/></li><ul><li id='temp:C:VeS777006a8291443da80d235f1e' class=''>HTTPS is recommended, but mandatory for SSE-C
+
+<br/></li></ul><li id='temp:C:VeS26af5a789dfe42eda01825c6d' class='parent'>Default encryption vs. Bucket policy
+
+<br/></li><ul><li id='temp:C:VeS65f4725980da4473825eb23b9' class=''>bucket policy evaluate first then default encryption
+
+<br/></li></ul><li id='temp:C:VeS1f82c28d255e4bd7961e4a0a1' class='parent'><b>CORS</b> - cross-origin resource sharing
+
+<br/></li><ul><li id='temp:C:VeSd3a19dcae9a94cd196a86af04' class=''>origin = protocol + host + port
+
+<br/></li></ul><li id='temp:C:VeSaafaa2590f974e5581196fa28' class='parent'><b>MFA delete</b>
+
+<br/></li><ul><li id='temp:C:VeS183ab781d31e4dcdb46ae93b1' class='parent'>reuqire MFA when
+
+<br/></li><ul><li id='temp:C:VeSae2c2ae73f3a4acfb37064f50' class=''>permanently delete an object version
+
+<br/></li><li id='temp:C:VeS462bcb30fd514787813519c03' class=''>suspend versioning on the bucket
+
+<br/></li></ul><li id='temp:C:VeS1b5da4071aae4f1a9085d6372' class=''>must enable versioning
+
+<br/></li><li id='temp:C:VeSa84ef4375a4740c88d0c74dcf' class=''>Only bucket owner(root) can enable/disable MFA delete
+
+<br/></li></ul><li id='temp:C:VeSba382f333faa4903b73b08fbe' class='parent'>S3 Access Logs
+
+<br/></li><ul><li id='temp:C:VeSbf6ccf88a98f48f1a1bb144cd' class=''>must be in the same region, target bucket and resource bucket
+
+<br/></li><li id='temp:C:VeSf67fb78aa249486d8a9045d38' class=''>Do not set logging bucket to be the monitored bucket, which will create logging loop
+
+<br/></li></ul><li id='temp:C:VeS57d77133f14b458b91f4f7e80' class='parent'><b>Pre-Signed URLs</b>
+
+<br/></li><ul><li id='temp:C:VeS22b347482d0d49aeb4e7c2de3' class='parent'>URL expiration
+
+<br/></li><ul><li id='temp:C:VeSac3b00b2de79464fbe131fb96' class=''>console: 1 min to 12 hr
+
+<br/></li><li id='temp:C:VeSa4365f9650f9400cb42ac69bd' class=''>CLI: 1 sec to 168 hrs
+
+<br/></li></ul><li id='temp:C:VeS408f25025c7d44a1911baed8a' class=''>Users given a pre-signed URL inherit the permission of the user that generated the URL for GET/PUT
+
+<br/></li></ul><li id='temp:C:VeS8876d24b592949108d38b01a7' class='parent'>Lock
+
+<br/></li><ul><li id='temp:C:VeS5a0eaa6a8ce74169a3379a0a1' class='parent'>Common
+
+<br/></li><ul><li id='temp:C:VeSc5a6670a108e4a16a344180f1' class=''>adopt WORM model - write once read many
+
+<br/></li></ul><li id='temp:C:VeSb286f8a1116e43e182d0c4c56' class='parent'>Glacier vault lock
+
+<br/></li><ul><li id='temp:C:VeS6ccba70fcb7b4c2dac1a945b3' class=''><b>For compliance and data retention</b>
+
+<br/></li><li id='temp:C:VeSf18757d0932349479cd3e38a2' class=''>Create a Vault Lock Policy
+
+<br/></li></ul><li id='temp:C:VeS80805642d832414f8d4aff4f2' class='parent'>S3 object lock
+
+<br/></li><ul><li id='temp:C:VeScef98ed5f0e04a478ecb52265' class=''>versioning must be abled
+
+<br/></li><li id='temp:C:VeS74837eb6364e4aae98b79518c' class='parent'>retention mode - compiance
+
+<br/></li><ul><li id='temp:C:VeS22deecdb9f21476786d1bc98b' class=''>cant overwritten or deleted by any user(root as well)
+
+<br/></li><li id='temp:C:VeS196100aee6f74b6785b53e2ee' class=''>object retention modes/period cant be changed
+
+<br/></li></ul><li id='temp:C:VeS67467f0698af41e09b597d597' class='parent'>retention mode - governance
+
+<br/></li><ul><li id='temp:C:VeSe903eddece5d4cd4ace767eb8' class=''>most user cant overwrite or delete an object version
+
+<br/></li></ul><li id='temp:C:VeSbe00047a321e476182594f43c' class='parent'>retention period
+
+<br/></li><ul><li id='temp:C:VeSf9931b6d417348718a1701293' class=''>protect object for fixed period
+
+<br/></li></ul><li id='temp:C:VeSc9494530ba5e45fcbfd34dbea' class='parent'>Legal hold
+
+<br/></li><ul><li id='temp:C:VeSb5f340cf0caf4438bf6b0a6a0' class=''>protect object <b>indefinitely</b>, independent from retention period
+
+<br/></li><li id='temp:C:VeS1d0dc7540fa24bc5869149511' class=''>can be freely placed and removed using S3:PutObjectLegalHold
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS41a398958b614ab6aa50b7745' class='parent'><b> Access points</b>
+
+<br/></li><ul><li id='temp:C:VeS480035b292c04ac485007811f' class=''><span data-section-style='11' style='max-width:85%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/1bhgaf0fmIgGFyEl3jkLaQ' id='temp:C:VeS480035b292c04ac485007811f' width='683' height='185'></img></span></li><li id='temp:C:VeS06a213d7cfaf49ceb1560a371' class=''><b>has own DNS name, access point policy</b>
+
+<br/></li><li id='temp:C:VeS8c144dd93e24451d9e4efe86c' class=''>Access point VPC Origin
+
+<br/></li></ul><li id='temp:C:VeS315ec4ea4b814a7585a53c221' class='parent'>Object Lambda
+
+<br/></li><ul><li id='temp:C:VeSb197e18241244adc86e3aed04' class=''>change object before it’s retrieved by the caller app
+
+<br/></li><li id='temp:C:VeS68a7b0f9faf44e55af4de6a7f' class=''>only one S3 bucket is needed by creating S3 access point &amp; S3 object lambda access point
+
+<br/></li><li id='temp:C:VeS12f3ee95dd154c71addea3bf5' class='parent'>use case
+
+<br/></li><ul><li id='temp:C:VeS08f364ae96184b8bb5aadb6da' class=''>redacting PII
+
+<br/></li><li id='temp:C:VeSaded25cd2fcd4010a54c74533' class=''>convert format
+
+<br/></li><li id='temp:C:VeS35b86903693a4d588640f5e21' class=''>resizeing
+
+<br/></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS75d5c9cf8131408faa464f96a'><li id='temp:C:VeS8bd4ac1f84504063898ee4ebc' class='parent' value='1'><b>CloudFront &amp; Global Accelerator</b>
+
+<br/></li><ul><li id='temp:C:VeSa0ba94d1c2f649fda8504709b' class='parent'><u><b>CloudFront</b></u>
+
+<br/></li><ul><li id='temp:C:VeSeccbc18849cd455c9177ff5b9' class='parent'>General
+
+<br/></li><ul><li id='temp:C:VeS97cde5e656094184ab102befb' class=''>Improve read performance
+
+<br/></li><li id='temp:C:VeS2770d51f1c5c4326a56384292' class=''>content is cached at edge
+
+<br/></li><li id='temp:C:VeSfc3ad7d9ce324d058db70a6d6' class=''>DDoS protection
+
+<br/></li></ul><li id='temp:C:VeS526bff0ac9fd47db9969a436d' class='parent'>Origins
+
+<br/></li><ul><li id='temp:C:VeSfed64edcc9c543babfb72eab1' class='parent'>S3 bucket
+
+<br/></li><ul><li id='temp:C:VeS053e76fb17e946eaa4c2e5ff9' class=''>OAC - Origin Access Control enhanced security with CloudFront
+
+<br/></li><li id='temp:C:VeS11de2b2da05742db8bbf43d63' class=''>CloudFront can be used as an ingress to upload file to S3
+
+<br/></li></ul><li id='temp:C:VeS3ae0ff1ee6d34297aba4a0300' class='parent'>Custom Origin (HTTP)
+
+<br/></li><ul><li id='temp:C:VeSf0f15f0d9d9e4ccfa2c02556f' class='parent'>ALB
+
+<br/></li><ul><li id='temp:C:VeS2bd7d238a07d4698a1924aad5' class=''>CloudFront → <b>public</b> ALB →  <b>private</b> instance
+
+<br/></li></ul><li id='temp:C:VeSe74092d46cd24481ad438a438' class='parent'>EC2 instance
+
+<br/></li><ul><li id='temp:C:VeS8d674b50a8bb47fc8d5321cc1' class=''>CloudFront → <b>public</b> instance 
+
+<br/></li></ul><li id='temp:C:VeS83e7db425fb341b9a65874e93' class=''>S3 static website
+
+<br/></li></ul></ul><li id='temp:C:VeS8b4275c5aa0f4ba6a33a52d2a' class='parent'>Geo Restriction
+
+<br/></li><ul><li id='temp:C:VeSe3a2a45048f24c6488b1847b6' class=''>Allowlist and Blocklist
+
+<br/></li></ul><li id='temp:C:VeS3cfb0f9cf1304f76b2f5566f7' class='parent'>price classes
+
+<br/></li><ul><li id='temp:C:VeS4e1c51fedadb41d29ae84466e' class=''>Price Class All: all region
+
+<br/></li><li id='temp:C:VeS04283cb2378b4426a64c24ca2' class=''>Price Class 200: most regions, but excludes the most expensive regions
+
+<br/></li><li id='temp:C:VeSc40713c3e52d433da2681173c' class=''>Price Class 100: only the least expensive regions
+
+<br/></li><li id='temp:C:VeS0f76bb28aa744a3496692c04c' class=''><span data-section-style='11' style='max-width:51%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/K5JXHb1tRe_iMFMC_Bqt7w' id='temp:C:VeS0f76bb28aa744a3496692c04c' width='414' height='206'></img></span></li></ul><li id='temp:C:VeSe38894b3d61848c7817ed509f' class='parent'>Cache Invalidations
+
+<br/></li><ul><li id='temp:C:VeS1115498ecf9a46989d87bcef6' class=''><b>cache refresh</b>
+
+<br/></li></ul><li id='temp:C:VeS1692eb1e2e064a519f893c444' class='parent'>Unicast Ip
+
+<br/></li><ul><li id='temp:C:VeS00b54868234547a189d965116' class=''>one server holds one IP address
+
+<br/></li></ul><li id='temp:C:VeS61cd0bc2e92440748b39b6580' class='parent'>Anycast IP
+
+<br/></li><ul><li id='temp:C:VeSbe1ff56ada0c4f7ab449e40ca' class=''>All servers hold same IP address and the client is routed to the nearest one
+
+<br/></li></ul></ul><li id='temp:C:VeS1e1d062ff35c49afa70209029' class='parent'><u><b>Global Accelerator - </b>directs traffic to optimal endpoints over the AWS global network</u>
+
+<br/></li><ul><li id='temp:C:VeSeffb155191454824a475b9a75' class='parent'>General
+
+<br/></li><ul><li id='temp:C:VeS5028e4c8783841c4bb37765f3' class='parent'><b>2 Anycast IP</b> are created for app
+
+<br/></li><ul><li id='temp:C:VeS385ab91f557c423d9cd554e24' class=''>Antcast IP  →  Edge location →(internal network) app
+
+<br/></li></ul><li id='temp:C:VeS90a861b830fa4ef183c5233d1' class=''>improve over <b>TCP or UDP</b>
+
+<br/></li><li id='temp:C:VeS0125ae4700de41a3a674194c4' class=''>Works with Elastic IP, EC2 instance, ALB, NLB, public or private
+
+<br/></li><li id='temp:C:VeSf0651fe1ef5349ddb168aa19f' class=''>Intelligent routing to lowest latency and fast regional failover
+
+<br/></li><li id='temp:C:VeS99bf366346ba4594bc6d05ce9' class=''>Internal AWS network
+
+<br/></li><li id='temp:C:VeS636783f39ad24a62aa29ababc' class='parent'>health checks
+
+<br/></li><ul><li id='temp:C:VeSdd591e3f263449958066d2b3e' class=''>Great for DR
+
+<br/></li></ul></ul></ul><li id='temp:C:VeSb090f74782e84abbb96c78119' class='parent'><u><b>Comparison</b></u>
+
+<br/></li><ul><li id='temp:C:VeS055c680cfaaa417eb21704651' class='parent'>Global Accelerator
+
+<br/></li><ul><li id='temp:C:VeSc89077904f0a4f19bf729679a' class=''>Improves performance for wide range of app over <b>TCP or UDP</b>
+
+<br/></li><li id='temp:C:VeS42cfe5dcd79348d1b8752be03' class=''>proxying packets at edge to app running in multi-regions
+
+<br/></li><li id='temp:C:VeS7b220d4eac5e48c7a7578e6be' class=''>Good for UDP, loT, or Voice over IP
+
+<br/></li><li id='temp:C:VeS18abe4c2ed6f427aa173621e4' class=''>Good for HTTP with static IP address and fast regional failover
+
+<br/></li></ul><li id='temp:C:VeSab0f06a2db1a405195afafa34' class='parent'>CloudFront
+
+<br/></li><ul><li id='temp:C:VeS7698d58714a04621a3a0e9659' class=''>Global Edge network, content is served at the edge
+
+<br/></li><li id='temp:C:VeS34f19fe664e344d6aff623dbf' class=''>Files are cached for TTL
+
+<br/></li><li id='temp:C:VeS3d774c754b1f4796b8916b132' class=''><b>static &amp; dynamic</b> content
+
+<br/></li></ul><li id='temp:C:VeS4faa7b62fc7d43b5b0d40387b' class='parent'>S3 Cross Region Replication
+
+<br/></li><ul><li id='temp:C:VeSb5b7fbd8de2c447796db1e8cd' class=''>Must setup for each region
+
+<br/></li><li id='temp:C:VeS429e5f38582743bd8f27c2306' class=''>Files
+
+<br/></li><li id='temp:C:VeS7bd82222b92143419c5b51044' class=''>Read only
+
+<br/></li><li id='temp:C:VeS60331ec933c1478b8d729fd69' class=''>Great for <b>dynamic</b> content at low-latency in few regions
+
+<br/></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSb1dae70a72fa4f66aec0ef390'><li id='temp:C:VeS66108149004b42788c14f8acc' class='parent' value='1'><b>AWS storage extras</b>
+
+<br/></li><ul><li id='temp:C:VeSd683779754964f8f8f4c8771a' class=''><b>More than a week to transfer over network, use Snowball devices!</b>
+
+<br/></li><li id='temp:C:VeSe484980d5979436bbf68912b0' class='parent'><u><b>Snowcone  </b></u>
+
+<br/></li><ul><li id='temp:C:VeSd8b674d596db4863b135c6536' class=''>small, portable computing
+
+<br/></li><li id='temp:C:VeSb87fdc41649d45e08aa3d482b' class=''>Snowcone - 8 TB pf HDD storage
+
+<br/></li><li id='temp:C:VeS830f471a2b65494e8d45a456b' class=''>Snowcone SSD - 14 TB of SSD storage
+
+<br/></li><li id='temp:C:VeSf192f78cc83e4aa1b19730244' class=''>can connect it to internet and use AWS DataSync to send data
+
+<br/></li></ul><li id='temp:C:VeSe3b5e373ddb54798a35c8658c' class='parent'><u><b>Snowball Edge</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2570c2cf93414985acfa35b1f' class='parent'>Edge storage optimized
+
+<br/></li><ul><li id='temp:C:VeSe819a3a136794af283f3dac74' class=''>80 TB of HDD or 210TB NVMe capacity for block volume
+
+<br/></li></ul><li id='temp:C:VeSd365871ada1044e68f4a3c3af' class='parent'>Snowball edge compute optimized
+
+<br/></li><ul><li id='temp:C:VeSec8b0cb29697469cb0ded673b' class=''>42 TB of HDD or 28 TB NVMe capacity for block volume
+
+<br/></li></ul></ul><li id='temp:C:VeS98e091e6277b48449bf289999' class='parent'><u><b>Snowmobile</b></u>
+
+<br/></li><ul><li id='temp:C:VeS1327d40e480544ee8435845a1' class=''>&gt; 10 PB
+
+<br/></li></ul><li id='temp:C:VeS39ac7e0df00347fcb03a7e42d' class=''><u><b>Edge computing</b></u> - Snowball, Snowcone
+
+<br/></li><li id='temp:C:VeSc4a99f50ce7647a78b8449671' class='parent'><u><b>AWS OpsHub</b></u>
+
+<br/></li><ul><li id='temp:C:VeS8c241296478f4e84b84636411' class=''>manage snow family device
+
+<br/></li></ul><li id='temp:C:VeSe4880765d7e44dacb09e0c310' class='parent'><u><b>Snowball into Glacier</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa5330ecada9149e9a5abcc008' class=''>Snowball cannot import to Glacier directly
+
+<br/></li><li id='temp:C:VeSda78130a872d455fa8961bb32' class=''>snowball →S3 → Glacier 
+
+<br/></li></ul><li id='temp:C:VeS946eaa46feb04181bed596b5c' class='parent'><u><b>Amazon FSx</b></u>
+
+<br/></li><ul><li id='temp:C:VeScf95c0731c274668b05542903' class=''>Launch <b>3rd party</b> high-performance file systems on AWS
+
+<br/></li><li id='temp:C:VeSddbc5420de8a45efa4a8f8b3a' class=''>Fully managed service
+
+<br/></li><li id='temp:C:VeSbe0e4d2cd45e4c239387f6773' class='parent'><b>FSx for Lustre</b>
+
+<br/></li><ul><li id='temp:C:VeS497ae5d67a5a4c6a99ad392da' class=''><b>parallel distributed</b> file system for large-scale computing
+
+<br/></li><li id='temp:C:VeSa1f29df0f80e4f91a80ba97dd' class=''>ML, <b>high performance computing</b>
+
+<br/></li><li id='temp:C:VeS3409a8ad8a0c441bbddb29415' class=''><b>can be used from on-premises servers (VPN or DX)</b>
+
+<br/></li><li id='temp:C:VeSdd7150bb27fb47028d5c01076' class=''><b>seamless integration with S3</b>
+
+<br/></li><li id='temp:C:VeS6c087a90833e41dbaad34ed4d' class='parent'>options
+
+<br/></li><ul><li id='temp:C:VeS1f75a34c0e514729887764f06' class='parent'>Scratch File System
+
+<br/></li><ul><li id='temp:C:VeS924b793479bc4384b35e43952' class=''>short term
+
+<br/></li><li id='temp:C:VeSdb79b75d89ef406abb609095f' class=''>data not replicated
+
+<br/></li></ul><li id='temp:C:VeS5a63c073f9b04745b1bc59e35' class='parent'>Persistent File Sytem
+
+<br/></li><ul><li id='temp:C:VeS0c7cc7a086674de1b6acd0967' class=''>long term
+
+<br/></li><li id='temp:C:VeSc1c355e549544a6ebbd547201' class=''>data is replicated within same AZ
+
+<br/></li><li id='temp:C:VeSbdfe675e95974313a46d79724' class=''>replace failed files within mins
+
+<br/></li></ul></ul></ul><li id='temp:C:VeSd47d14e8c5d6499a92d5897d4' class='parent'><b>FSx for NetAPP ONTAP</b>
+
+<br/></li><ul><li id='temp:C:VeS6600f545e0134620b3c9762ca' class=''><span style="color:#444949" textcolor="#444949"><b>High OS Compatibility</b> - </span>File system compatible with NFS, SMB, iSCSI protocol
+
+<br/></li><li id='temp:C:VeS76bf3198e1154eaea1acb13d2' class=''><b>Point-in-time instantaneous cloning (helpful for testing new workloads)</b>
+
+<br/></li><li id='temp:C:VeSda54f2ae5c9f4a09957eac556' class=''>storage auto scale
+
+<br/></li></ul><li id='temp:C:VeSd7470a2f4728401fa667da9f0' class='parent'><b>FSx for Windows File Server</b>
+
+<br/></li><ul><li id='temp:C:VeS0a7792a1e1ac498a830fba911' class=''>fully managed <b>Windows</b> file system share drive
+
+<br/></li><li id='temp:C:VeSe2995b02dc9041ac8168497c6' class=''>Can be mounted on Linux EC2 instance
+
+<br/></li><li id='temp:C:VeS1a4c3c30e7d44db19bb9346a2' class=''>support Microsoft’s Distributed File System(DFS) Namespaces
+
+<br/></li><li id='temp:C:VeSd650d744e11a431f86ac360d5' class=''>Multu-AZ
+
+<br/></li><li id='temp:C:VeSfaa525c72d4045c686e17657a' class=''>Can be accessed from on-premises
+
+<br/></li><li id='temp:C:VeSf8767f83c54b423582a3d701b' class=''>Data is backed-up daily to S3
+
+<br/></li></ul><li id='temp:C:VeS345951d9ed7c489184e5a854d' class='parent'><b>FSx for OpenZFS</b>
+
+<br/></li><ul><li id='temp:C:VeS1d2c739828324480a08cf1603' class=''><b>NFS</b>
+
+<br/></li><li id='temp:C:VeS57d7a69e4e6b48f483d46cf01' class=''>Point-in-time instantaneous cloning (helpful for testing new workloads)
+
+<br/></li><li id='temp:C:VeS790a4f131cbf4caf83cef32ef' class=''>Up to <b>1,000,000 IOPS</b> with &lt; 0.5ms
+
+<br/></li></ul></ul><li id='temp:C:VeS2181d1d91e4c40569c2d8abce' class='parent'><u><b>AWS storage gateway</b></u>
+
+<br/></li><ul><li id='temp:C:VeSdf7e5cd86f514532b3ee9d13c' class=''>bridge between on-premises data and cloud data
+
+<br/></li><li id='temp:C:VeS3717e9d8b5804eee8174959ca' class='parent'>types of storage gateway
+
+<br/></li><ul><li id='temp:C:VeSe18f6b5d374e460287c41adc0' class='parent'><b>S3 file gateway</b>
+
+<br/></li><ul><li id='temp:C:VeSe7ac2f1d6267461e95c25316c' class=''>extend on premise’s storage space
+
+<br/></li><li id='temp:C:VeS46799b7d1dca4b549679b6f38' class=''><span data-section-style='11' style='max-width:80%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/i74PkpWx2cLbkdH21YELpg' id='temp:C:VeS46799b7d1dca4b549679b6f38' width='641' height='272'></img></span></li><li id='temp:C:VeSf7f8e4e900d54da0ad6963573' class=''><span style="color:#444949" textcolor="#444949">Most recently used data is <b>cached</b> in the file gateway</span>
+
+<br/></li><li id='temp:C:VeS01d1fee38fd8473f9fd77ca8a' class=''><span style="color:#444949" textcolor="#444949">Transition to S3 Glacier using a Lifecycle Policy</span>
+
+<br/></li></ul><li id='temp:C:VeS0a224f32faa6421bafbcf8d4e' class='parent'>FSx file gateway
+
+<br/></li><ul><li id='temp:C:VeSd1598f6bdb2142afa0c3dc4a9' class=''><span style="color:#444949" textcolor="#444949">Local <b>cache</b> for frequently accessed data</span>
+
+<br/></li></ul><li id='temp:C:VeSd2661191cfed4eee8eeb2933b' class='parent'>Volume gateway
+
+<br/></li><ul><li id='temp:C:VeS306f51d214384b8dabc1e0f26' class=''><span style="color:#444949" textcolor="#444949">Cached volumes: low latency access to most recent data</span>
+
+<br/></li><li id='temp:C:VeSf13118d1bb49418589ffea66d' class=''><span style="color:#444949" textcolor="#444949">Stored volumes: entire dataset is on premise, scheduled backups to S3</span>
+
+<br/></li></ul><li id='temp:C:VeSd6e47266e5964eab8074ac674' class=''>Tape gateway
+
+<br/></li><li id='temp:C:VeSedc4658a2842450ba214bf165' class=''>storage gateway - hardware appliance
+
+<br/></li></ul></ul><li id='temp:C:VeS406cbf03bad5402783d98dc1f' class=''><u><b>Transfer family</b></u> - <span style="color:#444949" textcolor="#444949">FTP, FTPS, SFTP interface on top of Amazon S3 or Amazon EFS</span>
+
+<br/></li><li id='temp:C:VeS8b1d59e9b87e4a3d9fc5f7eb9' class='parent'><u><b>AWS DataSync - </b></u><b>automates</b> and <b>accelerates</b> moving data between <b>on premises and AWS Storage services</b>.
+
+<br/></li><ul><li id='temp:C:VeS86bc13c79e7943ac83d476197' class=''><span data-section-style='11' style='max-width:81%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/bg8AdpeKu7DjQKM5Sslgfg' id='temp:C:VeS86bc13c79e7943ac83d476197' width='649' height='361'></img></span></li><li id='temp:C:VeS5f330bfd4c314c7b8521f2a31' class=''><b>not support EBS</b>
+
+<br/></li><li id='temp:C:VeSe8cc80649073496f94a9005da' class=''>File permissions and metadata are preserved
+
+<br/></li><li id='temp:C:VeS535406e730584b988966f9ef1' class='parent'><b>Move large amount data to and from </b>
+
+<br/></li><ul><li id='temp:C:VeSe48f655ea1384843b628986a2' class=''>on-premises - need agent
+
+<br/></li><li id='temp:C:VeSd204dc715482483785840c433' class=''>AWS to AWS - no agent needed
+
+<br/></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS1ed5b73941d24b26b66309c33'><li id='temp:C:VeS5ee076b95670421ba2551f683' class='parent' value='1'><b>AWS Integration &amp; Messaging</b>
+
+<br/></li><ul><li id='temp:C:VeS99d6408826e24345851808b9d' class='parent'><u><b>SQS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS4dcd69f6a61c40ff85ada7865' class=''>Dead-letter queue - uses redrive policy on the main SQS queue to send messages to a dead-letter queue after failing a certain times
+
+<br/></li><li id='temp:C:VeSe22851e250144c33b9a52b46a' class=''>
+
+<br/></li><li id='temp:C:VeS47b751569bf9424399ca3d594' class='parent'>Two patterns
+
+<br/></li><ul><li id='temp:C:VeSb353b87fb9ea4131b8ba96023' class=''>SYN: client → server
+
+<br/></li><li id='temp:C:VeS8c1194a1a81a44b5af8f03049' class=''>ASYNC: client → SQS → Server
+
+<br/></li></ul><li id='temp:C:VeSca78397f7842403680828da92' class='parent'>SQS attributes
+
+<br/></li><ul><li id='temp:C:VeS2a2d021e43dd42eb98a58f0ec' class=''>unlimited throughput
+
+<br/></li><li id='temp:C:VeSad1adce3f58d478c82b87c371' class=''><b>default retention 4days</b>, <b>max 14 days</b>
+
+<br/></li><li id='temp:C:VeS60cda70edcc94f54818538f36' class=''>low latency
+
+<br/></li><li id='temp:C:VeSf3ed2dac3ade4589a36b97aa8' class=''>limitation of <b>256KB</b>/message
+
+<br/></li><li id='temp:C:VeSac61073ed41e495eb36112497' class=''>message is persisted in SQS until a consumer deletes it(DeleteMessage API)
+
+<br/></li><li id='temp:C:VeSc44fa423927b41edbe235c9ee' class=''>Poll message - receive up to 10 messages at a time
+
+<br/></li></ul><li id='temp:C:VeS1cc0c11280224cc1ae2b7eaca' class='parent'>SQS &amp; SNS security
+
+<br/></li><ul><li id='temp:C:VeSf5717dfde8514c91a66a04a3c' class='parent'>Encryption
+
+<br/></li><ul><li id='temp:C:VeS7322facd004b491696e563e80' class=''>in-flight encryption using HTTPS API
+
+<br/></li><li id='temp:C:VeS4305fba886fc4d32962fcebd1' class=''>at-rest using KMS keys
+
+<br/></li></ul><li id='temp:C:VeSdb0095f0ac0141af852b118cc' class=''>Access controls - IAM policies
+
+<br/></li><li id='temp:C:VeSec10063dedce421abc308d11c' class='parent'>SQS Access policies
+
+<br/></li><ul><li id='temp:C:VeS8d040e76286440aeb0f91955d' class=''>useful for cross-account access to SQS
+
+<br/></li><li id='temp:C:VeSa37e9457fb3943d387ccce5ff' class=''>for other service to write to SQS
+
+<br/></li></ul></ul><li id='temp:C:VeS61a0e67c6e914bf8ab0ca65ff' class='parent'>SQS Message Visibility Timeout
+
+<br/></li><ul><li id='temp:C:VeS09fe6a059bcf418ca5eda55f5' class=''><b>by default is 30sec</b>
+
+<br/></li><li id='temp:C:VeS883e28b859e3425ea18a2f672' class=''>After polling by a consumer, it becomes invisible to other consumers.
+
+<br/></li></ul><li id='temp:C:VeS30fb5ad17dfd42ff8c2624151' class='parent'>SQS long polling
+
+<br/></li><ul><li id='temp:C:VeS56bb3ed7f6a04a97abdc491b6' class=''><b>optimize num of API call, decrease latency</b>
+
+<br/></li></ul><li id='temp:C:VeS10ce13a38d8944f6a9c5180ff' class='parent'>SQS FIFO - first in first out
+
+<br/></li><ul><li id='temp:C:VeS399c44a2cc6f4c839088587a5' class=''>FIFO queues support up to <b>3,000 messages/sec </b>with batching, or up to 300 messages/sec without batching
+
+<br/></li></ul><li id='temp:C:VeS24c7a5a20d14419a81c06ed05' class='parent'>SQS as a buffer to databased writes so make sure not losing data
+
+<br/></li><ul><li id='temp:C:VeSdf1d934a6f0c4c5e90ca0b86e' class=''><span data-section-style='11' style='max-width:62%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/wHeHZfXTlWjh3dQQwAqbpg' id='temp:C:VeSdf1d934a6f0c4c5e90ca0b86e' width='499' height='181'></img></span></li></ul></ul><li id='temp:C:VeSbcbd9d354ee44803a94736311' class='parent'><u><b>SNS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS0b1d962610a6459f90958cbf1' class=''>Pub/Sub pattern
+
+<br/></li><li id='temp:C:VeS39f16e479127485a8a210fb24' class='parent'>Fan-out: one message → topic →  multi-target
+
+<br/></li><ul><li id='temp:C:VeSc43e911742894a7a8a3e81c2c' class=''><span data-section-style='11' style='max-width:69%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/DOI5u7kUU81UhpWZRL1K8w' id='temp:C:VeSc43e911742894a7a8a3e81c2c' width='557' height='187'></img></span></li></ul><li id='temp:C:VeS179687e6f6b7488ab0279cfe9' class=''>up to 12,500,000 subscriptions
+
+<br/></li><li id='temp:C:VeS6918296167df4457b4b8bf4e0' class=''>100,000 topic limit
+
+<br/></li><li id='temp:C:VeS3f5f0e79f38d4aaca5f1d34ef' class='parent'>SNS - FIFO
+
+<br/></li><ul><li id='temp:C:VeSe0c8606a047e4698b072de940' class=''>queue ends with the .fifo suffix
+
+<br/></li><li id='temp:C:VeSea7ba8301e3940ca8fae7c970' class=''>ordering by <b>group ID</b>
+
+<br/></li><li id='temp:C:VeS747d583346e842849c74ce822' class=''>limited throughput (same as SQS)
+
+<br/></li></ul><li id='temp:C:VeS299a72a3cb074636b989757f2' class='parent'>SNS Message Filtering
+
+<br/></li><ul><li id='temp:C:VeS3e866585aa8a42328f5b93124' class=''><span data-section-style='11' style='max-width:71%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/6iZ7_lmq3_EhFJIExxXv6Q' id='temp:C:VeS3e866585aa8a42328f5b93124' width='574' height='229'></img></span></li></ul></ul><li id='temp:C:VeS2529792941414e90b9a2a79ae' class='parent'><u><b>Kinesis</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5d58b251bffc445e97a9487d7' class=''>Collect, process, ad analyze streaming data in real time
+
+<br/></li><li id='temp:C:VeS3acabca9e3b048f5b0f5553d4' class='parent'>Kinesis data stream
+
+<br/></li><ul><li id='temp:C:VeSfd0768f963be4d8b89dcef78a' class=''>data up to <b>1MB</b> with <b><span style="color:#444949" textcolor="#444949">Partition Key</span></b>
+
+<br/></li><li id='temp:C:VeS873115c4474545eb984b1a009' class=''>retention 1 ~ 365 days
+
+<br/></li><li id='temp:C:VeSc8a757c59e5d4b3b9b0a07c8e' class=''>Once inserted in Kinesis, can’t be deleted
+
+<br/></li><li id='temp:C:VeScd8f70526a9f4d179547a95cb' class=''><b>Fanout feature: auto scale with the num of shard in a stream </b>(for performance lag)
+
+<br/></li><li id='temp:C:VeS269668d7c9d1489ca5894e235' class='parent'>Provisioned mode
+
+<br/></li><ul><li id='temp:C:VeS3c60e01baad14719a570fe0da' class=''>choose num of shards, scale manually
+
+<br/></li><li id='temp:C:VeS164795dfb6a94dcb9ae9396e2' class=''>1 MB/s per in shard
+
+<br/></li><li id='temp:C:VeSdbdc90f169514010ab855adaf' class=''>2 MB/s per out shard
+
+<br/></li><li id='temp:C:VeS9b0f07d8155242ad8aded48b6' class=''>pay /shard/hr
+
+<br/></li></ul><li id='temp:C:VeS497509121b2e4a61b521be097' class='parent'>On demand mode
+
+<br/></li><ul><li id='temp:C:VeS02aea2ce543f4f108743f2dc9' class=''>default 4 MB/s in
+
+<br/></li><li id='temp:C:VeS96b063f4cbac4268abec17884' class=''>auto scale
+
+<br/></li><li id='temp:C:VeS1bad407833564796bfdc057e7' class=''>pay /stream/hr &amp; date in/out per GB
+
+<br/></li></ul></ul><li id='temp:C:VeS6108416446734a7e83332ca97' class='parent'>Kinesis data firhose
+
+<br/></li><ul><li id='temp:C:VeSc027ff789b994a1e947007a30' class=''><span style="color:#2d2f31" textcolor="#2d2f31">supports custom data transformations using AWS Lambda.</span>
+
+<br/></li><li id='temp:C:VeSc345c3db14a74b82ab20baf31' class=''>load stream data into S3/../3rd party
+
+<br/></li><li id='temp:C:VeS84a2688ccf374dbf970fe9271' class=''>Fully managed service, serverless, auto scale
+
+<br/></li><li id='temp:C:VeS0cb9b0135eaf4993a0f41dd0d' class=''><b>Near real time</b>
+
+<br/></li><li id='temp:C:VeS1792e94c1f8243e7ab7cb1129' class=''>pay for data going through Firehose
+
+<br/></li></ul></ul><li id='temp:C:VeS89c3068d3bae48b4872c8fbce' class='parent'><u><b>Amazon MQ</b></u>
+
+<br/></li><ul><li id='temp:C:VeSeb6e88f7dd1f4d46962b93e35' class=''>managed message <b>broker service</b>
+
+<br/></li><li id='temp:C:VeSeafd8000d3b547379d39c11e7' class=''>run on server, Multi-AZ with failover
+
+<br/></li><li id='temp:C:VeS38e5307d46ea47d9bd1db4bd7' class=''>has both features of SQS and SNS
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS645d5027188c460389e576b75'><li id='temp:C:VeSbc41751acc664664a96d26afc' class='parent' value='1'><b>Containers on AWS</b>
+
+<br/></li><ul><li id='temp:C:VeSc15b3aeffd9e42d8b9cf18216' class='parent'><u><b>Docker</b></u>
+
+<br/></li><ul><li id='temp:C:VeSe7bdfa6bd60742abb6cd16923' class=''>platform to deploy apps, apps are packaged in containers that can be run on any OS
+
+<br/></li><li id='temp:C:VeS661ed56843d0426c880d9b111' class='parent'>Docker images stored in
+
+<br/></li><ul><li id='temp:C:VeS6090c1a9b47c4db2a1e589d69' class=''>Docker hub (public)
+
+<br/></li><li id='temp:C:VeS1ebd0f4dfb44414fb0a0c97e3' class=''>Amazon ECR - elastic container registry (private &amp; public)
+
+<br/></li></ul><li id='temp:C:VeS8e848a77017b49aea7081d4cf' class='parent'>vs VM
+
+<br/></li><ul><li id='temp:C:VeS70a1f40bcd6646a7b7cc96850' class=''><span data-section-style='11' style='max-width:54%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/YZsYLF6QYhLiX2ryqETitQ' id='temp:C:VeS70a1f40bcd6646a7b7cc96850' width='437' height='158'></img></span></li></ul></ul><li id='temp:C:VeS257a86a125344967adc6a75a6' class='parent'><u><b>ECS</b></u> - elastic container service
+
+<br/></li><ul><li id='temp:C:VeSa52b9fb7568a42e1bcae532d5' class='parent'>data volume
+
+<br/></li><ul><li id='temp:C:VeSb5630fe420bd4438b3f0f2159' class=''>EFS
+
+<br/></li></ul><li id='temp:C:VeSb07b735103b34878a485b8aa1' class='parent'>EC2 launch type
+
+<br/></li><ul><li id='temp:C:VeS125deb7994664b63816de37d3' class=''><b>charged based on EC2 instances and EBS volumes used</b>
+
+<br/></li><li id='temp:C:VeSf2153face1194ebc8c9c237f6' class=''>user provision &amp; maintain the infrastruture
+
+<br/></li></ul><li id='temp:C:VeSd35200f1d40c485185d469c23' class='parent'>Fargate launch type
+
+<br/></li><ul><li id='temp:C:VeS6ebe3ed9ddb64cf9a9629d473' class=''><b>charged based on vCPU and memory resources </b>that the containerized application requests
+
+<br/></li><li id='temp:C:VeS0510825517bf4d118713d80f8' class=''><b>minimal costs when the application is idle</b>
+
+<br/></li><li id='temp:C:VeS2264514592cd41f69c97cc842' class=''>serverless
+
+<br/></li></ul><li id='temp:C:VeS6e4cfa70d898435fa7444ede6' class='parent'>IAM roles
+
+<br/></li><ul><li id='temp:C:VeS0e95ca1458b74758bd2ebab5e' class=''><span style="color:#2d2f31" textcolor="#2d2f31">obtain temporary security credentials to access cross-account resources</span>
+
+<br/></li><li id='temp:C:VeSfe6c40f629fb45e9935cac156' class=''>EC2 instance profile (EC2 launch type only)
+
+<br/></li><li id='temp:C:VeS2e3a13d8cb8b42c6a2d16474a' class='parent'>ECS task role
+
+<br/></li><ul><li id='temp:C:VeSd9c652ca2bff40c789eb6cb3f' class=''><b>define in the task definition</b>
+
+<br/></li></ul><li id='temp:C:VeS01533c145b5c4455a80f48679' class=''><span data-section-style='11' style='max-width:40%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/xqGlMc-XlsNW5Nvw3-L0Rg' id='temp:C:VeS01533c145b5c4455a80f48679' width='322' height='325'></img></span></li></ul></ul><li id='temp:C:VeSd987d9684afc4cf28b0178dbd' class='parent'><u><b>EKS</b></u> - elastic Kubernetes service
+
+<br/></li><ul><li id='temp:C:VeS241128cb50d141ada2198c5b6' class=''>open source system for auto deployment, scaling, management of containerized app
+
+<br/></li><li id='temp:C:VeSc8f402758f8e4103ae55b5e62' class=''>Kubernetes is cloud-agnostic
+
+<br/></li><li id='temp:C:VeSc1e74568c7524a6f8f97ce218' class='parent'>data volumes
+
+<br/></li><ul><li id='temp:C:VeS32c2d3ee7c1f43a88e0492fc4' class=''>EBS, EFS, FSx for Lustre, FSx for NetApp ONTAP
+
+<br/></li></ul></ul><li id='temp:C:VeS1e8ac1b0c8d74bcfad82aae45' class='parent'><u><b>AWS APP Runner</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa5eb228d9b034829b727091bf' class=''>fully managed service to deploy web app and APIs at scale
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS179d7850b70a48dc8b6ee76a1'><li id='temp:C:VeSc212b4acb6ee4ceba99255129' class='parent' value='1'><b>Serveless Overview</b>
+
+<br/></li><ul><li id='temp:C:VeS7a00690a11a74a03862994f4f' class='parent'>Lambda
+
+<br/></li><ul><li id='temp:C:VeSa096d4d4d00c4e638668b86bb' class=''>scale extremely quickly(better have monitor, like CloudWatch)
+
+<br/></li><li id='temp:C:VeSf92ee96cd4534dc194115e537' class=''>by default, lambda <span style="color:#2d2f31" textcolor="#2d2f31">function has the full ability to make network requests to any public internet address</span>
+
+<br/></li><li id='temp:C:VeS498320e1c82e4bc084eb24675' class=''>VPC-enabled, <span style="color:#2d2f31" textcolor="#2d2f31">all network traffic from your function is subject to the routing rules of your VPC/Subnet</span>
+
+<br/></li></ul><li id='temp:C:VeS7146c3645b0b4086b90ec78a4' class='parent'><u><b>Lambda Snapstart</b></u>
+
+<br/></li><ul><li id='temp:C:VeS14262869795f40ecbe06cd33c' class=''>improve performance up to 10x(by pre-initialized) at no extra cost for Java 11 and above
+
+<br/></li></ul><li id='temp:C:VeS98088687e13c40b9839325d38' class='parent'><u><b>Customization at the edge</b></u>
+
+<br/></li><ul><li id='temp:C:VeS7747b6eb9c294780abb794914' class=''>attach to CloudFront distributions
+
+<br/></li><li id='temp:C:VeS4c25fde39eb947a092693f02e' class=''>run close to users to min latency
+
+<br/></li></ul><li id='temp:C:VeS807aaabf2c1343798baaf11f0' class='parent'><u><b>CloudFront function</b></u>
+
+<br/></li><ul><li id='temp:C:VeS69f4fd9474a84633976f3635a' class=''>lightweight function in JS
+
+<br/></li><li id='temp:C:VeSa73b4b43be894393ac1d859b0' class=''>millions of request/sec
+
+<br/></li></ul><li id='temp:C:VeS023cee453f5e43b892a2c625e' class='parent'><u><b>lambda@Edge in NodeJS/Python</b></u>
+
+<br/></li><ul><li id='temp:C:VeSae17ce576c0141f2ac00de26a' class=''>1000s of requests/sec
+
+<br/></li></ul><li id='temp:C:VeS26dcd8347818447d89462e929' class='parent'><u><b>Lambda with RDS proxy</b></u>
+
+<br/></li><ul><li id='temp:C:VeS26b10a4cc1f844f5a8b186364' class=''>Lambda must be deployed in VPC bc RDS Proxy is never publicly accessible
+
+<br/></li></ul><li id='temp:C:VeS5d8bb1ba6ecc4eeaa46e34fa0' class='parent'><u><b>RDS event notification</b></u>
+
+<br/></li><ul><li id='temp:C:VeSb70acf2ec03a41728c7e52f79' class=''>near real time
+
+<br/></li></ul><li id='temp:C:VeS319eae449a814246ae972f91b' class='parent'><u><b>DynamoDB</b></u>
+
+<br/></li><ul><li id='temp:C:VeS1df0abb6b2c242489858bf704' class=''>more cost-effective than RDS
+
+<br/></li><li id='temp:C:VeSc6ad5792c6fd446aaced775cb' class=''>NoSQL
+
+<br/></li><li id='temp:C:VeScd68822fb75848c0a3ebdffed' class=''>max size /item is <b>400KB</b>
+
+<br/></li><li id='temp:C:VeS815c7c3a5b794ef088c96f192' class=''>can rapidly evolve schemas
+
+<br/></li><li id='temp:C:VeS516d248d32444cb881a5a8d09' class='parent'><b>Provisioned mode(default)</b>
+
+<br/></li><ul><li id='temp:C:VeS6d724aa0d78641429f5726283' class=''>specify the num of reads/writes per sec
+
+<br/></li></ul><li id='temp:C:VeSbca127bdf31f4af0adfddd4d3' class='parent'><b>On-demand mode</b>
+
+<br/></li><ul><li id='temp:C:VeSc1b1af6f6f2e4e68ae4a1bca9' class=''>read/write auto scale
+
+<br/></li></ul><li id='temp:C:VeS29ca180f8a654fb4be866b642' class='parent'><b>* DynamoDB accelerator</b>
+
+<br/></li><ul><li id='temp:C:VeScdc987cf76564d509889414ef' class=''>DAX improves <b>read performance for repetitive queries</b>
+
+<br/></li><li id='temp:C:VeS659a63cc47c6442a908177c3b' class=''>API compatible with DynamoDB
+
+<br/></li><li id='temp:C:VeSb6b3d8392e6044d0a684a0e8b' class=''>help solve read congestion by caching, <span style="color:#2d2f31" textcolor="#2d2f31">DAX is used to natively <b>cache</b> Amazon DynamoDB reads.</span>
+
+<br/></li><li id='temp:C:VeSb090af18c9094b8b981600214' class=''><b>Microseconds latency</b> for cached data
+
+<br/></li><li id='temp:C:VeS5cf1b5cd673049c98dac0075d' class=''>5 mins TTL for cache by default
+
+<br/></li></ul><li id='temp:C:VeS46016569ba74443c814e677dd' class='parent'>Stream processing
+
+<br/></li><ul><li id='temp:C:VeS502933827dde4ad3bfea0c58d' class=''>DynamoDB stream
+
+<br/></li><li id='temp:C:VeS6b16dd0fcc994a439adbe1c4b' class=''>Kinesis data stream
+
+<br/></li></ul><li id='temp:C:VeScb88f923108446ffba01c9b63' class='parent'>Global table
+
+<br/></li><ul><li id='temp:C:VeS86c7c4c21cbd41efb23814fd2' class=''>active-active replication, can read and write to table in any region
+
+<br/></li><li id='temp:C:VeS8a2d21378aa04d1c971918c60' class=''>low latency
+
+<br/></li></ul><li id='temp:C:VeSb8b7450fe326453488ad477a9' class='parent'>Backup for DR
+
+<br/></li><ul><li id='temp:C:VeS592061c352bd4d73a263159d2' class=''>Continuous backup using point-in-time recovery
+
+<br/></li><li id='temp:C:VeS39637b8ba7b342a49fb594192' class='parent'>On-demand backup
+
+<br/></li><ul><li id='temp:C:VeS77fcc8a297e7429e8356f97be' class=''>for long-term retention
+
+<br/></li></ul></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS690ee60531864fa49c61f3bbd'><li id='temp:C:VeSce585c0cf117444698eb9251c' class='parent' value='1'><b>Databases in AWS</b>
+
+<br/></li><ul><li id='temp:C:VeSd117a6c1318143979fa0065ba' class='parent'>Database types
+
+<br/></li><ul><li id='temp:C:VeS03a7bd2928b54d7b8b16e7451' class=''>RDBM - RDS, Aurora - great for joins
+
+<br/></li><li id='temp:C:VeS810fa435ea7f4b2b88edf4ef1' class='parent'>NoSQL
+
+<br/></li><ul><li id='temp:C:VeS99bdb7a0a2ab4cb69a0d96c12' class=''>DynamoDB(JSON): <b>max 400KB upload file</b>
+
+<br/></li><li id='temp:C:VeSd0f52c8cb69c494ea624a2e3a' class=''>ElastiCache(key/value pairs), DocumentDB(MongoDB), Neptune, Keyspace - no joins
+
+<br/></li></ul><li id='temp:C:VeS9cc03d658c23433590ac56405' class=''>Object store - S3
+
+<br/></li><li id='temp:C:VeS4c80e8f3a61d489db007ed8af' class=''>Data warehouse - Redshift, Athena, EMR
+
+<br/></li><li id='temp:C:VeS27728c34a3954f1fad351ab90' class=''>Search - OpenSearch(JSON)
+
+<br/></li><li id='temp:C:VeS75b6ec74fe3343c893889af0b' class='parent'>Graphs - Amazon Neptune
+
+<br/></li><ul><li id='temp:C:VeS7bf664a9ea32475fb57f95397' class='parent'>example
+
+<br/></li><ul><li id='temp:C:VeS85236b213fe04cd1a45ab8ac3' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/ug5QePXxtVeBbt19enWXpA' id='temp:C:VeS85236b213fe04cd1a45ab8ac3' width='800' height='55'></img></span></li></ul><li id='temp:C:VeSc54f94ad52bd42c99a6d3df8f' class=''>real-time ordered
+
+<br/></li><li id='temp:C:VeS029ccae37f6943a2bf6f3500d' class=''>no duplicates, strict order
+
+<br/></li></ul><li id='temp:C:VeSc545c8012901498084777db58' class='parent'>Ledger - Quantum ledger DB
+
+<br/></li><ul><li id='temp:C:VeS953b0c0090eb4e1e9138f053a' class=''>a ledger is a book recording financial transactions
+
+<br/></li><li id='temp:C:VeS6cd49c724aee45109bd519f40' class=''>used to review history of all the changes made to your application data over time
+
+<br/></li><li id='temp:C:VeS1fdedc4475704d368d6e11be1' class=''>Immutable system
+
+<br/></li></ul><li id='temp:C:VeSfafa364f376049c7b2255ae5b' class=''>Time series - Amazon Timestream
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS4fbd5b9818814faa964b6f4f1'><li id='temp:C:VeS092332bb7ff04359a15e21f16' class='parent' value='1'><b>Data &amp; Analytics</b>
+
+<br/></li><ul><li id='temp:C:VeSd93e94f82bd74b459cb3c945f' class='parent'><u><b>Athena</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa0f9a09178804570b42b5513d' class=''><b>analyze data in S3 using serverless SQL</b>
+
+<br/></li><li id='temp:C:VeSca1e1528f8774a2496d461503' class=''>If file size &lt; 128MB in S3, the runtime engine might spend additional time to open S3 files, list, get...
+
+<br/></li><li id='temp:C:VeSb92feeed004f431e9fb87e97c' class=''>perform queries periodically, pay only for the queries that users run
+
+<br/></li><li id='temp:C:VeSd22ff8496fc149e5a60998736' class='parent'>Performance improvement
+
+<br/></li><ul><li id='temp:C:VeS1a03145ecc814708b1377f439' class=''>Use columnar data for cost-savings(less scan)
+
+<br/></li><li id='temp:C:VeS5e2e28bcfbd040faa9d6bee29' class=''>Compress data
+
+<br/></li><li id='temp:C:VeS5d1d272e98c9485885669fbf4' class=''>Partition datasets in S3 for easy querying on virtual columns
+
+<br/></li><li id='temp:C:VeS719be73c2f774d7aa5891b829' class=''>use larger files(&gt;128MB) to minimize overhead
+
+<br/></li></ul></ul><li id='temp:C:VeS6a191687489345b6a50c0bf18' class='parent'><u><b>Redshift</b></u>
+
+<br/></li><ul><li id='temp:C:VeS51d610d44140462ba02c8edd7' class=''>For large inserts (few hundred GB to PT)
+
+<br/></li><li id='temp:C:VeS8b075c4e8e504b93a985ddfec' class=''>It’s OLAP - online analytical processing
+
+<br/></li><li id='temp:C:VeS489b0a3bf78e40f4bb59ccca1' class=''><span style="color:#444949" textcolor="#444949">Columnar storage of data</span>
+
+<br/></li><li id='temp:C:VeS1f8c7e8f1ce947c8b05074203' class=''><span style="color:#444949" textcolor="#444949"><b>vs Athena</b>: faster queries / joins / aggregations thanks to indexes</span>
+
+<br/></li><li id='temp:C:VeSd8366428d17647e4951d98577' class='parent'>Snapshot &amp; DR
+
+<br/></li><ul><li id='temp:C:VeSbb747ba24d5b458cb0c4ef97d' class=''>has Multi-AZ mode for some clusters
+
+<br/></li><li id='temp:C:VeS64e57bcc04994ba79d3dfdd89' class=''>can configure amazon redshift to auto copy snapshots of a cluster to another region
+
+<br/></li></ul><li id='temp:C:VeSff1d9e396b2f4af48773ce4c7' class='parent'><b>Redshift spectrum</b>
+
+<br/></li><ul><li id='temp:C:VeSa0c4b2aeb0574bd4ac6e1fd98' class=''><b>efficiently query and retrieves structured and semistructured data</b> from S3 without loading data into Redshift tables
+
+<br/></li><li id='temp:C:VeS2006b330fe2046fd9e6cee7a9' class=''><span style="color:#2d2f31" textcolor="#2d2f31">use <b>less cluster's processing capacity </b>than other queries.</span>
+
+<br/></li><li id='temp:C:VeS1c04283343c54b0c8d625313a' class=''>must have a redshift cluster available to start the query
+
+<br/></li></ul></ul><li id='temp:C:VeS9fb061dd25824718ad84c6a8e' class='parent'><b>Glue</b>
+
+<br/></li><ul><li id='temp:C:VeSd5b2e4f1741e43b8aba9b1f40' class=''>ETL (convert data to Parquet format) → S3
+
+<br/></li><li id='temp:C:VeS7c2719f595ad4fbb9e6149227' class=''>Job Bookmarks - prevent re-processing old data
+
+<br/></li></ul><li id='temp:C:VeSe466cdeaf6964cc19f010d705' class='parent'><b><u>Amazon EMR - </u></b>Elastic MapReduce
+
+<br/></li><ul><li id='temp:C:VeS8bf54be975a64831a0b5d5c7a' class=''>for data processing, ML, web indexing, big data
+
+<br/></li><li id='temp:C:VeS36bd9f753b4548c4a934384d3' class=''>have long-running cluster, or temporary cluster
+
+<br/></li></ul><li id='temp:C:VeS9692125a62304b66923a1ac4d' class='parent'><b>QuickSight</b>
+
+<br/></li><ul><li id='temp:C:VeS16f5f69d16124e86b6d74fbf9' class=''>can share the analysis or the dashboard with Users and Groups
+
+<br/></li></ul><li id='temp:C:VeS2954fc2f4b5b4a08acd2ac236' class='parent'><b>Lake formation</b>
+
+<br/></li><ul><li id='temp:C:VeSa45c81352bc641859ce66e869' class=''>central place to have all data for analytics purpose
+
+<br/></li><li id='temp:C:VeSe3b8bc34818c48f3ae9db344b' class=''><span data-section-style='11' style='max-width:65%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/uy7YlkwaXtgVTlBBeiC_Fg' id='temp:C:VeSe3b8bc34818c48f3ae9db344b' width='525' height='190'></img></span></li></ul><li id='temp:C:VeSf8eb9827d07c4ac19f90b1021' class='parent'><b>Kinesis data analytics</b>
+
+<br/></li><ul><li id='temp:C:VeS3a3ff1fed6c046218656621aa' class=''><b>real-time</b> analytics on Kinesis data stream &amp; firehose using SQL
+
+<br/></li><li id='temp:C:VeS889ce4d724f444f9a320c477f' class='parent'>Kinesis data stream vs. MSK - Managed streaming for Apache Kafka
+
+<br/></li><ul><li id='temp:C:VeSa10ea9acbf9b45d28bd022950' class=''><span data-section-style='11' style='max-width:65%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/6f6LJ2yRCqpN7SPSVkELEQ' id='temp:C:VeSa10ea9acbf9b45d28bd022950' width='526' height='194'></img></span></li></ul></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS7a0cf6dfae4140fb832df7d1f'><li id='temp:C:VeS200ff8e9732c4a3ebdd72c344' class='parent' value='1'><b>ML</b>
+
+<br/></li><ul><li id='temp:C:VeS877642397ce54d1cbf3a21e76' class='parent'><b>Rekognition</b>
+
+<br/></li><ul><li id='temp:C:VeSdf1d1aaca7294442b26611bc7' class=''>Find objects, people, text, scenes in <b>images</b> and <b>videos </b>using ML
+
+<br/></li><li id='temp:C:VeS9ee07d285e474991ba085b022' class=''>Facial analysis/search
+
+<br/></li></ul><li id='temp:C:VeS7034b96f19ab480ba60622147' class='parent'><b>Transcribe</b>
+
+<br/></li><ul><li id='temp:C:VeS6cc5e37e7d7b414a91259110d' class=''>speech →  text
+
+<br/></li><li id='temp:C:VeS78a341376a1e4eccaea0bf5c5' class=''>auto remove PII - personally identifiable info using redaction
+
+<br/></li></ul><li id='temp:C:VeS23584fc5d3254d94b66750db9' class='parent'><b>Polly</b>
+
+<br/></li><ul><li id='temp:C:VeS55e824f7c8c74c528c55c14b0' class=''>text → speech
+
+<br/></li><li id='temp:C:VeSe1da77b738a14b3384f9bccc5' class=''><span style="color:#444949" textcolor="#444949">Speech </span><span style="color:#444949" textcolor="#444949">Synthesis Markup Language (SSML) - enable more customization</span>
+
+<br/></li></ul><li id='temp:C:VeScb6056d2e7514b5e92991cc8b' class='parent'><b>Lex &amp; Connect</b>
+
+<br/></li><ul><li id='temp:C:VeS2af6d19673a24f80b0cc6f1f9' class='parent'>Lex
+
+<br/></li><ul><li id='temp:C:VeS24704b74df3141aca6d9051d9' class=''>like Alexa
+
+<br/></li></ul><li id='temp:C:VeS69e0eaddb4e04416b0aa6f7a5' class='parent'>Connect
+
+<br/></li><ul><li id='temp:C:VeS5d9029650f9248af80c62dff5' class=''>receive calls, create  contact flows, cloud-based virtual contact center
+
+<br/></li></ul></ul><li id='temp:C:VeS7e451498fed246548b2dac4fc' class='parent'><b>Comprehend</b>
+
+<br/></li><ul><li id='temp:C:VeSa8ea720b37114d73beeb3c990' class=''>For NLP - Natural Language Processing
+
+<br/></li><li id='temp:C:VeS01628779e6a647648c3b73ac7' class=''>use ML to find insights and relationship in text
+
+<br/></li><li id='temp:C:VeSddecfc103bd6474f8498067a4' class='parent'>Comprehend Medical
+
+<br/></li><ul><li id='temp:C:VeS2519252e370b42d38f408bc5f' class=''>detect PHI - Protected Health Information
+
+<br/></li></ul></ul><li id='temp:C:VeS4f96466b4fed43d19bcbbf635' class=''><b>SageMaker</b> - to build ML models
+
+<br/></li><li id='temp:C:VeSb3eb478be1fd4e88b23ed3d5e' class=''><b>Forecast</b> - use ML to forecast
+
+<br/></li><li id='temp:C:VeS15a05160f12545eabbc258744' class=''><b>Kendra</b> - document search service powered by ML
+
+<br/></li><li id='temp:C:VeS5697010c24f24ad6965c6ccf0' class=''><b>Personalize</b> - to build app with real-time personalized recommendations
+
+<br/></li><li id='temp:C:VeS9f0c2a4ea0474cfbbeb106467' class=''><b>Textract</b> - auto extract text, handwriting, and data from any scanned document
+
+<br/></li></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS5491f9ab943b49b693ff2323f'><li id='temp:C:VeS1866017c8e864c649a9d06b48' class='parent' value='1'><b>AWS Monitoring</b>
+
+<br/></li><ul><li id='temp:C:VeSa3de476401ee4c588cb0b7617' class='parent'>CloudWatch
+
+<br/></li><ul><li id='temp:C:VeS4a1e0888b974419a95ee8f4e4' class=''><span style="color:#333333" textcolor="#333333">Share a single dashboard and designate as many as <b>five email addresses</b> of people(do not have AWS account) who can view the dashboard. </span>
+
+<br/></li></ul><li id='temp:C:VeSe4caa5a12abb492b9e3bc54a4' class='parent'><u><b>CloudWatch Log - S3 export</b></u>
+
+<br/></li><ul><li id='temp:C:VeS6326788bbff44d229bc4204f0' class=''>CloudWatch alarm actions provide auto stop, terminate, reboot, or recover instance
+
+<br/></li><li id='temp:C:VeSdb16386bd58745bd8db507530' class=''>log data can take up to <b>12 hr</b> to become available for export
+
+<br/></li><li id='temp:C:VeSf50cbe278a194b0f93dd77d6b' class=''>API call CreateExportTask
+
+<br/></li><li id='temp:C:VeS5cf827a09f02469c80dd3e757' class=''>not near-real time
+
+<br/></li></ul><li id='temp:C:VeSeac0d25ec1c54a0c9db7b025e' class='parent'><u><b>Subscription Filter</b></u>
+
+<br/></li><ul><li id='temp:C:VeSc4b358b7046040bd92bdab883' class=''>filter which logs are events delivered to different destination
+
+<br/></li></ul><li id='temp:C:VeS7da08f2609f74a59b4808b583' class='parent'><u><b>Amazon EventBridge - schema registry</b></u>
+
+<br/></li><ul><li id='temp:C:VeS3b4788d3196e442297534f2f9' class=''>allow you to generate code for app that will know in advance how data is structured in the event bus
+
+<br/></li></ul><li id='temp:C:VeS1d793fb6cd92434eb9570a954' class='parent'><u><b>AWS CloudTrail</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5d5ac4793c0447d4a873fd7f2' class=''>events are stored for 90 days
+
+<br/></li><li id='temp:C:VeSfc6c3f5fd46e483da1d29161a' class=''>provides <b>governance, compliance and audit for AWS account</b>
+
+<br/></li><li id='temp:C:VeSa12eb24b9a9f4466b80ad7071' class=''>Get history of event/API calls made within your AWS account
+
+<br/></li><li id='temp:C:VeS59f96954ca464c5fab27c1fd2' class=''>apply to all regions or single region
+
+<br/></li></ul><li id='temp:C:VeSb5826843bff14671a0c9d1d92' class='parent'><u><b>CloudTrail Insight</b></u>
+
+<br/></li><ul><li id='temp:C:VeS91b6892c10d2424ca70f74cc6' class=''>detect unusual activity
+
+<br/></li></ul><li id='temp:C:VeS80febe315760406a819f7fc5a' class='parent'><u><b>AWS Config</b></u>
+
+<br/></li><ul><li id='temp:C:VeSfb9f15fe54fd4852ab8f3ee48' class='parent'>AWS Config conformance packs
+
+<br/></li><ul><li id='temp:C:VeSc1ccabf056e8464b89cf61c41' class=''>collections of AWS Config rules and <b>remediation</b> actions
+
+<br/></li></ul><li id='temp:C:VeS476b938333574bb8935f81471' class=''>help record configuration and changes over time
+
+<br/></li><li id='temp:C:VeS6213738e75224dd8a41a12524' class=''>Config rules no deny
+
+<br/></li><li id='temp:C:VeSe5064ddb167d4ffb8a82b5e65' class=''><b>check for expiring certificates</b>
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS1e61977a63ef414b9af009f1d'><li id='temp:C:VeSe0d4489867274e64aecb8f5fb' class='parent' value='1'><b>*AWS security</b>
+
+<br/></li><ul><li id='temp:C:VeSf0ff1e359fe34efe8443cdbdb' class='parent'><u><b>KMS</b></u>
+
+<br/></li><ul><li id='temp:C:VeSd17d6aa88039405d8688ee3bf' class='parent'>KMS keys types
+
+<br/></li><ul><li id='temp:C:VeS0e70990d9e014835925003146' class=''>Symmetric (ASE-256 keys) - single key
+
+<br/></li><li id='temp:C:VeS09e635eda590419c994b01c90' class='parent'>Asymmetric(RSA &amp; ECC pair keys)
+
+<br/></li><ul><li id='temp:C:VeS6355a51f46624d84a1fb38bb3' class=''>public + private key
+
+<br/></li></ul></ul><li id='temp:C:VeSf7f4b9461e3e4c4280d14be71' class='parent'>Automatic key rotation <b>every 1 year</b>
+
+<br/></li><ul><li id='temp:C:VeS543c4d21e97947fba258508b4' class=''>must be enabled for Customer-managed KMS Key
+
+<br/></li></ul><li id='temp:C:VeSc658ef996018450fbeccd4309' class='parent'>Key policies
+
+<br/></li><ul><li id='temp:C:VeSab8fc6fa981749e9997759a94' class=''>Default KMS Key policy → for entire account
+
+<br/></li><li id='temp:C:VeS811c8cf073ed45838348bb909' class=''>Custom KMS Key policy → specific users
+
+<br/></li></ul><li id='temp:C:VeS4091d0dc52064231b8741b9dc' class='parent'>Copy snapshot across account
+
+<br/></li><ul><li id='temp:C:VeS2c8114fe75994d679108e38f4' class=''>Snapshot with KMS key → <b>Attach KMS key policy to authorize cross-account access</b> → share encrypted snapshot → create copy snapshot with another KMS key → release snapshot
+
+<br/></li></ul><li id='temp:C:VeSd9c4f5f59e81488aa95c2e72a' class='parent'>KMS multi-region
+
+<br/></li><ul><li id='temp:C:VeSe25f80b960aa41be9523bc249' class=''>For global client-side encryption, Global DynamoDB, Global Aurora
+
+<br/></li><li id='temp:C:VeSd692d6e2c722404098fe8a271' class=''>Each multi-region key is managed <b>independently</b>
+
+<br/></li><li id='temp:C:VeSd491ad190127468cb28d5982b' class=''>for protecting specific field even from database admin (SSN col)
+
+<br/></li></ul></ul><li id='temp:C:VeS869327293d7c4b97afe331475' class='parent'><b><u>S3 replication encryption</u></b>
+
+<br/></li><ul><li id='temp:C:VeS95a5ef9852ef4a61a0680a3e6' class=''>encrypted &amp; unencrypted objects with SSE-S3 are replicated by default
+
+<br/></li></ul><li id='temp:C:VeSa48eae4e7da0495a9a7b45072' class='parent'><u><b>AMI sharing process encrypted via KMS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5e75b44b92e14ef29e87b03cd' class=''>AMI + KMS from source account → add <b>launch permission</b> to target account → share encrypted snapshot → assign permission in target to DescribeKey, ReEncrypted, CreateGrant, Decrypt → launch EC2 from AMI with new KMS key
+
+<br/></li></ul><li id='temp:C:VeS72285a76c6d940219ba70a079' class='parent'><u><b>SSM parameter store - in System manager</b></u>
+
+<br/></li><ul><li id='temp:C:VeS299be81839c4446a971bc1709' class=''>require <b>customer</b> to <b>rotate</b> the keys
+
+<br/></li><li id='temp:C:VeS5938090417dc43ee805947c13' class='parent'>standar
+
+<br/></li><ul><li id='temp:C:VeS196465568d6a4fa9a65e62412' class=''>10,000 parameters, max 4KB of parameter value
+
+<br/></li></ul><li id='temp:C:VeSfbf982c6daf648a1804bfa031' class='parent'>Advanced
+
+<br/></li><ul><li id='temp:C:VeS60dfedd0116b4f5684c0a0dff' class=''>100,000, 8KB
+
+<br/></li><li id='temp:C:VeSb630432dac8d46878d3ea3204' class=''>Allow to assign TTL to a parameter to force
+
+<br/></li><li id='temp:C:VeS36a4901bc44549079f80d9189' class=''>allow multi-policies at a time
+
+<br/></li></ul></ul><li id='temp:C:VeS31b14fc1824d427087d60b051' class='parent'><u><b>AWS secrets manager</b></u>
+
+<br/></li><ul><li id='temp:C:VeS0c8681e5851c4d9091b62797c' class=''>Can force rotation of secrets every X days
+
+<br/></li><li id='temp:C:VeS379e1ff7360c4541bc9bb94b2' class=''>replicate secrets multi-regions, can keep read replicas in sync with primary secret
+
+<br/></li></ul><li id='temp:C:VeSa8d63831273c4d84a1db21bd7' class='parent'><u><b>ACM - AWS Certificate Manager</b></u>
+
+<br/></li><ul><li id='temp:C:VeS0a2df290e15948d1ab51c3c6d' class=''>provision, manage, deploy TLS certificate (HTTPS)
+
+<br/></li><li id='temp:C:VeS8f8a0abd8e81423aa8ae14577' class=''>can not use ACM with EC2
+
+<br/></li><li id='temp:C:VeS0916a176c3514ae782f705f4b' class='parent'>import 3rd party/public certificates
+
+<br/></li><ul><li id='temp:C:VeS8cebf024b1794984aa89d5804' class=''>No automatic renwal
+
+<br/></li><li id='temp:C:VeS8c8407e77269483497bfed5a1' class=''>ACM send daily expiration event → EventBridge
+
+<br/></li><li id='temp:C:VeS1ea880d6e71748dd81eb425b1' class=''><b>AWS Config </b>(-&gt;EventBridge)<b> can check for expiring certificates</b>
+
+<br/></li></ul><li id='temp:C:VeSddbbb156964444a68f76d4da1' class='parent'>ACM with ALB
+
+<br/></li><ul><li id='temp:C:VeS805595c00176468496268a649' class=''>can redirect HTTP to HTTPS
+
+<br/></li></ul><li id='temp:C:VeS4949446c92404a5d8c44be0cd' class='parent'>ACM with API gateway
+
+<br/></li><ul><li id='temp:C:VeS0dccae669d0543419d4031bf6' class=''><span data-section-style='11' style='max-width:35%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/KX5Qlko_wKT0n8lSAwYEug' id='temp:C:VeS0dccae669d0543419d4031bf6' width='286' height='469'></img></span></li><li id='temp:C:VeSb41006d5508b418c9f68011d5' class='parent'>Edge-optimized
+
+<br/></li><ul><li id='temp:C:VeSe2d972c98d664033854571790' class=''>Request are from CLoudFront edge location, thats why the TLS certificate must be in the same region as CloudFront
+
+<br/></li></ul><li id='temp:C:VeSe94f215261194116a15e98050' class='parent'>Regional
+
+<br/></li><ul><li id='temp:C:VeS02f4a07f20264239819e1c232' class=''>TLS certificate must be in the same region as  API gateway
+
+<br/></li></ul><li id='temp:C:VeSc25c86f981f34e57b24d1c2eb' class=''>Private
+
+<br/></li></ul></ul><li id='temp:C:VeSf25c805a6f274672942f0274b' class='parent'><u><b>AWS WAF</b></u>
+
+<br/></li><ul><li id='temp:C:VeS3c87412f52464df0986f621d8' class=''>Layer 7(HTTP)
+
+<br/></li><li id='temp:C:VeSd56732a325f947d9a7b3fcc33' class=''>for ALB, API gateway, CloudFront, AppSync GraphQL API, Cognito User Pool
+
+<br/></li><li id='temp:C:VeS820db495e96b4d0892b6824fb' class=''>IP set up to 10,000, can use multi-rules for more IPs
+
+<br/></li><li id='temp:C:VeS51f199b10c794e9c8d9509075' class='parent'>security
+
+<br/></li><ul><li id='temp:C:VeSb55ee73b35744cbc89b097aba' class=''><b>SQL injection, Cross-Site scripting(XSS)</b>
+
+<br/></li><li id='temp:C:VeSb5df54c5f60540dc905d8cbca' class=''>size contraints, geo-match
+
+<br/></li><li id='temp:C:VeS2931fd46b31d46738b56369a9' class=''>rate-based rules for DDoS
+
+<br/></li></ul><li id='temp:C:VeS7392b0a6f95e418c8d303d9f5' class=''>WebACL is regional
+
+<br/></li></ul><li id='temp:C:VeS19c52bd7fe1e47d38ae7cae21' class=''><u><b>AWS shield - for DDoS</b></u>
+
+<br/></li><li id='temp:C:VeScf758280943a42849f12ddf81' class='parent'><u><b>AWS firewall manager</b></u>
+
+<br/></li><ul><li id='temp:C:VeSa0f7e19e015346a88c355f3f9' class=''>manage rules in all accounts of an AWS Organization
+
+<br/></li><li id='temp:C:VeS995cabc3f0d0494aa99d83241' class=''>rules apply to <b>new resources </b>across all and future account in Org
+
+<br/></li></ul><li id='temp:C:VeS894c33179aea47178de66635d' class='parent'><u><b>Best practices for DDoS</b></u>
+
+<br/></li><ul><li id='temp:C:VeS6ffc7646e9a24a6d96bb3c561' class=''>edges location have DDoS protection (CloudFront, Route53, Global Accelerator)
+
+<br/></li><li id='temp:C:VeS231c5a021be842ae9c2bbbea5' class=''>ELB, ASG
+
+<br/></li></ul><li id='temp:C:VeSc721e49d67f7417db5867c948' class='parent'><u><b>Amazon Inspector</b></u>
+
+<br/></li><ul><li id='temp:C:VeSb95189b65fc149d5b729913e3' class=''>automated security assessments
+
+<br/></li><li id='temp:C:VeSacbe44dbf415421ba31068870' class=''><b>only for EC2, container images &amp; lambda function</b>
+
+<br/></li></ul><li id='temp:C:VeSc14f678709e94568b70666d05' class='parent'><u><b>AWS Macie</b></u>
+
+<br/></li><ul><li id='temp:C:VeS7d16032349674865a845a51b6' class=''>fully managed data security and data privacy service that uses ML and pattern to protect <b>sensitive</b> data(<b>PII</b>)
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSfdb5e038ede94ce48c7467308'><li id='temp:C:VeSffe3cd4c25d247c8b74bd3d72' class='parent' value='1'><b>Amazon VPC</b>
+
+<br/></li><ul><li id='temp:C:VeSa02812be65dc4e2782c6ff894' class='parent'><u><b>CIDR</b></u>
+
+<br/></li><ul><li id='temp:C:VeS777f8d49fea84b6aabbeb63b6' class=''>base ip - xx.xx.xx.xx
+
+<br/></li><li id='temp:C:VeS1c2aa6257abc45b6b1fd29d1c' class=''>subnet mask - /0, /24...
+
+<br/></li></ul><li id='temp:C:VeSa5a3b1a3ebe1434dabd53097f' class='parent'><u><b>Private IP only allow</b></u>
+
+<br/></li><ul><li id='temp:C:VeSf004eba85c2d4f819f1f62b89' class=''><span style="color:#444949" textcolor="#444949">10.0.0.0 – 10.255.255.255 (10.0.0.0/8)çin big networks</span>
+
+<br/></li><li id='temp:C:VeSba226d6f875e4f5997f640083' class=''><span style="color:#444949" textcolor="#444949">172.16.0.0 – 172.31.255.255 (172.16.0.0/12) </span><span style="color:#5091d0" textcolor="#5091d0">AWS defaultVPC in that range </span>
+
+<br/></li><li id='temp:C:VeSc769d7413265476fa3c05540a' class=''><span style="color:#444949" textcolor="#444949">192.168.0.0 – 192.168.255.255 (192.168.0.0/16) ç e.g., home networks</span>
+
+<br/></li></ul><li id='temp:C:VeS52f3e5793d264f64bd5dbe33a' class='parent'><u><b>VPC</b></u>
+
+<br/></li><ul><li id='temp:C:VeSb5da0e719d2c46c782d460879' class='parent'>max 5 CIDR/VPC
+
+<br/></li><ul><li id='temp:C:VeS1089e4e4013d4dd1be24d341f' class=''>min CIDR /28
+
+<br/></li><li id='temp:C:VeS38507ae8abb24e6e829152b93' class=''>max CIDR /16
+
+<br/></li></ul></ul><li id='temp:C:VeS817c4894a6d641a4a106a17cf' class='parent'><u><b>Subnet</b></u>
+
+<br/></li><ul><li id='temp:C:VeS83c1818b772a41fb87fd09acc' class='parent'>5 reserves IP address (F4L1)
+
+<br/></li><ul><li id='temp:C:VeS19496e15ea774bbaa22e70ff2' class=''><span style="color:#444949" textcolor="#444949">10.0.0.0 – Network Address</span>
+
+<br/></li><li id='temp:C:VeS248e96e7fbf842b49e1857ff3' class=''><span style="color:#444949" textcolor="#444949">10.0.0.1 – reserved by AWS for the VPC router</span>
+
+<br/></li><li id='temp:C:VeS248484cad6114910b5df2d749' class=''><span style="color:#444949" textcolor="#444949">10.0.0.2 – reserved by AWS for mapping to Amazon-provided DNS</span>
+
+<br/></li><li id='temp:C:VeS1d1c8b1871fa4195ba9efddbd' class=''><span style="color:#444949" textcolor="#444949">10.0.0.3 – reserved by AWS for future use</span>
+
+<br/></li><li id='temp:C:VeS5af0c9010ab846ad8d2563d6d' class=''><span style="color:#444949" textcolor="#444949">10.0.0.255 – Network Broadcast Address.AWS does not support broadcast in aVPC, therefore the address is reserved</span>
+
+<br/></li><li id='temp:C:VeSc51f3a768399449c954a71d74' class=''>example: if need 29 IP address, /27 = 32 IPs, 32 - 5 = 27 &lt; 29, thus subnet mask should /26
+
+<br/></li></ul><li id='temp:C:VeS408dca583f8f4dc68894cd592' class='parent'>IGW - allow resources in a VPC connect to internet
+
+<br/></li><ul><li id='temp:C:VeS098a9b924f014aed98cd5452c' class=''>scale horizontally and highly available and redundant
+
+<br/></li><li id='temp:C:VeSa1632a2953aa4dfa8ebc242c9' class=''>must edit route table
+
+<br/></li><li id='temp:C:VeS69ab0e3791bf4247b5a66af46' class=''>one IGW/VPC
+
+<br/></li></ul><li id='temp:C:VeSe1c6fc0747e64445bace65848' class='parent'>NAT instance - network address translation
+
+<br/></li><ul><li id='temp:C:VeS92bf1ee215d44bc999f4c839f' class=''>must <b>launch in a public subnet</b>, can be used as a bastion server
+
+<br/></li><li id='temp:C:VeScff890dffa2d4cc9878aa1ce3' class=''>must disable EC2 setting: Source/destination Check
+
+<br/></li><li id='temp:C:VeS51edaea70902484284fb349d7' class=''>Must have Elastic IP
+
+<br/></li><li id='temp:C:VeSafbddc4d2885415cbe8c3eb02' class=''>Route table must to route traffic from private subnet to NAT instance
+
+<br/></li></ul><li id='temp:C:VeSeaed4ff05f124de590b3d578c' class='parent'>NAT gateway
+
+<br/></li><ul><li id='temp:C:VeSbbcd369f20dd41a8883240a43' class=''>is assigned to <b>public subnet</b>
+
+<br/></li><li id='temp:C:VeSd6f912da39a2473cb4141cce8' class=''>pay /hr and bandwidth
+
+<br/></li><li id='temp:C:VeSca423f6e3ad34c2dba446dc68' class=''>5 Gbps and auto scale up to 100 Gbps
+
+<br/></li><li id='temp:C:VeSf0269d25fbda41e7951fa3266' class=''>no SG to manage
+
+<br/></li><li id='temp:C:VeS9d020ca2918b41ca9ac940081' class=''>must create multi NAT Gateway in multi AZs for fault-tolerance
+
+<br/></li></ul></ul><li id='temp:C:VeS3862ff4c7fbd44e1b2db2e3be' class='parent'><b><u>NACL - network access control list</u></b>
+
+<br/></li><ul><li id='temp:C:VeS8ce18a69032649bc89ec395bb' class=''>one NACL / subnet
+
+<br/></li><li id='temp:C:VeS00ef77a3704a43138101dc4aa' class=''>newly created NACLs deny everything
+
+<br/></li><li id='temp:C:VeS9b3d1a04ff214d07a8685147c' class=''>great way of blocking a specific IP address at the subnet level
+
+<br/></li></ul><li id='temp:C:VeS3966018e7739498f982021112' class='parent'><b><u>VPC sharing -</u></b> share one or more subnet
+
+<br/></li><ul><li id='temp:C:VeS2781f7368d7d41969cb2827d6' class=''>allows multiple AWS accounts to create their application resources <span style="color:#2d2f31" textcolor="#2d2f31">into shared and <b>centrally-managed </b>Amazon VPC</span>
+
+<br/></li></ul><li id='temp:C:VeS75479e77a8b24575a3b2b045b' class='parent'><b><u>VPC peering</u></b>
+
+<br/></li><ul><li id='temp:C:VeS925843156b69408398bad517a' class=''><b>private connection</b>
+
+<br/></li><li id='temp:C:VeS931c333aa5654713a6dfec937' class=''>can connect VPC in different AWS accounts/regions
+
+<br/></li><li id='temp:C:VeS22dc52d1760b4e33a9a82d5eb' class=''>Not transitive
+
+<br/></li><li id='temp:C:VeS436d0e60156c408790160303e' class=''>must update route table in each VPC’s subnet
+
+<br/></li></ul><li id='temp:C:VeSb5a7eb91f6c649faad359e347' class='parent'><b><u>VPC endpoints</u></b>
+
+<br/></li><ul><li id='temp:C:VeS68fa25e465514747b107a592c' class='parent'>AWS PrivateLink - not require IGW
+
+<br/></li><ul><li id='temp:C:VeSf85d57a3e55b43ada827a3cda' class=''><b>not require a public</b> IP address on the instances or public access from the instance subnet.
+
+<br/></li><li id='temp:C:VeS39341c795f26466080cbb1ea1' class=''>traffic within the region of VPC
+
+<br/></li></ul><li id='temp:C:VeS8f4c41b3caf44e1f804293e83' class=''>AWS service is publicly exposed
+
+<br/></li><li id='temp:C:VeSfb46c89c4c874c2a9b4745f0a' class=''><b>private network</b>
+
+<br/></li><li id='temp:C:VeS30e763152b88464ea44a8656c' class=''>redundant and scale horizontally
+
+<br/></li><li id='temp:C:VeS6ec83859bb9641288d6368462' class=''>remove the need of IGW, NATGW
+
+<br/></li><li id='temp:C:VeSac0e55bf428f4fd2854b8736f' class='parent'>types
+
+<br/></li><ul><li id='temp:C:VeSba9f6e0ff7614a90abe5ea118' class='parent'><b>Interface endpoints</b>(power by privateLink) - paid
+
+<br/></li><ul><li id='temp:C:VeScac6491a9ee64ed0a2c5db576' class=''><span style="color:#2d2f31" textcolor="#2d2f31"> is an <b>ENI</b> with a private IP address from the IP address range of your subnet that serves as an entry point for traffic destined to a supported service.</span>
+
+<br/></li></ul><li id='temp:C:VeSce40bd470f5243ad96ce669ca' class='parent'><b>Gateway endpoints - free</b>
+
+<br/></li><ul><li id='temp:C:VeS969072db10b14716b6042c8e8' class=''>S3 &amp; DynamoDB
+
+<br/></li><li id='temp:C:VeSfa3c6d8bdae04bd39ac9e79cd' class=''><span style="color:#2d2f31" textcolor="#2d2f31"> is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service.</span>
+
+<br/></li><li id='temp:C:VeS08dad8c731a54554b93e5d2b0' class=''>provisions a gateway and must be used as a target in a route table
+
+<br/></li><li id='temp:C:VeSaf99f0962fd34a3ea431228d1' class=''>not using SG
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS147e2409403447a7a7218aa40' class='parent'><u><b>VPC flow logs</b></u>
+
+<br/></li><ul><li id='temp:C:VeS84829ff181e34e6fbb2a418f0' class=''>monitor &amp; troubleshoot connectivity issues
+
+<br/></li><li id='temp:C:VeS02105565fa7c4658a6a9d83ba' class=''> → s3/ cloudwatch logs/ kinesis data firehouse
+
+<br/></li><li id='temp:C:VeS60eb5465c452426ca7178f1f5' class=''><span style="color:#444949" textcolor="#444949">Captures network information from AWS managed interfaces too: ELB, RDS, ElastiCache, Redshift, WorkSpaces, NATGW,Transit Gateway</span>
+
+<br/></li></ul><li id='temp:C:VeS7eeb733e48644245867daf5de' class='parent'><b><u>Site-to-Site VPN </u></b>- <span style="color:#2d2f31" textcolor="#2d2f31">securely connect your on-premises network to your Amazon VPC</span>
+
+<br/></li><ul><li id='temp:C:VeS23a05c0611f441ee9984073c9' class=''><b>two tunnels</b>, and each tunnel uses a unique VPC public IP
+
+<br/></li><li id='temp:C:VeS2569fe4d237842a293bffe102' class=''>Improve VPN throughput: Use a transit gateway with ECMP routing and <b>add additional VPN tunnels</b>
+
+<br/></li><li id='temp:C:VeS02c8bd028c8a45238ffc0010a' class=''><span data-section-style='11' style='max-width:27%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/ZXphwmueGz4jPmcMostDOQ' id='temp:C:VeS02c8bd028c8a45238ffc0010a' width='218' height='341'></img></span></li><li id='temp:C:VeS7a09aa38570e4091a4c2482a5' class='parent'>VGW - virtual private gateway
+
+<br/></li><ul><li id='temp:C:VeSfca97348e3bc496cb7d86df36' class=''>need to enable route propagation for the VGW in the route table
+
+<br/></li></ul><li id='temp:C:VeS0921210fbffb4275b7a622067' class=''>CGW - customer gateway - on-premises
+
+<br/></li></ul><li id='temp:C:VeSd27538d8ceea44a4b9da08625' class='parent'><u><b>AWS VPN CloudHub</b></u>
+
+<br/></li><ul><li id='temp:C:VeS19439672ca664129b7a0ba0d0' class=''><b>go over public internet</b>
+
+<br/></li><li id='temp:C:VeSbb9e5c252b2d4e6faed8aa3d4' class=''>multi site-to-site VPN connections
+
+<br/></li><li id='temp:C:VeSe152ab0bcb4a4aa889d757629' class=''><span data-section-style='11' style='max-width:50%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/lLi7_haX80ktdKy-5tdntQ' id='temp:C:VeSe152ab0bcb4a4aa889d757629' width='402' height='316'></img></span></li></ul><li id='temp:C:VeS76b309b99f854f44b438f396b' class='parent'><u><b>DX - private internet</b></u>
+
+<br/></li><ul><li id='temp:C:VeS70d92589f0ef495fa7fcbdf34' class=''><span data-section-style='11' style='max-width:64%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/B7wNqR193LjoWXSnTcTE3w' id='temp:C:VeS70d92589f0ef495fa7fcbdf34' width='513' height='239'></img></span></li><li id='temp:C:VeSbf5feea6d6fc465fb62a86cfa' class='parent'><b>not encrypted but is private connection</b> from remote network to your VPC
+
+<br/></li><ul><li id='temp:C:VeSa528aac79bef4bf784c2cf91c' class=''>AWS DX + VPN provide IPsec-encrypted private connection
+
+<br/></li></ul><li id='temp:C:VeS5ef9e15af877418288fa1d3de' class=''>Access public resources and private on same connection
+
+<br/></li><li id='temp:C:VeSab0cebb994524a328d1b5655c' class=''>support both IPv4, IPv6
+
+<br/></li><li id='temp:C:VeS0133f9c75a4e497981d14ba39' class='parent'>DX gateway
+
+<br/></li><ul><li id='temp:C:VeSf01853d6bc2b4f3dab8579d44' class=''>for connecting one or more VPC in many regions with same account
+
+<br/></li></ul><li id='temp:C:VeS8ed73ad32e8347b68b3e2c05d' class='parent'>Dedicated connections - 1, 10, 100 Gpbs
+
+<br/></li><ul><li id='temp:C:VeS7783dd44b1a34b969fc5180a9' class=''>physical ethernet port dedicated to a customer
+
+<br/></li></ul><li id='temp:C:VeSc45302ce5bac4f7a9bfd65b80' class=''>Host connection - 50, 500Mbps, to 10Gbps
+
+<br/></li></ul><li id='temp:C:VeS17358718210b445499c283b74' class='parent'><b><u>Transit gateway </u></b> to interconnect VPC and on-premises network
+
+<br/></li><ul><li id='temp:C:VeS46dfa052944e470b8ad60b195' class=''><span data-section-style='11' style='max-width:28%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/ZGrI1S_q79tLeBhIE9SuYw' id='temp:C:VeS46dfa052944e470b8ad60b195' width='225' height='262'></img></span></li><li id='temp:C:VeS336a6d1524024159b1f6b7d67' class=''>For having transitive peering between thousands of VPC and on-premises, hub-and spoke connection
+
+<br/></li><li id='temp:C:VeS51303912dcb84a39b61a31d71' class=''>ECMP - equal cost multi path routing
+
+<br/></li><li id='temp:C:VeS8041ec4085694c32934b8ae46' class=''>share DX between multi-accounts
+
+<br/></li><li id='temp:C:VeS167f3614b8d640a9904de6e86' class=''>increasing bandwidth by creating multi Site-to-Site VPN connections
+
+<br/></li><li id='temp:C:VeSd4ddf20c77434909a78dfa847' class=''><span data-section-style='11' style='max-width:46%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/UxVcvklyPTZrjZ0MWULpWg' id='temp:C:VeSd4ddf20c77434909a78dfa847' width='372' height='205'></img></span></li></ul><li id='temp:C:VeS2629aa21b2144e8bbc5b3cc6c' class='parent'><b><u>VPC traffic mirroring</u></b>
+
+<br/></li><ul><li id='temp:C:VeS04e00668aa64455d92ea0bbe1' class=''>Capture from sources(ENIs) to target(ENI)
+
+<br/></li></ul><li id='temp:C:VeS189e7f77536647a6a100dec4b' class='parent'><u><b>IPv6</b></u>
+
+<br/></li><ul><li id='temp:C:VeS4e45c7779c3f4cc996b839feb' class=''>They are public and Internet-routable in AWS
+
+<br/></li><li id='temp:C:VeSef3c40fed91747d7801d0e433' class=''>IPv4 cannot be disabled for VPC and subnets
+
+<br/></li><li id='temp:C:VeS4af3b08820764760b02947f0d' class=''>IPv6 can be disabled
+
+<br/></li><li id='temp:C:VeScef8c7368401442da2077b638' class=''>EC2 has both, if EC2 can’t be launched, maybe IPv4 issue, fix this but creating a new IPv4 CIDR in subnet.
+
+<br/></li></ul><li id='temp:C:VeS0eb7c3a51d64401792a381b0c' class='parent'><u><b>Egress-only internet gateway</b></u>
+
+<br/></li><ul><li id='temp:C:VeS96f86baeaefa4993828cf4d43' class=''>similar to NAT gateway but IPv6 only
+
+<br/></li><li id='temp:C:VeSa68bc85d92c04da9b68676e1b' class=''>must update route table
+
+<br/></li></ul><li id='temp:C:VeScb255ea3590645f3bd968c297' class='parent'><u><b>Cost</b></u>
+
+<br/></li><ul><li id='temp:C:VeS5b73b23904824d6d87cd5bad5' class=''><span data-section-style='11' style='max-width:56%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/PRSqLpYd52bdi-5Ddt9vfg' id='temp:C:VeS5b73b23904824d6d87cd5bad5' width='452' height='248'></img></span></li><li id='temp:C:VeS0801eeab77ea4d089905ef159' class=''><span data-section-style='11' style='max-width:55%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/M-xme0ODyEeJU7EwzVtlPA' id='temp:C:VeS0801eeab77ea4d089905ef159' width='443' height='230'></img></span></li><li id='temp:C:VeS50038cdf1a6b422ca7aae5b5a' class=''><span data-section-style='11' style='max-width:56%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/QYqEePgxDI4AnGdkwYICxA' id='temp:C:VeS50038cdf1a6b422ca7aae5b5a' width='448' height='350'></img></span></li></ul><li id='temp:C:VeSc95572e54fdf4ee5a999306cb' class='parent'><u><b>AWS network firewall</b></u>
+
+<br/></li><ul><li id='temp:C:VeSdfd5137bab9e4086afdee3e49' class=''>Protect entire VPC from layer 3 - 7
+
+<br/></li><li id='temp:C:VeSdd1276c27b7b4559b2c42b881' class=''>centrally managed cross-account to apply VPCs
+
+<br/></li><li id='temp:C:VeS51bf4b97fd4d48fc83cbe7d43' class=''><b>Traffic filtering - allow, drop, alert for the traffic that matches the rules</b>
+
+<br/></li><li id='temp:C:VeS443e23abc6144704bdea91e5e' class=''>active flow inspection to protect against network threats
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeS83feea93f4b34da4880531256'><li id='temp:C:VeS433b8747cd134d7593b4eb1a8' class='parent' value='1'><b>Disaster Recovery &amp; Migrations</b>
+
+<br/></li><ul><li id='temp:C:VeS31ae7bedd6bd451ebb5433674' class='parent'><u><b>DR</b></u>
+
+<br/></li><ul><li id='temp:C:VeSc22a4c1acf25435a997ce871d' class=''>RPO - recovery point objective (data loss between disaster)
+
+<br/></li><li id='temp:C:VeS93311d6484d8451998cab21ca' class=''>RTP - recovery time objective (downtime between diaster)
+
+<br/></li><li id='temp:C:VeSc285f00528b94eca9a8d6a3b1' class='parent'>DR strategies
+
+<br/></li><ul><li id='temp:C:VeS85b3c595c4d14195ae9ae14d6' class=''><span data-section-style='11' style='max-width:86%' class=''><img src='https://quip-amazon.com/blob/VeS9AAFACQi/yDv2Pv2KipoTdpOC_AsiqA' id='temp:C:VeS85b3c595c4d14195ae9ae14d6' width='688' height='212'></img></span></li><li id='temp:C:VeS108c7093dfd14e15ae451bfcf' class='parent'>Backup and restore (hours)
+
+<br/></li><ul><li id='temp:C:VeS55fa5da693184cf28d7da44e4' class=''>on-premise - AWS: AWS storage gateway, snowball
+
+<br/></li><li id='temp:C:VeSdff8c02579104e59acc1d1456' class=''>cloud: snapshot
+
+<br/></li></ul><li id='temp:C:VeSd82ba9fba9bb47e69fb68d032' class='parent'>Pilot light (10+ mins) - for <b>critical core</b>
+
+<br/></li><ul><li id='temp:C:VeSf4875f85368a46eca525fb0a9' class=''>a small version of app/instance is always running in the cloud
+
+<br/></li></ul><li id='temp:C:VeS3905e9355b6e46738c992623a' class='parent'>warm standby (mins)
+
+<br/></li><ul><li id='temp:C:VeS08baf7762a9c485b9d7394c08' class=''>full system(ELB, ASG, EC2) is up and running, but <b>min size</b>
+
+<br/></li></ul><li id='temp:C:VeSc963d7dbb7e74f5faa8e40b9d' class='parent'>hot site / multi site approach (real-time)
+
+<br/></li><ul><li id='temp:C:VeS9aece6228f344684bde0e6365' class=''><b>full production</b> scale is running AWS and on-premise
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS36f8ac20566e403d8d1c94eff' class='parent'><u><b>DMS</b></u> - Database migration service
+
+<br/></li><ul><li id='temp:C:VeS5d509f4a8395410dad6619fdf' class='parent'><b>continuously replicate with high availability and consolidate databases</b>
+
+<br/></li><ul><li id='temp:C:VeSa36a45026c1948c19ae4f4143' class=''>i.e: <span style="color:#2d2f31" textcolor="#2d2f31">During a database migration to Amazon Redshift, AWS DMS first moves data to an Amazon S3 bucket. When the files reside in an Amazon S3 bucket, AWS DMS then transfers them to the proper tables in the Amazon Redshift data warehouse.</span>
+
+<br/></li></ul><li id='temp:C:VeS6c65899e0976441fbba98222d' class=''>must create EC2 instance to perform the replication tasks
+
+<br/></li><li id='temp:C:VeS13ed6039f04e46c784e5456c3' class=''>use <b>SCT</b>(schema conversion tool) If schema of target and source is different
+
+<br/></li><li id='temp:C:VeSfa04a225ae1b45e090047d4c8' class='parent'>Multi-AZ deployment, DMS provisions and maintains a syn stand replica in a different AZ
+
+<br/></li><ul><li id='temp:C:VeS801e886984a5438190b048771' class=''>provides data redundancy
+
+<br/></li><li id='temp:C:VeS699b6f63ece342d08dd6ed7d9' class=''>eliminates I/O freezes
+
+<br/></li><li id='temp:C:VeS1cd7c0709bc34054bcc730e22' class=''>minimizes latency spikes
+
+<br/></li></ul></ul><li id='temp:C:VeS057f6e7b43654724b284f5870' class='parent'><u><b>AWS backup</b></u>
+
+<br/></li><ul><li id='temp:C:VeS8123a57f69e94bff833afcf01' class=''>centrally manage and automate backups across AWS services
+
+<br/></li><li id='temp:C:VeS0c19b1f9ed064c77a8411cccf' class=''>support cross-region/account backups
+
+<br/></li><li id='temp:C:VeS1a764c260c9b424192a600d93' class='parent'>Backup Vault lock
+
+<br/></li><ul><li id='temp:C:VeSb202987f31a14bf19ac3145f8' class=''>enforce WORM(write once read many)
+
+<br/></li><li id='temp:C:VeSc01cfb5d11404ec2b3b0f86af' class=''>even root user cannot delete 
+
+<br/></li></ul></ul><li id='temp:C:VeS07b5ec65ad444f22b3fdb7d93' class='parent'><u><b>AWS application discovery service</b></u>
+
+<br/></li><ul><li id='temp:C:VeS2878e373f0e441958888a7531' class=''>Agentless discovery connector
+
+<br/></li><li id='temp:C:VeS1d11c87e8cfd48f7917fe2226' class=''>Agent-based discovery
+
+<br/></li></ul><li id='temp:C:VeS1943938afe8e48768015a2569' class='parent'><u><b>VMware cloud</b></u>
+
+<br/></li><ul><li id='temp:C:VeS316765582e554fceb0357f8c4' class=''>extend data center capacity to the AWS
+
+<br/></li><li id='temp:C:VeS7dc8408deaf341edb5b54757e' class=''>manage on-premises data center
+
+<br/></li></ul><li id='temp:C:VeS32aa266c8e9c4bd19558920ad' class='parent'><u><b>MGN</b></u> - application migration service
+
+<br/></li><ul><li id='temp:C:VeSa0db701618704e20a5a7f24e1' class=''>Lift-and-shift(rehost) solution
+
+<br/></li></ul></ul></ul></div><hr style='width:100%'><div style="" class="" data-section-style='5'><ul id='temp:C:VeSa3d2eb7494564f388d198fc78'><li id='temp:C:VeSc59699fda08e47a6951ca9acb' class='parent' value='1'><b>Other services</b>
+
+<br/></li><ul><li id='temp:C:VeS54feb1f3079b45289d0efdf9d' class='parent'><u><b>GuardDuty</b></u> - threat detection
+
+<br/></li><ul><li id='temp:C:VeSc45662075ff643e2acbec3d26' class=''>VPC Flow Logs, DNS logs, AWS CloudTrail events
+
+<br/></li><li id='temp:C:VeS882707135f5a41f8842ce6ca7' class=''><span style="color:#2d2f31" textcolor="#2d2f31">uses integrated threat intelligence such as known <b>malicious IP addresses</b>, <b>anomaly detection</b>, and machine learning to identify threats more accurately.</span>
+
+<br/></li></ul><li id='temp:C:VeS2ef4e4e28dc744c899064f203' class='parent'><u><b>Cognito</b></u>
+
+<br/></li><ul><li id='temp:C:VeS6adbb6aabfca400d83a6fc958' class='parent'>user pool
+
+<br/></li><ul><li id='temp:C:VeS258d65aa2506408ea720f1bcf' class=''><span style="color:#2d2f31" textcolor="#2d2f31">provide built-in user management or integrate with external identity providers, such as Amazon, facebook...</span>
+
+<br/></li></ul><li id='temp:C:VeS0fe3dd1ffa4e4ec990da840d6' class='parent'>Identity pool
+
+<br/></li><ul><li id='temp:C:VeSabbc4b1ed74949cb932f6b98f' class=''><span style="color:#2d2f31" textcolor="#2d2f31">provide AWS credentials to grant your users access to other AWS services.</span>
+
+<br/></li></ul></ul><li id='temp:C:VeS2ce6d36e5e164ad0bbf0ca189' class='parent'><b><u>AWS SES</u></b> - simple email service
+
+<br/></li><ul><li id='temp:C:VeSfd4d3c05ba974db688bf8a909' class=''>fully managed service to send email securely, globally, at scale
+
+<br/></li></ul><li id='temp:C:VeSd00892ea67d54ecab57ca82fb' class='parent'><u><b>AWS Pinpoint</b></u>
+
+<br/></li><ul><li id='temp:C:VeS0a898fbfd2ec4d388426d3efb' class=''>scalable 2-way (in/outbound) marketing communications service
+
+<br/></li></ul><li id='temp:C:VeS84b58145c9fe449c931a17d36' class='parent'><u><b>AWS System manager </b></u>
+
+<br/></li><ul><li id='temp:C:VeS9e8af5a81bb440d58a1b031aa' class='parent'>SSM session manager
+
+<br/></li><ul><li id='temp:C:VeSbb63785bbcb94d92816e037fe' class=''><span style="color:#505050" textcolor="#505050">No open inbound ports and no need to manage bastion hosts or SSH keys</span>
+
+<br/></li></ul><li id='temp:C:VeSd7b990af548944168f12f8c73' class='parent'>patch Manager
+
+<br/></li><ul><li id='temp:C:VeS32d70e75976b4551b78d792d6' class=''>auto the process of patching managed instances
+
+<br/></li><li id='temp:C:VeS6ed5cc0337de48b3b51fcd1a4' class=''>patch on-demand or on a schedule using Maintenance Windows
+
+<br/></li></ul><li id='temp:C:VeS8b54abbd07f94a779be147878' class='parent'>Maintenance windows
+
+<br/></li><ul><li id='temp:C:VeScdc69339fca849649dc6cfda9' class=''>defines a schedule for when to perform actions on your instaces
+
+<br/></li></ul><li id='temp:C:VeS578071f74c4b4023b7595ccb8' class='parent'>Automation
+
+<br/></li><ul><li id='temp:C:VeSe9be5b6762b94854adf1d5d9b' class=''>simplifies common maintenance and deployment tasks of EC2 instances and other AWS resources
+
+<br/></li><li id='temp:C:VeS40db8851ca4a404eb4eb3437d' class=''>Automation Runbook - SSM documents to define actions preformed on EC2 instance or AWS resources
+
+<br/></li></ul></ul><li id='temp:C:VeSdb78067c23d6471a82705e474' class='parent'><u><b>AWS Cost explorer</b></u>
+
+<br/></li><ul><li id='temp:C:VeSc60a782cc46c43518b7c0c4f8' class=''>Visualize
+
+<br/></li><li id='temp:C:VeSbfc700ce014445809b472904e' class=''>Forecast usage up to 12 months based on previous usage
+
+<br/></li><li id='temp:C:VeSa84d95ec52e94f9686c771d46' class=''>choose an optimal savings plan
+
+<br/></li></ul><li id='temp:C:VeS1958b5a8cf9c4d02aa28c3799' class='parent'><u><b>AWS Cost Anomaly Detection</b></u>
+
+<br/></li><ul><li id='temp:C:VeS8f1a00a2f09749049360c16c4' class=''>Continuously monitor cost and usage ML to detect unusual spends
+
+<br/></li></ul><li id='temp:C:VeS853e652190f745f0a994a9597' class='parent'><u><b>AWS Batch</b></u>
+
+<br/></li><ul><li id='temp:C:VeS926b0a5cbd634ce0b1ae8b9a2' class=''>fully managed batch processing at any scale
+
+<br/></li><li id='temp:C:VeS5a2fa0244b684f60b5dd46105' class=''>Batch will dynamically launch EC2 instance or Spot instances
+
+<br/></li><li id='temp:C:VeS844baaf6615a452b8355c65c2' class=''>Batch jobs are defined as Docker images and run on ECS
+
+<br/></li><li id='temp:C:VeSedc12221b4c543668f5efa266' class='parent'>Batch vs. Lambda
+
+<br/></li><ul><li id='temp:C:VeS97614c7a428c41a794dc5f944' class='parent'>Lambda
+
+<br/></li><ul><li id='temp:C:VeSd2c951d08984427e8b4eb9862' class=''>limited runtimes,
+
+<br/></li><li id='temp:C:VeS8ce34f16c9b549fc95a43b529' class=''>limited temporary disk space
+
+<br/></li><li id='temp:C:VeS421a3bd6a0944c989e744ac49' class=''>serverless
+
+<br/></li></ul><li id='temp:C:VeSe6380277e5404f31899466712' class='parent'>Batch
+
+<br/></li><ul><li id='temp:C:VeS26e135c018304081abbb20d54' class=''>no time limit
+
+<br/></li><li id='temp:C:VeSe2231dd59b87460dbd29cf639' class=''>reply on EBS/instance store for disk space
+
+<br/></li><li id='temp:C:VeSd92d3ea68daa4072a507132f5' class=''>relies on EC2
+
+<br/></li></ul></ul></ul><li id='temp:C:VeS6aca073f850c4d72a9378eb21' class='parent'><u><b>AWS AppFlow</b></u>
+
+<br/></li><ul><li id='temp:C:VeS7a9374f83a9a4c59bdb63fc13' class=''>Fully managed integration service that enables you to securely transfer data between <b>SaaS application and AWS</b>
+
+<br/></li></ul><li id='temp:C:VeS8d03c85a016748ceae3e202f2' class='parent'><u><b>AWS Amplify</b></u>
+
+<br/></li><ul><li id='temp:C:VeS93b86451c6f64a7dbc719409d' class=''>develop and deploy scalable full stack web and mobile app
+
+<br/></li></ul></ul></ul></div></body></html>

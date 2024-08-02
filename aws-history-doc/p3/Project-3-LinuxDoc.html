@@ -1,0 +1,546 @@
+<!doctype html>
+<html><head><title>Project3: Linux Project(Demo Video)</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 22px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 16px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 15px;
+    line-height: 14px;
+}
+h5 {
+    font-style: italic;
+}
+
+h6 {
+    font-weight: unset;
+    text-decoration: underline;
+}
+
+.capitalize-h3 h3 {
+    text-transform: uppercase;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Text Alignment */
+.line {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: end;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+div[data-section-style="11"].show-border {
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+/*
+ * Copyright 2019 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+
+/* Numbered list */
+div[data-section-style="6"] {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+div[data-section-style="6"].list-numbering-continue {
+    counter-reset: none;
+}
+div[data-section-style="6"].list-numbering-restart-at {
+    counter-reset: indent0 var(--indent0) indent1 indent2 indent3 indent4
+        indent5 indent6 indent7 indent8;
+}
+div[data-section-style="6"] ul {
+    /* indent0 is not reset since it is shared across the div elements */
+    list-style-type: none !important;
+}
+div[data-section-style="6"] ul ul {
+    counter-reset: indent1;
+}
+div[data-section-style="6"] ul ul ul {
+    counter-reset: indent2;
+}
+div[data-section-style="6"] ul ul ul ul {
+    counter-reset: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    counter-reset: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    counter-reset: indent5;
+}
+div[data-section-style="6"] ul li {
+    counter-increment: indent0;
+}
+div[data-section-style="6"] ul ul li {
+    counter-increment: indent1;
+}
+div[data-section-style="6"] ul ul ul li {
+    counter-increment: indent2;
+}
+div[data-section-style="6"] ul ul ul ul li {
+    counter-increment: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul li {
+    counter-increment: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul li {
+    counter-increment: indent5;
+}
+div[data-section-style="6"] ul li:before {
+    content: counter(indent0, decimal) ". ";
+}
+div[data-section-style="6"] ul ul li:before {
+    content: counter(indent1, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul li:before {
+    content: counter(indent2, lower-roman) ". ";
+}
+div[data-section-style="6"] ul ul ul ul li:before {
+    content: counter(indent3, decimal) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul li:before {
+    content: counter(indent4, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul ul li:before {
+    content: counter(indent5, lower-roman) ". ";
+}
+</style></head><body><h1 id='temp:C:BeK0193b5746e9c40a9bf15d7ec6'><a href="https://broadcast.amazon.com/videos/1194707">Project3: Linux Project</a>(Demo Video)</h1>
+
+<b>Lab Exercise 1: File Manipulation and Permissions</b><br>1. Create a directory named "lab_files" and set its permissions to read, write, and execute for the owner, read and execute for the group, and read-only for others.<br>2. Inside "lab_files", create a file named "data.txt" containing some text.<br>3. Change the ownership of "data.txt" to another user.<br>4. Set the sticky bit on "lab_files" directory.<br>5. Find all files with ".txt" extension in "lab_files" directory and its subdirectories.<br/>
+
+[1] <a href="https://www.redhat.com/sysadmin/linux-file-permissions-explained">https://www.redhat.com/sysadmin/linux-file-permissions-explained</a><br>[2] <a href="https://www.redhat.com/sysadmin/create-delete-files-directories-linux">https://www.redhat.com/sysadmin/create-delete-files-directories-linux</a><br>[3] <a href="https://www.geeksforgeeks.org/how-to-create-a-text-file-using-the-command-line-in-linux/">https://www.geeksforgeeks.org/how-to-create-a-text-file-using-the-command-line-in-linux/</a><br/>
+
+<pre id='temp:C:BeK60f5e30bab364bcf910ed862f'>#!/bin/bash<br>echo "&gt;&gt;&gt; Create a dir name lab_files"<br>read dirName<br>mkdir $dirName<br><br>echo "&gt;&gt;&gt; original permission"<br>ls -l | grep $dirName<br><br>echo "&gt;&gt;&gt; after modified"<br>chmod 754 $dirName<br>ls -l | grep $dirName<br><br>echo "&gt;&gt;&gt; Create data.txt in lab_files folder"<br>read fileName<br>mkdir lab_files/$fileName<br><br>echo "&gt;&gt;&gt; original ownership"<br>ls -l lab_files | grep $fileName<br><br>echo "&gt;&gt;&gt; create a new user"<br>read userName<br>sudo useradd -d /usr/$userName -c "new user for lab" -g ec2-user -p secret -s /usr/bin/bash $userName<br>sudo chown -R $userName lab_files/data.txt<br><br>echo "&gt;&gt;&gt; new ownership"<br>ls -l lab_files | grep $fileName<br><br>echo "&gt;&gt;&gt; set sticky bit on lab_files dir"<br>chmod +t lab_files<br>ls -l | grep lab_files<br><br>echo "&gt;&gt;&gt; find files with .txt extension in lab_files"<br>find lab_files -name "*.txt"<br></pre>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/Jlr-LOZFilbPrrLyyGptZg' id='temp:C:BeK39442f226be04bc8a25247549'></img></div><br/>
+
+<hr style='width:100%'><b>Lab Exercise 2: User and Group Management</b><br>1. Create a new group named "developers".<br>2. Add the user "intern" to the "developers" group.<br>3. List all groups the "intern" user belongs to.<br>4. Display detailed information about the "developers" group.<br>[1] <a href="https://www.redhat.com/sysadmin/linux-user-group-management">https://www.redhat.com/sysadmin/linux-user-group-management</a><br/>
+
+<pre id='temp:C:BeKe6a2848898114fada0348121e'>#!/bin/bash<br>echo "&gt;&gt;&gt; create a new group named developers"<br>read groupName<br>sudo groupadd $groupName<br><br>echo "&gt;&gt;&gt; create a user name intern and add to the developers group"<br>read userName<br>sudo useradd -d /usr/$userName -c "intern user for lab" -g ec2-user -p secret -s /usr/bin/bash $userName<br>sudo gpasswd -M $userName $groupName<br><br>echo "&gt;&gt;&gt; all groups the intern user belongs to:"<br>#groups $userName -&gt; users : groups<br>id -Gn $userName<br><br>echo "&gt;&gt;&gt; detailed info about the developers group"<br>getent group $groupName<br></pre>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/6TxaTWd3ZkfMYifNdSFUIQ' id='temp:C:BeKf9d5638b5db64470ae2495ed5'></img></div><br/>
+
+<hr style='width:100%'><b>Lab Exercise 3: Process Management </b><br>1. Displaying Running Processes <br>2. Displaying Dynamic View of Processes<br>3.Terminate a process<br>4.Adjust process priority <br>5.Adjust running process priority<br>[1] <a href="https://www.digitalocean.com/community/tutorials/process-management-in-linux">https://www.digitalocean.com/community/tutorials/process-management-in-linux</a><br/>
+
+<pre id='temp:C:BeKad018ed3626d4c9a919d12613'>#!/bin/bash<br>echo "&gt;&gt;&gt; display running processes"<br>ps -A<br><br>echo "&gt;&gt;&gt; Dynamic view of processes"<br>top -b -n 1<br><br>echo "&gt;&gt;&gt; Adjust process priority"<br>nice -n 19 vim &amp;<br>ps -l<br><br>echo "&gt;&gt;&gt; adjust running process priority"<br>PID=$(pgrep vim)<br>sudo renice -n 5 -p $PID<br>ps -l<br><br>echo "&gt;&gt;&gt; terminate the vim process just launched"<br>pkill -9 vim<br>ps -l</pre>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/csWtfSLQ3w1GIggPyO0nwg' id='temp:C:BeK3a1b5042edbc4ab98100a6bfc'></img></div><div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/fmQHLhbUg48iW4FeGDEz3A' id='temp:C:BeK383768c3686847d7bbb713c83'></img></div><br/>
+
+<br/>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/londuWCJWLxGFjj9E1X-iA' id='temp:C:BeK922dced91c8a46418d8eb9231'></img></div><br/>
+
+<hr style='width:100%'><b>Lab Exercise 4: Networking</b><br>1.Display network interface configuration.<br>2.Test network connectivity to a remote host(e.g. <a href="http://google.com/">google.com</a>)<br>3.Query DNS servers for information about a domain name(e.g. <a href="http://google.com/">google.com</a>)<br>[1] <a href="https://www.redhat.com/sysadmin/7-great-network-commands">https://www.redhat.com/sysadmin/7-great-network-commands</a><br/>
+
+<pre id='temp:C:BeK69fe4e22e5a648759a1f364d8'>#!/bin/bash<br>echo "&gt;&gt;&gt; Display network interface configuration"<br>ip addr show<br><br>echo "&gt;&gt;&gt; Test connectivity to google.com"<br>ping -c 5 google.com<br><br>echo "&gt;&gt;&gt; Query DNS servers for info about google.com domain name"<br>#host google.com<br>dig google.com</pre>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/hFSFaOoknn_mxr1iquX7HQ' id='temp:C:BeK621914f1339a43a6b21531b05'></img></div><br/>
+
+<hr style='width:100%'><br><b>Lab Exercise 5: Install AWS CLI</b><br>Install AWS CLI on your environment[1].<br><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"><u>https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions</u></a><br/>
+
+<pre id='temp:C:BeKe7ba1de509364f7cbf70e47e1'>#!/bin/bash<br>echo "&gt;&gt;&gt; Download the installation file using curl"<br>curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"<br><br>echo "&gt;&gt;&gt; Unzip the installer"<br>unzip awscliv2.zip<br><br>echo "&gt;&gt;&gt; Run the install program"<br>sudo ./aws/install<br><br>echo "&gt;&gt;&gt; Verify "<br>aws help</pre>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/G3VOtRgGsBsUuj9AtmJQdQ' id='temp:C:BeK5adbc340f214464ea8b84a1ba'></img></div><div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/BeK9AAldO2h/ZLldbg5mAJQYLVmUkvG2gw' id='temp:C:BeKcb44834be8bb4d2e90d0418cb'></img></div><div data-section-style='11' style='max-width:100%' class='tall'><img src='https://quip-amazon.com/blob/BeK9AAldO2h/oDElLOVMhDXrikmbWS_eOg' id='temp:C:BeKaa9f9c6570864b1cb0ee3a81c'></img></div><br/>
+
+</body></html>

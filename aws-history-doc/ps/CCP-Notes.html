@@ -1,0 +1,1008 @@
+<!doctype html>
+<html><head><title>Udemy  CCP Notes</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: white;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 22px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 16px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 15px;
+    line-height: 14px;
+}
+h5 {
+    font-style: italic;
+}
+
+h6 {
+    font-weight: unset;
+    text-decoration: underline;
+}
+
+.capitalize-h3 h3 {
+    text-transform: uppercase;
+}
+
+/* Body text */
+body,
+p,
+ul,
+ol,
+td {
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote,
+q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a,
+q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code,
+pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web",
+        Courier, monospace;
+    background: #f2f2f2;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Text Alignment */
+.line {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: end;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #bbb;
+    table-layout: fixed;
+    position: relative;
+}
+
+table th,
+table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #c7cbd1;
+    background: #f2f2f2;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #c7cbd1;
+    border-top: 1px solid #c7cbd1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+div[data-section-style="11"].show-border {
+    outline: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+
+/* Apps */
+div[data-section-style="19"].placeholder {
+    margin: 0.8em auto;
+    padding: 4px 0;
+    display: block;
+    color: #3d87f5;
+    text-align: center;
+    border: 1px solid rgba(41, 182, 242, 0.2);
+    border-radius: 3px;
+    background: #e9f8fe;
+    font-family: Roboto, sans-serif;
+}
+
+div[data-section-style="19"].first-party-element {
+    margin-bottom: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div[data-section-style="19"].first-party-element.kanban {
+    background-image: url("https://quip-cdn.com/nK0hSyhsb4jrLIL2s5Ma-g");
+    height: 166px;
+}
+
+div[data-section-style="19"].first-party-element.calendar {
+    background-image: url("https://quip-cdn.com/OYujqLny03RILxcLIiyERg");
+    height: 244px;
+}
+
+div[data-section-style="19"].first-party-element.poll {
+    background-image: url("https://quip-cdn.com/fbIiFrcKGv__4NB7CBfxoA");
+    height: 116px;
+}
+
+div[data-section-style="19"].first-party-element.countdown {
+    background-image: url("https://quip-cdn.com/3bPhykD2dBei9sSjCWteTQ");
+    height: 96px;
+}
+
+div[data-section-style="19"].first-party-element.process_bar {
+    background-image: url("https://quip-cdn.com/ybQlHnHEIIBLog5rZmYs_w");
+    height: 36px;
+}
+
+div[data-section-style="19"].first-party-element.project_tracker {
+    background-image: url("https://quip-cdn.com/OFQU087b4Mxzz1ZaHwtjXA");
+    height: 164px;
+}
+
+div[data-section-style="19"] img {
+    margin: 0.5em;
+}
+
+div[data-section-style="19"] img.masked-image {
+    margin: 0;
+    transform-origin: top left;
+}
+
+div[data-section-style="19"] .image-mask {
+    position: relative;
+    overflow: hidden;
+}
+/*
+ * Copyright 2019 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+
+/* Numbered list */
+div[data-section-style="6"] {
+    counter-reset: indent0 indent1 indent2 indent3 indent4 indent5 indent6
+        indent7 indent8;
+}
+div[data-section-style="6"].list-numbering-continue {
+    counter-reset: none;
+}
+div[data-section-style="6"].list-numbering-restart-at {
+    counter-reset: indent0 var(--indent0) indent1 indent2 indent3 indent4
+        indent5 indent6 indent7 indent8;
+}
+div[data-section-style="6"] ul {
+    /* indent0 is not reset since it is shared across the div elements */
+    list-style-type: none !important;
+}
+div[data-section-style="6"] ul ul {
+    counter-reset: indent1;
+}
+div[data-section-style="6"] ul ul ul {
+    counter-reset: indent2;
+}
+div[data-section-style="6"] ul ul ul ul {
+    counter-reset: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    counter-reset: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    counter-reset: indent5;
+}
+div[data-section-style="6"] ul li {
+    counter-increment: indent0;
+}
+div[data-section-style="6"] ul ul li {
+    counter-increment: indent1;
+}
+div[data-section-style="6"] ul ul ul li {
+    counter-increment: indent2;
+}
+div[data-section-style="6"] ul ul ul ul li {
+    counter-increment: indent3;
+}
+div[data-section-style="6"] ul ul ul ul ul li {
+    counter-increment: indent4;
+}
+div[data-section-style="6"] ul ul ul ul ul ul li {
+    counter-increment: indent5;
+}
+div[data-section-style="6"] ul li:before {
+    content: counter(indent0, decimal) ". ";
+}
+div[data-section-style="6"] ul ul li:before {
+    content: counter(indent1, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul li:before {
+    content: counter(indent2, lower-roman) ". ";
+}
+div[data-section-style="6"] ul ul ul ul li:before {
+    content: counter(indent3, decimal) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul li:before {
+    content: counter(indent4, lower-alpha) ". ";
+}
+div[data-section-style="6"] ul ul ul ul ul ul li:before {
+    content: counter(indent5, lower-roman) ". ";
+}
+</style></head><body><br/>
+
+<h1 id='temp:C:MKJee18e62b26344f5584ed7f6be'>Udemy  CCP Notes</h1>
+
+<div data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/M9V7jQEAGhdWDongsVEdLQ' id='temp:C:MKJ5571c32788694ac8bf34d77c6' width='800' height='484'></img></div><div style="" data-section-style='5' class=""><ul id='temp:C:MKJ3e079a579b4843f887d3a9b6a'><li id='temp:C:MKJ6c0a213fffc7472785fe8c165' class='parent' value='1'><b>ELB</b>: automatically distributes incoming application traffic across multiple resources
+
+<br/></li><ul><li id='temp:C:MKJd643da5953b74593acd6cf503' class=''>healthy check
+
+<br/></li></ul><li id='temp:C:MKJbeacc71fbdcf4ff39eebddcf6' class=''><b>SQS</b>: <b>decoupling and scaling of app</b>. can send, store, and receive messages between software components, without losing messages or requiring other services to be available
+
+<br/></li><li id='temp:C:MKJbdb1051e35f240599c8236d64' class=''><b>SNS</b>: <b>decoupling, </b>publishes messages to subscribers. (Subscribers can be web servers, email addresses, AWS Lambda functions, or several other options.)
+
+<br/></li><li id='temp:C:MKJbd3994de8bec429ea133cceb8' class=''><b>Lambda</b>: run code without needing to provision or manage servers.
+
+<br/></li><li id='temp:C:MKJ679923486fd749a5a3f1e1998' class='parent'>Container Orchestration Tool:
+
+<br/></li><ul><li id='temp:C:MKJ7a9cf614a39f40e591599a86a' class=''><b>ECS</b>-Elastic Container Service: highly scalable, high-performance container management system that enables you to run and scale containerized applications on AWS.
+
+<br/></li><li id='temp:C:MKJ32442268859b41f088d88d52f' class=''><b>EKS</b>-Elastic Kubernetes Service: fully managed service that you can use to run Kubernetes on AWS.
+
+<br/></li></ul><li id='temp:C:MKJ0b4759043dab4814a3c698532' class=''><b>Fargate</b>: <b>serverless</b> compute engine for containers. It works with both Amazon ECS and Amazon EKS.
+
+<br/></li><li id='temp:C:MKJ816348818c1842759bff964be' class=''><b>Outposts</b>: run AWS infrastructure in your own data center
+
+<br/></li><li id='temp:C:MKJ3ed63f3aecec47fa9773878df' class='parent'><b>CloudTrail</b>: enables governance, compliance, operational auditing, and auditing of your AWS account.
+
+<br/></li><ul><li id='temp:C:MKJd610471cb60e4c49899137714' class=''>cloudTrail Logs has <b>encryption default</b>
+
+<br/></li><li id='temp:C:MKJ2028ef2d8e9d4c65a33c618a3' class=''>management events logged default
+
+<br/></li></ul><li id='temp:C:MKJ63715276ff23401a836ffaf69' class=''><b>Elastic Beanstalk</b>: provide code and configuration settings, and Elastic Beanstalk deploys the resources necessary to perform: adjust capacity, load balancing, auto scaling, application health monitoring.
+
+<br/></li><li id='temp:C:MKJ31b948b6264748658897b6e3c' class=''><b>CloudFormation</b>: treat your infrastructure as code, deploy a collection of related resources
+
+<br/></li><li id='temp:C:MKJff531b8587134a4c9cd3946b7' class=''><b>CloudFront</b>(CDN) : use Edge locations around the world to cache content for accelerating
+
+<br/></li><li id='temp:C:MKJc0d80ffd10044ca195cbe6b35' class='parent'><b>VPC</b>: Define and launch AWS resources in a logically <b>isolated</b> virtual network
+
+<br/></li><ul><li id='temp:C:MKJ9e27a2c366f44d46bbbdfd33b' class=''>support <b>VPC endpoint gateway</b> for private connection: <b>S3, DynamonDB</b>(data not leave amazon)
+
+<br/></li><li id='temp:C:MKJ3cb15e33b8fe4c09915033d25' class=''>Internet gateway: 
+
+<br/></li><li id='temp:C:MKJb55f9b2c380d4fc2be481205c' class=''><b>NAT gateway</b>: managed by AWS
+
+<br/></li></ul><li id='temp:C:MKJ370a482006934c10bb5f63d24' class=''><b>VPN</b>: connection between your data center(on premises) and a VPC.
+
+<br/></li><li id='temp:C:MKJeaa1efc307a54068b852d137c' class=''><b><i>Direct connect</i></b>: establish a dedicated <b>private</b> connection between your data center(on premises) and a VPC, 1 month to establish
+
+<br/></li></ul></div>      | Both connect <b>on-premises VPN to AWS</b>,<br/>
+
+<div style="" data-section-style='5' class=""><ul id='temp:C:MKJa66dc767bf8e405cb1a1959ad'><li id='temp:C:MKJ0449ae57186045308ad475e3d' class='' value='1'><b>Site to Site VPN</b>: <b>public</b> internet, connection is <b>encrypted</b>
+
+<br/></li><li id='temp:C:MKJ31805568ec0b43459d284fd75' class=''><b>Transit Gateway</b>: connect thousand VPC 
+
+<br/></li><li id='temp:C:MKJ57ff8d5d56e44bbf946ade854' class='parent'><b>Control Tower</b>: 
+
+<br/></li><ul><li id='temp:C:MKJd672efbccef5455baf3f12e8e' class=''>run on top of AWS organization. 
+
+<br/></li><li id='temp:C:MKJb053d5085155464287cc5e787' class=''>set up and govern a secure and compliant multi-account AWS environment based on best practices
+
+<br/></li></ul><li id='temp:C:MKJbbb56af1fbb247dc9829b6a71' class='parent'><b>Network ACL</b>(control access list): 
+
+<br/></li><ul><li id='temp:C:MKJ9a3e474ad8d341a1b0a303e11' class=''>for subnet, They are stateless and <b>allow</b> all inbound traffic by default.
+
+<br/></li><li id='temp:C:MKJ9ad4561556554a4abef62dbad' class=''><b>both deny and allow rule!</b>
+
+<br/></li><li id='temp:C:MKJ6de3617ac04d432fa20c32c63' class=''>contains a numbered list of rules and evaluates these rules in the increasing order while deciding whether to allow the traffic
+
+<br/></li></ul></ul></div>|<b><i> both check packet in and out, but SG is stateful, and NACL is stateless </i></b>(<a href="https://explore.skillbuilder.aws/learn/course/134/play/99519/aws-cloud-practitioner-essentials">https://explore.skillbuilder.aws/learn/course/134/play/99519/aws-cloud-practitioner-essentials</a>)<br/>
+
+<div style="" data-section-style='5' class=""><ul id='temp:C:MKJ48856795555940ae921e8d405'><li id='temp:C:MKJee5e1a7ee0d84b67869c87bdb' class='parent' value='1'><b>Security group</b>: 
+
+<br/></li><ul><li id='temp:C:MKJa16105d84ae54208be193cd8e' class=''>for instances, They are stateful and <b>deny</b> all inbound traffic by default.
+
+<br/></li><li id='temp:C:MKJ84aa1a524a374b199a1bc020a' class=''><b>only have allow rule!</b>
+
+<br/></li></ul><li id='temp:C:MKJc87920e82f7a412fa2c8d9819' class=''>Region has <b>at least 3 AZ</b>, each AZ <b>one or more data center</b>
+
+<br/></li><li id='temp:C:MKJbb652392e0ce4f6d8432726e5' class='parent'><b>Route53</b>(DNS domain name service): translating a domain name to an IP address. Able to use relocation-related routing policies.
+
+<br/></li><ul><li id='temp:C:MKJac386f2565414975b101d9898' class=''>SIMPLE ROUTING POLICY
+
+<br/></li><li id='temp:C:MKJ5c32b100a282495cbb784028b' class=''>WEIGHTED ROUTING POLICY
+
+<br/></li><li id='temp:C:MKJe9febdec916c4dfe907e42d4c' class=''>LATENCY ROUTING POLICY
+
+<br/></li><li id='temp:C:MKJ11e5c6780890482f94614f801' class=''>FAILOVER ROUTING POLICY
+
+<br/></li></ul><li id='temp:C:MKJ8220204eb18b4b21bc26a5f6a' class=''><b><i>Example How Route 53 and CloudFront deliver content</i></b><i>: Client request→ Route53 translate domain to IP→ Client get Ip address → CloudFront(edge locations) → ELB → EC2 instances.</i>
+
+<br/></li><li id='temp:C:MKJcde9a2f65e984680ab22ca9a2' class=''><b>EMR</b>: Hadoop clusters
+
+<br/></li><li id='temp:C:MKJd528cc6454c14b2a94bf7f45d' class=''><b>Kendra</b>: document search service
+
+<br/></li><li id='temp:C:MKJ639d506ee8c34c069cd67c9fa' class='parent'><b>Local Zone</b>:  allow you to use select AWS services run<b> latency-sensitive applications</b>
+
+<br/></li><ul><li id='temp:C:MKJ35fa7148d79c42dfb6de363ea' class=''>extend of region
+
+<br/></li></ul><li id='temp:C:MKJbb9dff608d68434e9ed5e0f46' class='parent'><b>Encryption Automatically enabled:</b>
+
+<br/></li><ul><li id='temp:C:MKJecf26cf2461a40d2bbe82eb18' class=''>CloudTrail Logs, S3 Glacier, Storage Gateway
+
+<br/></li></ul><li id='temp:C:MKJcb03c14fa73e4e7ab9e438a73' class=''><b>Dedicated host</b> support business <b>license</b> and <b>dedicated instance not.</b>
+
+<br/></li><li id='temp:C:MKJ95632e41a1134540b75538bc5' class=''><b>EFS-  Elastic file system</b>: Multiple instances can access the data in EFS same time, <b>as long as in same region, EC2 can access EFS! Auto scales, </b>can access <b>up to 1000 EC2</b>
+
+<br/></li><li id='temp:C:MKJ7f2b7b187ba349d7b87112565' class='parent'><b>EBS</b> elastic block store: attach block-level storage volumes for EC2 instances, <b>EC2 and EBS need to be in the same AZ! Not auto scales</b>
+
+<br/></li><ul><li id='temp:C:MKJ1f92b7bece424fa3bdc73210e' class=''>Database, Enterprise software, file systems
+
+<br/></li><li id='temp:C:MKJfc78b9bdd96e46edb8968fa83' class=''>mount OS and application files
+
+<br/></li><li id='temp:C:MKJce542f4d40534e05a094ca66b' class=''>cannot access simultaneously by multiple EC2 instances
+
+<br/></li></ul><li id='temp:C:MKJdf77f0b5a4fc4936881e734d9' class='parent'><b>EBS snapshots</b>: is an <b>incremental</b> backup, which means update items change instead of whole block
+
+<br/></li><ul><li id='temp:C:MKJ6fd1b880a8014ce7b42387c22' class=''>able to across AZ or region
+
+<br/></li></ul><li id='temp:C:MKJc1429c011bab4897981aa94f4' class=''><b>EC2 Instance store</b>: <b>high performance,  low latency, fault-tolerant architectures, physically attached</b>, provides temporary <b>block-level </b>storage for an Amazon EC2 instance. Terminate = lose data
+
+<br/></li></ul></div><b><i>Object storage</i></b><i> consists of data, metadata, key</i><br/>
+
+<br/>
+
+<b>reservation</b> option: DynamoDB, RDS, EC2<br/>
+
+<div style="" data-section-style='5' class=""><ul id='temp:C:MKJ9a9c10b4250e49ee83cfd9f53'><li id='temp:C:MKJ0f0db83060f54a5aa3d6350f5' class='' value='1'><b>S3 standard</b>: 11-9’s%, frequently accessed data, store data in a min of three AZ
+
+<br/></li><li id='temp:C:MKJ8122061e420c474c8565e40d1' class=''><b>S3 standard-IA</b>: 
+
+<br/></li><li id='temp:C:MKJ16eb71728e5047cfa590ca583' class=''><b>S3 Intelligent tiering</b>: Ideal for data with unknown or changing access patterns
+
+<br/></li><li id='temp:C:MKJ72fa9e0f964f42c68caa50c32' class=''><b>S3 One Zone-IA</b>: in single availability zone
+
+<br/></li><li id='temp:C:MKJ9a3b8fb997454fc1a454bad51' class=''><b>S3 Glacier instant retrieval</b>: data requires immediate access, retrieve objects within a few milliseconds
+
+<br/></li><li id='temp:C:MKJ0c4b46fcfb354cd995a49c545' class=''><b>S3 Glacier Flexible Retrieval</b>: low-cost, within few mins to hours
+
+<br/></li><li id='temp:C:MKJ5bc61b72e9fa4b24bb1e52db0' class=''><b>S3 Glacier deep archive</b>: lowest-cost, retrieve within 12 hours
+
+<br/></li><li id='temp:C:MKJ894d89e2a1e84343b30dbde0c' class=''><b>S3 outposts</b>: Creates S3 buckets on Amazon S3 Outposts, Makes it easier to retrieve, store, and access data on AWS Outposts
+
+<br/></li><li id='temp:C:MKJ2fff4a892d1f48eb9e7fd4380' class='parent'><b>Storage Gateway</b>: 
+
+<br/></li><ul><li id='temp:C:MKJ83711e1fabc54ec5bf748f976' class=''><span style="color:#444949" textcolor="#444949">Hybrid storage service to allow on- premises to seamlessly use the AWS Cloud</span>
+
+<br/></li><li id='temp:C:MKJ2253d8ddbc2940c78e2535f12' class=''>Tape Gateway, File Gateway and Volume Gateway
+
+<br/></li><li id='temp:C:MKJ9e9d4304f43d40c8b97edf11f' class=''><b>encryption auto</b>
+
+<br/></li></ul><li id='temp:C:MKJ47aea73320cc4e68b1cfc8fe9' class=''><b>AWS Health</b> - <b>Service Health Dashboard</b> displays the <b>general</b> status of AWS services
+
+<br/></li><li id='temp:C:MKJ4e674132c4034d90a6775e13a' class=''><b>AWS Health - Your Account Health Dashboard</b> gives you a <b>personalized</b> view of the performance and availability of the AWS services underlying your AWS resources.
+
+<br/></li><li id='temp:C:MKJ5afb4c7570e14dd3a956a31f7' class=''><b>Compute Optimizer</b>: EBS, Lambda, EC2, ASG
+
+<br/></li><li id='temp:C:MKJ3b6556d2188a499ca8984cdbf' class=''><b>Elastic Container Registry: </b>used to store, manage, and deploy Docker container images
+
+<br/></li><li id='temp:C:MKJ5fdc883b0a1c4c4eaf104691b' class=''><b>ECS</b>: highly scalable, fast, container management service that makes it easy to run, stop, and manage Docker containers on a cluster
+
+<br/></li><li id='temp:C:MKJ08c214d514d8459787ea34b62' class=''><b>QuickSight: BI,  </b>Serverless machine learning-powered business intelligence service to create interactive dashboards
+
+<br/></li><li id='temp:C:MKJ8f04e322c90e4f27a94693ad9' class='parent'><b>Glue</b>: Serverless, Useful to prepare and transform data for analytics
+
+<br/></li><ul><li id='temp:C:MKJ78c94b8fe90b48e5b49f45191' class=''><span data-section-style='11' style='max-width:88%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/BcYvOE8BoGJ3G7WYtV99jg' id='temp:C:MKJ78c94b8fe90b48e5b49f45191' width='708' height='147'></img></span></li></ul><li id='temp:C:MKJ2f050317c65e4db3bd8b773a0' class=''><b>API GateWay</b>: serverless, scale
+
+<br/></li><li id='temp:C:MKJab44dcddbfab4719af842ea12' class='parent'><b>Lightsail</b>: 
+
+<br/></li><ul><li id='temp:C:MKJe8cb9b1da6e2488e9b8afdaff' class=''>simple web app
+
+<br/></li><li id='temp:C:MKJc70bddc5693c43399ec3f08e0' class=''>Great for people with little cloud experience
+
+<br/></li></ul><li id='temp:C:MKJcb0531d2188349a6b4f8582b4' class='parent'><b>CodeStar</b>: manage software development activities in one place
+
+<br/></li><ul><li id='temp:C:MKJc2f8003ae3f74620a37f76366' class=''><span data-section-style='11' style='max-width:85%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/lmxb3HVfdO94bsFV4xYT_Q' id='temp:C:MKJc2f8003ae3f74620a37f76366' width='687' height='183'></img></span></li></ul><li id='temp:C:MKJece80307c151486b8d7a8a7ce' class=''><b>CodeGuru</b>: automated code reviews and application performance recommendations
+
+<br/></li><li id='temp:C:MKJb7cfa730dbf842b08a813af2f' class=''><b>Macie</b>: identify and alert you to <b>sensitive</b> data, such as personally identifiable information (<b>PII</b>)
+
+<br/></li><li id='temp:C:MKJ233f32bf80e94451956c42707' class='parent'>Amazon <b>Detective analyzes: </b>investigates, and quickly identifies the root cause of security issues or suspicious activities (using ML and graphs)
+
+<br/></li><ul><li id='temp:C:MKJ39f1d25805934e6ca99966d64' class=''>Automatically collects and processes events from VPC Flow Logs
+
+<br/></li></ul><li id='temp:C:MKJa78ed662a7e7430e9b886c973' class='parent'><b>RDS</b>: run relational databases in the AWS Cloud. Business analytics
+
+<br/></li><ul><li id='temp:C:MKJ3db77bdd000f4a47b9ca37daf' class=''><b>Supported database engines</b>: aurora, PostgreSQL, MySQL, MariaDB, Oracle DB, MS SQL server
+
+<br/></li><li id='temp:C:MKJa08cb01767464692b6e85d01f' class=''><b>Aurora serverless</b>: enterprise-class relational database, compatible with MySQL and PostgreSQL relational databases
+
+<br/></li><li id='temp:C:MKJ234fcccb0a964c298f64c8cfd' class=''><b>Read Replicas:</b> <b>Scale</b>
+
+<br/></li><li id='temp:C:MKJa43c7b0c83c8490fa247a1f22' class=''><b>Multi-AZ</b>: <b>Failover</b>, Can only have 1 other AZ as failover
+
+<br/></li><li id='temp:C:MKJd7b6dc50495648c78d0ff91cd' class=''><b>Multi-Region</b>: Disaster recovery, local performance for global read
+
+<br/></li></ul><li id='temp:C:MKJ091f92e108274b23a1bea90ad' class='parent'><b>DynamoDB</b>: <b>serverless</b> DB, NoSQL, key-value database service, <b>Auto Scaling</b>
+
+<br/></li><ul><li id='temp:C:MKJ8d9385ba672349eaa647d8025' class=''><b>flexible schema and supports document data models</b>
+
+<br/></li><li id='temp:C:MKJ1780eb2b19994040b237e9953' class=''><b>DynamoDB global tables(actitve-active) </b>replicate data automatically across your choice of AWS Regions and automatically scale capacity to accommodate your workloads
+
+<br/></li></ul><li id='temp:C:MKJ083cd4b6b2e546fcaeb93431e' class=''><b>Redshift</b>: <b>SQl</b>. a data warehousing service that you can use for big data analytics
+
+<br/></li><li id='temp:C:MKJ507cbb653ea546809db145b59' class='parent'><b>DMS </b>Database migration service: migrate relational databases, non-relational databases, and other types of data stores.
+
+<br/></li><ul><li id='temp:C:MKJ40a85ecea13b47c9b18896e2c' class='parent'><b>Use cases: </b>
+
+<br/></li><ul><li id='temp:C:MKJabf9cf7d72cb44fcb8bfdcea6' class=''>Development and test DB migrations
+
+<br/></li><li id='temp:C:MKJ50a25dc362914682b0e9453f3' class=''>DB consolidation: all into one
+
+<br/></li><li id='temp:C:MKJcce38ece68e547f2b13667643' class=''>Continuous replication.
+
+<br/></li></ul></ul><li id='temp:C:MKJ2efdb91b78b140f0bd7763572' class='parent'><b>Other</b>:
+
+<br/></li><ul><li id='temp:C:MKJa9205e0151034ce3bcdce8133' class=''><b>DocumentDB</b>: <b>Fully managed NoSQL</b>. document database service that supports MongoDB workloads
+
+<br/></li><li id='temp:C:MKJb25c23da581c467f8f8b8cecd' class=''><b>Neptune: </b>a graph database service.
+
+<br/></li><li id='temp:C:MKJf12337707c184349a99a0f11c' class=''><b>QLDB </b>Quantum Ledger DB: a ledger database service.
+
+<br/></li><li id='temp:C:MKJe5a4d8d9314545c88c08d09fb' class=''><b>Managed Blockchain: </b>use to create and manage blockchain networks with open-source frameworks.
+
+<br/></li><li id='temp:C:MKJe9fd4c42683d4fd5bac23df57' class=''><b>ElasticCache</b>: <b>in-memory DB</b>, adds caching layers on top of your databases to help improve the read times of common requests.
+
+<br/></li><li id='temp:C:MKJb4bbde7c7ff24d6382f311aa6' class=''><b>DynamoDB Accelerator</b>: in-memory cache for DynamoDB
+
+<br/></li></ul><li id='temp:C:MKJd06598345353474ebd5d9d1a5' class=''><b>MQ</b>: managed message broker service
+
+<br/></li><li id='temp:C:MKJ13faa8d0b705446993c67130e' class=''><b>CloudHSM - Hardware</b> security Module: generate and use your encryption keys on the AWS Cloud
+
+<br/></li><li id='temp:C:MKJ47b72ce66f7d41ce9b70e7172' class=''><b>KMS</b> Key Management services: enables you to perform encryption operations through the use of cryptographic keys
+
+<br/></li><li id='temp:C:MKJaa281d8d23ec406996d92c766' class=''><b>Cloud Foundations</b>: help customers <b>deploy</b>, configure, and secure their new workloads while ensuring they are ready for <b>on-going</b> operations in the cloud
+
+<br/></li><li id='temp:C:MKJdf3ad016dcf04116b234d944f' class=''><b>AWS Acceptable Use Policy: </b>prohibited uses of the web services
+
+<br/></li><li id='temp:C:MKJ4c4d194e90c84ce7ae9d293cb' class='parent'><b>Shared Responsibility Model: </b>
+
+<br/></li><ul><li id='temp:C:MKJ5a4f8e696cb8428d8d9ab13a9' class='parent'>Both:<b> AWS and Customer</b>
+
+<br/></li><ul><li id='temp:C:MKJ71b4b9fd0c954db88f685eed3' class=''>Patch &amp; Configuration Management, Awareness &amp; Training
+
+<br/></li></ul><li id='temp:C:MKJ3a88d730db114b7ca01beb1af' class='parent'><b>AWS: </b>Security of the cloud
+
+<br/></li><ul><li id='temp:C:MKJ93571d4b7c244587a85363f3c' class=''>Edge Location Management
+
+<br/></li><li id='temp:C:MKJ5831db374efc416088a785610' class=''>updating firmware
+
+<br/></li><li id='temp:C:MKJ9dd0786a0e8448eda2b64c56a' class=''>Physical and Environmental controls
+
+<br/></li></ul><li id='temp:C:MKJe4215a059ffd462c9100987a9' class='parent'><b>Customer: </b>Security in the cloud
+
+<br/></li><ul><li id='temp:C:MKJ94a0d8f8d1774b959a1d29a1b' class=''>Server-side Encryption
+
+<br/></li><li id='temp:C:MKJ97494871981544268704f3344' class=''>Database encription
+
+<br/></li><li id='temp:C:MKJ0e0d4a80ce51445a81ef8305a' class=''>patch guest OS and app
+
+<br/></li><li id='temp:C:MKJcfc060dce3fa465984e3f0d1b' class=''>Service and Communications Protection or Zone Security
+
+<br/></li></ul></ul><li id='temp:C:MKJ70d4074d0217460aafc245d96' class='parent'><b>IAM</b>: enables you to manage access to AWS services and resources securely.   
+
+<br/></li><ul><li id='temp:C:MKJ65862c4402a042e49414aa365' class=''><b>Users (</b>default user without any permissions): an identity created in AWS
+
+<br/></li><li id='temp:C:MKJ8983b1cc51c74fdf80b72153c' class=''><b>Policies(least privilege): </b>a document that allows or denies permissions to AWS services and resources.  
+
+<br/></li><li id='temp:C:MKJdd4aef3a54be4adcbfc93b022' class=''><b>Groups</b>: a collection of IAM users. When you assign an IAM policy to a group, all users in the group are granted permissions specified by the policy.
+
+<br/></li><li id='temp:C:MKJ1d7f1e9d811d4d4e9670fd9b1' class=''><b>Roles</b>: an identity that you can assume to gain <b>temporary</b> access to permissions<i>. (When someone assumes an IAM role, they abandon all previous permissions that they had under a previous role and assume the permissions of the new role.)</i>
+
+<br/></li></ul><li id='temp:C:MKJe3116096ee3f4a65861fdf2fe' class='parent'><b>IAM Credentials report (account-level)</b>
+
+<br/></li><ul><li id='temp:C:MKJ90065a414be04bbeb44463071' class=''>List all account’s users and the status of their various credentials
+
+<br/></li></ul><li id='temp:C:MKJ7d9f9ac98b2c4321a230127f4' class='parent'><b>IAM Access Advisor(user-level)</b>
+
+<br/></li><ul><li id='temp:C:MKJffe061c8b6eb46c69d66e0ea4' class=''>Show the service permissions granted to a user and when those service were last accessed 
+
+<br/></li></ul><li id='temp:C:MKJd9b07d02755846ddb3036b2ee' class=''><b>MFA</b>: provides an extra layer of security for your AWS account.
+
+<br/></li><li id='temp:C:MKJ2952dabc40c34a0aa16478b96' class='parent'><b>Organization</b>: A central location to manage multiple AWS accounts
+
+<br/></li><ul><li id='temp:C:MKJ789654ec932c4897b5c92603b' class=''>The AWS account must be able to operate as a standalone account. Only then it can be removed from AWS organizations
+
+<br/></li><li id='temp:C:MKJ2f40085504d44fe286a17f1ce' class=''>When creating an org, auto creates a root
+
+<br/></li><li id='temp:C:MKJ6bc1212249524513aaa0362db' class=''><b>SCP</b> service control policies: <b>can limit the permission of the root user.</b> centrally control permissions for the accounts in org.
+
+<br/></li><li id='temp:C:MKJcfd220beeab3458f83f171e10' class=''><b>OU </b>org units: to manage accounts with similar business or security requirements<i>. ( When you apply a policy to an OU, all the accounts in the OU automatically inherit the permissions specified in the policy.)</i>
+
+<br/></li></ul><li id='temp:C:MKJec875a4aea50432899c883194' class='parent'><b>Artifact</b>: provides on-demand access to AWS security and compliance reports and select online agreements.
+
+<br/></li><ul><li id='temp:C:MKJa751c43b9d6c440ea63fd39a7' class=''><b>AWS Artifact Agreements</b>: can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations.
+
+<br/></li><li id='temp:C:MKJad1a4d05187c4f8cb4b296c86' class=''><b>AWS Artifact Reports</b>: provide compliance reports from third-party auditors
+
+<br/></li></ul><li id='temp:C:MKJ70adf047770742b7a63b510e9' class='parent'><b>DDoS</b> distributed denial-of-service: a deliberate attempt to make a website or application unavailable to users.
+
+<br/></li><ul><li id='temp:C:MKJ0114dab8545d4e50b9760a0cc' class=''><b>for: EC2, ELB, CDN, Route53, Global Accelerator</b>
+
+<br/></li><li id='temp:C:MKJ64c57a4f55454121b92cfef5c' class='parent'><b>Shield: </b>protects applications against DDoS attacks.
+
+<br/></li><ul><li id='temp:C:MKJ8404d64a44eb4c68a36ccc03f' class=''><b>Shield Standard:</b> Auto protects all AWS customers at no cost
+
+<br/></li><li id='temp:C:MKJ220d95a8287a4aba8a71dc654' class=''><b>Shield Advanced:</b> paid to provide detailed attack diagnostics and the ability to detect ad mitigate sophisticated DDoS attacks.
+
+<br/></li></ul></ul><li id='temp:C:MKJ533f5d4703a94f899f183d209' class='parent'><b>System manager</b>: Hybrid service, deploy security patches at regular monthly intervals automatically.
+
+<br/></li><ul><li id='temp:C:MKJ3ab6d88bf25a40fb867b6dae1' class=''>run commands, patch &amp; configure our servers
+
+<br/></li></ul><li id='temp:C:MKJdbb792a1425a4b1394edfa78a' class=''><b>Firewall Manager</b>: centrally configure and <b>manage firewall rules across all accounts</b> in your AWS <b>Organization</b>
+
+<br/></li><li id='temp:C:MKJc3558b6ed2fb4690b12b8302f' class='parent'><b>WAF </b>web app firewall: monitor network requests that come into your web app.
+
+<br/></li><ul><li id='temp:C:MKJ5bdfea78209a491aa60e41d57' class=''>Work with ELB and CloudFront
+
+<br/></li><li id='temp:C:MKJ51ff4659dce04693bf6a35958' class=''>Web ACL, similar with NACL
+
+<br/></li></ul><li id='temp:C:MKJ7d300999107f400e82461a374' class='parent'><b>Trusted Advisor</b>: inspects your AWS environment and provides <b>real-time</b> recommendations in accordance with AWS best practices.
+
+<br/></li><ul><li id='temp:C:MKJ1f636b6c7f704978ad0d96c80' class=''><b>Five pillars</b>: Cost optimization, performance, security, fault tolerance, service limits
+
+<br/></li><li id='temp:C:MKJ8424f91ea52d434b83d06f617' class=''>check s3 permission
+
+<br/></li><li id='temp:C:MKJb0c2417eee9f43d8a03753992' class=''>MFA for RU
+
+<br/></li></ul><li id='temp:C:MKJa151ea499a7246329ed41ed4c' class='parent'><b>Inspector</b>: improve the <b>security(network)</b> and compliance of applications by running automated security <b>assessments</b><i>. (checks applications for security <b>vulnerabilities</b> and <b>deviations</b> from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions.)</i>
+
+<br/></li><ul><li id='temp:C:MKJc2b7d9c131e14d31955c793ef' class=''><b>only</b> for EC2 instances, Container Images &amp; Lambda functions
+
+<br/></li></ul><li id='temp:C:MKJ40471857bc5d4d6ab046e8db6' class=''><b>GuardBody</b>: provides <b>intelligent</b> threat <b>detection</b> for your AWS infrastructure and resources.
+
+<br/></li><li id='temp:C:MKJ74d8caa1543148f8aebfd7b90' class=''><b>Athena</b>: analyze data in S3 using SQL queries
+
+<br/></li><li id='temp:C:MKJa9dc8e48bf6441c6af8f4f3ff' class='parent'><b>CloudWatch</b>: monitor and manage various metrics and configure alarm actions based on data from those metrics.
+
+<br/></li><ul><li id='temp:C:MKJ3e702b3469f242e6ae689db33' class=''><b>MTTR</b>: Mean time to resolution
+
+<br/></li><li id='temp:C:MKJ4077d2f27f684f4d9f15f563a' class=''><b>TCO</b>: Total cost of ownership
+
+<br/></li></ul><li id='temp:C:MKJ1511cc7f210a4fee9a97ed10b' class=''><b>CloudTrail</b>: records API calls for account(provision, manage, and configure)
+
+<br/></li><li id='temp:C:MKJ5fe91b6fa97d498894a45a73f' class=''><b>X-Ray:</b> analyze and debug <b>serverless</b> and distributed applications such as those built using a <b>microservices</b> architecture
+
+<br/></li><li id='temp:C:MKJ6d17d793c6c9446fafcd5753d' class='parent'><b>Free Tier</b>: enables you to begin using certain services without having to worry about incurring costs for the specified period.
+
+<br/></li><ul><li id='temp:C:MKJ170eb9c183c34f92baac5e675' class=''>Types: always free, 12 months free, trials
+
+<br/></li></ul><li id='temp:C:MKJfc83bfcda4e0416c826cace5c' class=''><b>Pricing 3 categories</b>: Pay for what you use, Pay less when you reserve, Pay less with volume-based discount when you use more
+
+<br/></li><li id='temp:C:MKJd1543dc37b0e47e69870a4ea1' class='parent'><b>Billing Dashboard</b>: pay your AWS bill, monitor your usage, and analyze and control your costs.
+
+<br/></li><ul><li id='temp:C:MKJcedc19d0132a42aeaac675a22' class=''><b>Consolidated billing</b>: receive a single bill for all AWS accounts in your organization. Default min account is 4.
+
+<br/></li><li id='temp:C:MKJab5805e9b65d46eaa85ed2eef' class=''><b>Budgets</b>: create budgets to plan your service usage, service costs, and instance reservations.
+
+<br/></li><li id='temp:C:MKJ7e9b0c90fc7c4b85a4058b0a8' class=''><b>Cost explorer</b>: lets you forecast usage up to 12 months, visualize, understand, and manage your AWS <b>costs and usage over time</b>.
+
+<br/></li></ul><li id='temp:C:MKJc5ed0e96e5a647848b3d50471' class='parent'><b>Support Plan</b>: 
+
+<br/></li><ul><li id='temp:C:MKJ9fe0129f313e48918969fc324' class='parent'>provide access to guidance, configuration, and troubleshooting of AWS interoperability with third-party software
+
+<br/></li><ul><li id='temp:C:MKJ41de5f65849344aba24240043' class=''>Enterprise, Business
+
+<br/></li></ul><li id='temp:C:MKJ9951e0bfcbd34a1eb9cbd638a' class='parent'> lowest price trusted advisor, provides architectural guidance contextual to your specific use-cases, 24x7 contact
+
+<br/></li><ul><li id='temp:C:MKJa234f00b7e3244418a658e515' class=''>Business
+
+<br/></li></ul><li id='temp:C:MKJ8e210cde9b74475daa9b6d23d' class='parent'>provide access to only core checks from the AWS Trusted Advisor Best Practice Checks
+
+<br/></li><ul><li id='temp:C:MKJb07ee225195c40559e76c5c91' class=''>Basic, Developer
+
+<br/></li></ul><li id='temp:C:MKJ495c9b820ed543bfaaa0569c3' class='parent'><b>Basic - </b>
+
+<br/></li><ul><li id='temp:C:MKJcade624b275f49849a5ed9c6f' class=''>One-on-one responses to account and billing questions
+
+<br/></li><li id='temp:C:MKJ2bd08731602849d19d6744087' class=''>Support forums
+
+<br/></li><li id='temp:C:MKJ597e5bd4d8e641c9b436eb073' class=''>Service health checks
+
+<br/></li><li id='temp:C:MKJ0d9f69ed3f5e427e939920c1b' class=''>Documentation, technical papers, and best practice guides
+
+<br/></li></ul><li id='temp:C:MKJ9f3d470784df45c48580c4843' class='parent'><b>AWS Developer Support</b> -
+
+<br/></li><ul><li id='temp:C:MKJ42e6be7dfe5f41b49ecc76a44' class=''>testing or doing early development on AWS
+
+<br/></li><li id='temp:C:MKJ2a4d6aaf7cbe46cfa23cd3787' class=''>email-based technical support during business hours
+
+<br/></li><li id='temp:C:MKJ70a3ea59a43d4314a40417507' class=''>only supports general architectural guidance.
+
+<br/></li></ul><li id='temp:C:MKJf73e1935e72e44608e6cafc9d' class='parent'><b>AWS Business Support</b>
+
+<br/></li><ul><li id='temp:C:MKJ3010cdcad40e4065b56e79d3a' class=''>24x7 phone, email and chat access to technical support and architectural guidance in the context of your specific use-cases. 
+
+<br/></li><li id='temp:C:MKJ39c4c93562cf449caa6f6cbf9' class=''>Full access to AWS Trusted Advisor Best Practice Checks. 
+
+<br/></li><li id='temp:C:MKJ3249125ac6b341369c73faca9' class=''>Access to Infrastructure Event Management for an additional fee.
+
+<br/></li></ul><li id='temp:C:MKJ50ddb431b8ae444c90dfab92f' class='parent'><b>AWS Enterprise On-Ramp Support</b> 
+
+<br/></li><ul><li id='temp:C:MKJf56ce5b232e548f29dab3bc35' class=''> production/business critical workloads in AWS
+
+<br/></li><li id='temp:C:MKJ3fd23f2cbffe4da79b04f5ab3' class=''>24x7 access to technical support and need expert guidance to grow and optimize in the Cloud. 
+
+<br/></li><li id='temp:C:MKJ03c6732a5a7247159faf39e1c' class=''>supports architectural guidance contextual to your application (one per year).
+
+<br/></li></ul><li id='temp:C:MKJ2ee4838848f74cc0a095ae46e' class='parent'><b>AWS Enterprise Support</b> - 
+
+<br/></li><ul><li id='temp:C:MKJ9662dcd55ab34e0baaede2535' class=''>provides customers with concierge - achieve their outcomes and find success in the cloud. 
+
+<br/></li><li id='temp:C:MKJ1f6ab24fd1614629b200589c1' class=''>24x7 technical support from high-quality engineers, tools and technology to automatically manage the health of your environment, consultative review and guidance based on your applications, 
+
+<br/></li><li id='temp:C:MKJee98ff95348d4f27811c76242' class=''>TAM to coordinate access to proactive/preventative programs and AWS subject matter experts. 
+
+<br/></li><li id='temp:C:MKJ638c3208d66c4303b383624a7' class=''>supports architectural guidance contextual to your application.
+
+<br/></li></ul></ul></ul></div><br/>
+
+<div style="" data-section-style='5' class=""><ul id='temp:C:MKJ9078d67b2b5643209178a3d94'><li id='temp:C:MKJd641756f4bae4b40add55401b' class='parent' value='1'><b>CAF</b> Cloud Adoption Framework: advice to enable a quick and smooth <b>migration to AWS</b> <i>(</i><a href="https://explore.skillbuilder.aws/learn/course/134/play/99519/aws-cloud-practitioner-essentials"><i>https://explore.skillbuilder.aws/learn/course/134/play/99519/aws-cloud-practitioner-essentials</i></a><i> )</i>
+
+<br/></li><ul><li id='temp:C:MKJc39af56d18a247db9cbca2b4f' class=''><b>business capabilities</b>: People, business, governance
+
+<br/></li><li id='temp:C:MKJ0626694c7bca417cbc55bc368' class=''><b>technical capabilities</b>: platform, security, operation
+
+<br/></li><li id='temp:C:MKJf6409eb3eb49495288e694068' class='parent'>Do it before move migration: 
+
+<br/></li><ul><li id='temp:C:MKJfda1fc7a251c4997b7c8decf1' class=''>Leverage agile methods to rapidly iterate and evolve<br>Organize your teams around products and value streams<br>
+
+<br/></li></ul><li id='temp:C:MKJ65129d769bcc446792ff5779c' class=''><b>Business: </b>ensures that <b>IT aligns with business</b> needs and that IT investments link to key business results.
+
+<br/></li><li id='temp:C:MKJ565c74dae41e4fd28d3a56bd4' class=''><b>People:</b> <b>connect technology and business</b>. support development of an org-wide change management strategy for successful cloud adoption
+
+<br/></li><li id='temp:C:MKJb82ff3a055f045f8a8547fe40' class=''><b>Governance: risk management.</b> focuses on the skills and processes to align <b>IT strategy</b> with <b>business strategy</b>, max the business value and min risk
+
+<br/></li><li id='temp:C:MKJ6f469ada2c4243878e377dc3c' class=''><b>Platform:</b> includes <b>principles</b> and <b>patterns</b> for implementing new solutions on the cloud, and migrating on-premises workloads to the cloud.
+
+<br/></li><li id='temp:C:MKJd6a50517f62c4e0c90882ece4' class=''><b>Security:</b> ensure that the org meets <b>security</b> objectives for visibility, auditability, control, and agility.
+
+<br/></li><li id='temp:C:MKJ04c58b7849504f3f82acdf32c' class=''><b>Operations:</b> helps you to enable, run use, operate, and recover IT <b>workloads</b> to the level agreed upon with your business stakeholders.
+
+<br/></li><li id='temp:C:MKJ49c1303d90f64f1d98fb367e9' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/OL3fyUOa_wjksCsGf_mldg' id='temp:C:MKJ49c1303d90f64f1d98fb367e9' width='800' height='487'></img></span></li><li id='temp:C:MKJ78544afee86a4caf8339f27a1' class=''><span data-section-style='11' style='max-width:97%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/rIsnIXPuSTD26ORue_4MCg' id='temp:C:MKJ78544afee86a4caf8339f27a1' width='703' height='368'></img></span></li><li id='temp:C:MKJa912e6a3a93b4e46bc07d3e04' class=''><span data-section-style='11' style='max-width:100%' class=''><img src='https://quip-amazon.com/blob/MKJ9AATcoNC/OL3fyUOa_wjksCsGf_mldg' id='temp:C:MKJa912e6a3a93b4e46bc07d3e04' width='800' height='487'></img></span></li></ul><li id='temp:C:MKJd262bd91dbdd4208813e6cb19' class='parent'><b>Well-architected framework</b>: ensure AWS workloads and system follow best practices.
+
+<br/></li><ul><li id='temp:C:MKJd64fbc4407c5444fa19adfd65' class=''><b>Operational excellence</b>: run and monitor systems to deliver business value and to continually improve supporting processes and procedures.  
+
+<br/></li><li id='temp:C:MKJ2a52c92ab1c442168822a815a' class=''><b>Security</b>: protect information, systems, and assets while delivering business value through risk assessments and mitigation strategies.
+
+<br/></li><li id='temp:C:MKJb4a518e3d3644f9cb1226cca2' class='parent'><b>Reliability</b>: 
+
+<br/></li><ul><li id='temp:C:MKJ271514807f4342869d77a6890' class=''> CloudTrail, CloudWatch, Config
+
+<br/></li></ul><li id='temp:C:MKJ8259c9d9f8644deb8c5bdccb2' class=''><b>performance efficiency</b>: 
+
+<br/></li><li id='temp:C:MKJefcdff80947b49b9b889bc9fe' class=''><b>cost optimization</b>: 
+
+<br/></li><li id='temp:C:MKJ4b469995a0d5488bad65cee48' class=''><b>sustainability</b>: continually improve sustainability impacts by <b>reducing energy consumption</b>
+
+<br/></li></ul><li id='temp:C:MKJ3b89a4ca160646828cf4824ce' class=''><b>Migration Evaluator</b>: compare current env cost to the cost of running in the AWS cloud 
+
+<br/></li><li id='temp:C:MKJ4a5a885da7514695bd9d59b0d' class='parent'><b>Miragtion 7’s R</b>
+
+<br/></li><ul><li id='temp:C:MKJ29a7e096c10c4e3cb3191462a' class=''>Retire, Retain, relocate, rehost, replatform, repurchase, refactor
+
+<br/></li></ul><li id='temp:C:MKJ017e8df1109e450db47c4ad87' class=''><b>Step function</b> : Build serverless visual workflow to orchestrate your Lambda functions
+
+<br/></li><li id='temp:C:MKJae6cd694ec6a42eeadaf22d6b' class='parent'><b>Snow Family</b>: use <b>OpsHub</b> managed Snow Family
+
+<br/></li><ul><li id='temp:C:MKJ0cc99a7e29b141979d0704426' class=''><b>Snow cone</b>: 2 CPU, 4GB memory, up to 14 TB
+
+<br/></li><li id='temp:C:MKJ1e9bbdbe7c4b4618acc3eae0a' class=''><b>Snowball</b>: 80 - 210 TB
+
+<br/></li><li id='temp:C:MKJ88ae985ea3cf49c7bbd9ecf34' class=''><b>Snowmobile</b>: 100 PB
+
+<br/></li></ul><li id='temp:C:MKJe9ad1c2ccf8a4e9480c7d346a' class='parent'>Other:
+
+<br/></li><ul><li id='temp:C:MKJc54eb1b1f46241b4b04c5ddb9' class=''>Amazon Textract is a machine learning service that automatically extracts text and data from scanned documents.
+
+<br/></li><li id='temp:C:MKJa2e720a6a6bb49edab6a0d814' class=''>Amazon Lex is a service that enables you to build conversational interfaces using voice and text.
+
+<br/></li><li id='temp:C:MKJb3b5ddb893a14d559134e2048' class=''>AWS DeepRacer is an autonomous 1/18 scale race car that you can use to test reinforcement learning models.
+
+<br/></li></ul><li id='temp:C:MKJ794127fa4ce74ce7a410f9bd1' class='parent'><b>Config: </b>
+
+<br/></li><ul><li id='temp:C:MKJ9b0b16d40d1f48bc94087bace' class=''>access, audit, monitor, and evaluate the configuration of AWS resources.
+
+<br/></li><li id='temp:C:MKJbfe2414df1b045e981ff604a9' class=''>recording compliance of your AWS resources
+
+<br/></li></ul><li id='temp:C:MKJ20621e7acd25446b98a2ebc82' class=''><b>Partner Network: third party</b> support you in AWS cloud
+
+<br/></li></ul></div><br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+</body></html>
